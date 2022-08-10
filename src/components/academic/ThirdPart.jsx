@@ -16,7 +16,7 @@ function ThirdPart() {
       </thead>
       <tbody>
         <tr>
-          <td>Term-1</td>
+          <td className='text-uppercase'>Term-I</td>
           <td>83</td>
           <td>83</td>
           <td>100</td>
