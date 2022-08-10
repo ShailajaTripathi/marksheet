@@ -2,34 +2,24 @@ import React from 'react'
 import Table from 'react-bootstrap/Table';
 function ThirdPart() {
   return (
-    <div>ThirdPart
+    <div>
+      <h3>Part - III : Attendence </h3>
 
  <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th> </th>
+          <th>No. of working days</th>
+          <th>No. of Days Present</th>
+          <th>Percentage</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
+          <td>Term-1</td>
+          <td>83</td>
+          <td>83</td>
+          <td>100</td>
         </tr>
       </tbody>
     </Table> 

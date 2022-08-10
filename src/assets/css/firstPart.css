@@ -1,3 +1,8 @@
-.tableBody{
-    text-align:left;
+tableHead {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.tableBody {
+  text-align: left;
 }

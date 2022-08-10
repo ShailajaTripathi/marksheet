@@ -1,7 +1,6 @@
 import React from 'react'
 import Academic from '../../components/academic/Academic'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 
 
 function Sheet() {
