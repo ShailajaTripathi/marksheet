@@ -12,44 +12,120 @@ function FirstPart() {
       </h3>
       <Table striped bordered hover>
         <thead>
-     
           <tr>
-            <th className="tableHead" rowspan="2">S.No</th>
-            <th className="tableHead" rowspan="2">Subjects</th>
-
-            <th>
-              FA
-              <th className="border-top">70</th>
+            <th className="tableHead" rowspan={2}>
+              S.No
             </th>
-            <th >
-              Total<th className="border-top">70</th>
+            <th className="tableHead" rowspan={2}>
+              Subjects
             </th>
-            <th>
-              SA<th className="border-top">70</th>
-            </th>
-            <th>
-              Total<th className="border-top">100</th>
-            </th>
+          <th>FA</th>
+            <th>Total</th>
+            <th>SA</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td className="border-top fw-bold">70</td>
+            <td className="border-top fw-bold">70</td>
+            <td className="border-top fw-bold">70</td>
+            <td className="border-top fw-bold">100</td>
           </tr>
         </thead>
         <tbody className="tableBody">
           <tr>
-            {/* <td>1</td>
+            <td>01</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>@mdo</td> */}
+            <td>@mdo</td>
+            <td>Otto</td>
+            <td>@mdo</td>
           </tr>
           <tr>
-            {/* <td>2</td>
+            <td>02</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>@fat</td> */}
+            <td>@fat</td>
+            <td>Otto</td>
+            <td>@mdo</td>
           </tr>
           <tr>
-            {/* <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td> */}
+            <td>03</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
           </tr>
+          <tr>
+            <td>04</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>06</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>07</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>08</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>09</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td colSpan={2} className="fw-bold">Grand Total</td>
+            <td colSpan={5}>485</td>
+          </tr>
+          <tr>
+            <td colSpan={2} className="fw-bold">Percentage</td>
+            <td colSpan={5}>80.8</td>
+          </tr>
+          <tr>
+            <td colSpan={2} className="fw-bold">Rank</td>
+            <td colSpan={5}>V</td>
+          </tr>
+
         </tbody>
       </Table>
     </div>
