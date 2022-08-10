@@ -2,14 +2,14 @@ import React from "react";
 import FirstPart from "./FirstPart";
 import SecondPart from "./SecondPart";
 import ThirdPart from "./ThirdPart";
-// import styles from '../../assets/css'
+import "../../assets/css/academic.css";
 
 function Academic() {
   return (
-    <div>
+    <div className="topPart">
     <h2>Academic Performace</h2> 
 <hr/>
-      <div className="topPart">
+<div class="d-flex align-items-baseline">
         <div>
           <FirstPart />
         </div>

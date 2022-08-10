@@ -1,40 +1,71 @@
-import React from 'react'
-import Table from 'react-bootstrap/Table';
+import React from "react";
+import Table from "react-bootstrap/Table";
+import '../../assets/css/secondPart.css';
 
 function SecondPart() {
   return (
-    <div>SecondPart
-            <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
+    <div>
+      <h3 className="text-primary">
+        <span className="square border border-bottom-0">
+          Part - II : Co-Scholastic Areas
+        </span>
+      </h3>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody className="tableBody">
+          <tr>
+            <td>Development & Maturity</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Responsibility</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Self Confidence</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Participation in Group Work</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Neatness</td>
+            <td>A+</td>
+          </tr>
+          <tr>
+            <td>Music</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Discipline</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Hand Work</td>
+            <td>B</td>
+          </tr>
+          <tr>
+            <td>Attitude towards home work</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Craft</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Regularity and punctuality</td>
+            <td>A</td>
+          </tr>
+        </tbody>
+      </Table>
     </div>
-  )
+  );
 }
 
-export default SecondPart
+export default SecondPart;
