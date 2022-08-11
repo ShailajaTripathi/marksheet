@@ -4,11 +4,9 @@ import "./styles/firstPart.css";
 import '../../assets/css/table.css';
 function FirstPart() {
   return (
-    <div>
-      <h3 className="text-primary">
-        <span className="square border border-bottom-0 partTitle">
+    <div className="tables">
+      <h3 className="text-primary tableTitle">
           Part - I : Scholastic Areas
-        </span>
       </h3>
       <Table striped bordered hover>
         <thead>
@@ -35,7 +33,7 @@ function FirstPart() {
         </thead>
         <tbody className="tableBody">
           <tr>
-            <td>01</td>
+            <td>1</td>
             <td>English</td>
             <td>18</td>
             <td>66</td>
@@ -44,7 +42,7 @@ function FirstPart() {
             <td className="text-center">70</td>
           </tr>
           <tr>
-            <td>02</td>
+            <td>2</td>
             <td>Hindi</td>
             <td>15</td>
             <td>23</td>
@@ -53,7 +51,7 @@ function FirstPart() {
             <td className="text-center">89</td>
           </tr>
           <tr>
-            <td>03</td>
+            <td>3</td>
             <td>Sanskrit</td>
             <td>60</td>
             <td>60</td>
@@ -62,7 +60,7 @@ function FirstPart() {
             <td className="text-center">70</td>
           </tr>
           <tr>
-            <td>04</td>
+            <td>4</td>
             <td>Math</td>
             <td>30</td>
             <td>18</td>
@@ -71,7 +69,7 @@ function FirstPart() {
             <td className="text-center">98</td>
           </tr>
           <tr>
-            <td>05</td>
+            <td>5</td>
             <td>EVS</td>
             <td>15</td>
             <td>23</td>
@@ -80,7 +78,7 @@ function FirstPart() {
             <td className="text-center">80</td>
           </tr>
           <tr>
-            <td>06</td>
+            <td>6</td>
             <td>Social Study</td>
             <td>18</td>
             <td>66</td>
@@ -89,7 +87,7 @@ function FirstPart() {
             <td className="text-center">95</td>
           </tr>
           <tr>
-            <td>07</td>
+            <td>7</td>
             <td>Computer</td>
             <td>18</td>
             <td>66</td>
@@ -98,7 +96,7 @@ function FirstPart() {
             <td className="text-center">99</td>
           </tr>
           <tr>
-            <td>08</td>
+            <td>8</td>
             <td>Moral</td>
             <td>60</td>
             <td>60</td>
@@ -107,7 +105,7 @@ function FirstPart() {
             <td className="text-center">93</td>
           </tr>
           <tr>
-            <td>09</td>
+            <td>9</td>
             <td>G.K.</td>
             <td>15</td>
             <td>23</td>
