@@ -2,7 +2,8 @@ import React from "react";
 import FirstPart from "./FirstPart";
 import SecondPart from "./SecondPart";
 import ThirdPart from "./ThirdPart";
-import "../../assets/css/academic.css";
+import "./styles/academic.css";
+import '../../assets/css/table.css';
 import BottomPart from "./BottomPart";
 
 function Academic() {

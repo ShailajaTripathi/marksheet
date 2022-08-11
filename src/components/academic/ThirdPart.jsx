@@ -1,5 +1,6 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
+import '../../assets/css/table.css';
 function ThirdPart() {
   return (
     <div>

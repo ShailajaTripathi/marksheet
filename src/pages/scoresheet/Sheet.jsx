@@ -1,6 +1,7 @@
 import React from 'react'
 import Academic from '../../components/academic/Academic'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Grading from '../../components/grading/Grading';
 
 
 function Sheet() {
@@ -10,6 +11,7 @@ function Sheet() {
 <hr/>
 
 <Academic/>
+<Grading/>
     </div>
   )
 }

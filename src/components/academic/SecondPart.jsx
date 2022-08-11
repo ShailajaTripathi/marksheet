@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import '../../assets/css/secondPart.css';
+import './styles/secondPart.css';
+import '../../assets/css/table.css';
 
 function SecondPart() {
   return (
