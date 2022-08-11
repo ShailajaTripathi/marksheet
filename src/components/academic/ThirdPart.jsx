@@ -1,11 +1,11 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "../../assets/css/table.css";
+import tdata from "../JsonData/ThirdPart.json";
 function ThirdPart() {
   return (
     <div className="tables">
       <h3>Part - III : Attendence </h3>
-
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -16,12 +16,14 @@ function ThirdPart() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="text-uppercase">Term-I</td>
-            <td>83</td>
-            <td>83</td>
-            <td>100</td>
-          </tr>
+          {tdata.map((e) => (
+            <tr>
+              <td className="text-uppercase">{e.subject}</td>
+              <td>{e.fnum}</td>
+              <td>{e.snum}</td>
+              <td>{e.tnum}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>

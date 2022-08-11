@@ -1,6 +1,7 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
-import './Grading.css'
+import './Grading.css';
+import gdata from '../JsonData/GradingPart.json';
 function Grading() {
   return (
     <div className="gradingTable">
@@ -14,41 +15,13 @@ function Grading() {
           </tr>
         </thead>
         <tbody>
+        {gdata.map((e)=>( 
           <tr>
-           <td>91-100</td>
-           <td>A1</td>
-           <td>Excellent</td>
+           <td>{e.range}</td>
+           <td>{e.grade}</td>
+           <td>{e.remarks}</td>
           </tr>
-          <tr>
-           <td>81-90</td>
-           <td>A2</td>
-           <td>Very Good</td>
-          </tr>
-          <tr>
-           <td>71-80</td>
-           <td>B1</td>
-           <td>Good</td>
-          </tr>
-          <tr>
-           <td>61-70</td>
-           <td>B2</td>
-           <td>Satisfactory</td>
-          </tr>
-          <tr>
-           <td>51-60</td>
-           <td>C1</td>
-           <td>Satisfactory</td>
-          </tr>
-          <tr>
-           <td>40-50</td>
-           <td>C2</td>
-           <td>Satisfactory</td>
-          </tr>
-          <tr>
-           <td>Below 40</td>
-           <td>D</td>
-           <td>Fail:Poor</td>
-          </tr>
+        ))}
 
         </tbody>
       </Table>

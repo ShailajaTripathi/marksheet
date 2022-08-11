@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "subject": "English",
+    "fa": "50",
+    "fmarks": "60",
+    "sa": "31",
+    "smarks": "40",
+    "total": "70"
+  },
+  {
+    "id": 2,
+    "subject": "Hindi",
+    "fa": "35",
+    "fmarks": "40",
+    "sa": "59",
+    "smarks": "60",
+    "total": "70"
+  },
+  {
+    "id": 3,
+    "subject": "Sanskrit",
+    "fa": "55",
+    "fmarks": "60",
+    "sa": "39",
+    "smarks": "40",
+    "total": "70"
+  },
+  {
+    "id": 4,
+    "subject": "Math",
+    "fa": "38",
+    "fmarks": "40",
+    "sa": "58",
+    "smarks": "60",
+    "total": "90"
+  },
+  {
+    "id": 5,
+    "subject": "EVS",
+    "fa": "28",
+    "fmarks": "30",
+    "sa": "67",
+    "smarks": "70",
+    "total": "95"
+  },
+  {
+    "id": 6,
+    "subject": "Social Study",
+    "fa": "45",
+    "fmarks": "50",
+    "sa": "49",
+    "smarks": "50",
+    "total": "94"
+  },
+  {
+    "id": 7,
+    "subject": "Computer",
+    "fa": "30",
+    "fmarks": "29",
+    "sa": "66",
+    "smarks": "70",
+    "total": "92"
+  },
+  {
+    "id": 8,
+    "subject": "Moral",
+    "fa": "47",
+    "fmarks": "50",
+    "sa": "46",
+    "smarks": "50",
+    "total": "100"
+  },
+  {
+    "id": 9,
+    "subject": "G.K.",
+    "fa": "15",
+    "fmarks": "20",
+    "sa": "77",
+    "smarks": "80",
+    "total": "93"
+  },
+  {
+    "id": 10,
+    "subject": "Conversation",
+    "fa": "66",
+    "fmarks": "70",
+    "sa": "28",
+    "smarks": "30",
+    "total": "96"
+  },
+  {
+    "id": 11,
+    "subject": "Drawing",
+    "fa": "39",
+    "fmarks": "40",
+    "sa": "65",
+    "smarks": "70",
+    "total": "98"
+  }
+]

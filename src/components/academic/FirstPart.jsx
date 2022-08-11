@@ -1,13 +1,16 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+import TableTitle from "./TableTitle";
 import "./styles/firstPart.css";
 import '../../assets/css/table.css';
+import fdata from '../JsonData/FirstPart.json';
+
 function FirstPart() {
+  
   return (
     <div className="tables">
-      <h3 className="text-primary tableTitle">
-          Part - I : Scholastic Areas
-      </h3>
+    
+      <TableTitle title="Part - I : Scholastic Areas"/>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -31,112 +34,26 @@ function FirstPart() {
             <td className="border-top fw-bold">100</td>
           </tr>
         </thead>
+        {console.log("fdata",fdata)}
         <tbody className="tableBody">
+          {fdata.map((e)=>(                
           <tr>
-            <td>1</td>
-            <td>English</td>
-            <td>18</td>
-            <td>66</td>
-            <td>78</td>
-            <td>60</td>
+            <td>{e.id}</td>
+            <td>{e.subject}</td>
+            <td>{e.fa}</td>
+            <td>{e.fmarks}</td>
+            <td>{e.sa}</td>
+            <td>{e.smarks}</td>
             <td className="text-center">70</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Hindi</td>
-            <td>15</td>
-            <td>23</td>
-            <td>70</td>
-            <td>40</td>
-            <td className="text-center">89</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Sanskrit</td>
-            <td>60</td>
-            <td>60</td>
-            <td>30</td>
-            <td>45</td>
-            <td className="text-center">70</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Math</td>
-            <td>30</td>
-            <td>18</td>
-            <td>20</td>
-            <td>60</td>
-            <td className="text-center">98</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>EVS</td>
-            <td>15</td>
-            <td>23</td>
-            <td>70</td>
-            <td>40</td>
-            <td className="text-center">80</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Social Study</td>
-            <td>18</td>
-            <td>66</td>
-            <td>78</td>
-            <td>60</td>
-            <td className="text-center">95</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Computer</td>
-            <td>18</td>
-            <td>66</td>
-            <td>78</td>
-            <td>60</td>
-            <td className="text-center">99</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Moral</td>
-            <td>60</td>
-            <td>60</td>
-            <td>30</td>
-            <td>45</td>
-            <td className="text-center">93</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>G.K.</td>
-            <td>15</td>
-            <td>23</td>
-            <td>70</td>
-            <td>40</td>
-            <td className="text-center">87</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Conversation</td>
-            <td>30</td>
-            <td>18</td>
-            <td>20</td>
-            <td>60</td>
-            <td className="text-center">97</td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>Drawing</td>
-            <td>15</td>
-            <td>23</td>
-            <td>70</td>
-            <td>40</td>
-            <td className="text-center">80</td>
-          </tr>
-          <tr>
-            <td colSpan={2} className="fw-bold text-uppercase">
-              Grand Total
+            </tr>
+              ))}
+               <tr>
+          
+               <td colSpan={2} className="fw-bold text-uppercase">
+           Grand Total
             </td>
             <td colSpan={5} className="text-right">
-              485
+              482
             </td>
           </tr>
           <tr>
@@ -155,7 +72,7 @@ function FirstPart() {
               V
             </td>
           </tr>
-        </tbody>
+            </tbody>
       </Table>
     </div>
   );
