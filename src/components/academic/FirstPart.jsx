@@ -40,10 +40,10 @@ function FirstPart() {
           <tr>
             <td>{e.id}</td>
             <td>{e.subject}</td>
-            <td>{e.fa}</td>
-            <td>{e.fmarks}</td>
-            <td>{e.sa}</td>
-            <td>{e.smarks}</td>
+            <td className="text-center">{e.fa}</td>
+            <td className="text-center">{e.fmarks}</td>
+            <td className="text-center">{e.sa}</td>
+            <td className="text-center">{e.smarks}</td>
             <td className="text-center">70</td>
             </tr>
               ))}

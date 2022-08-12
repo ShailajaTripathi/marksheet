@@ -7,7 +7,7 @@ import sdata from '../JsonData/SecondPart.json';
 
 function SecondPart() {
   return (
-    <div className="tables">
+    <div className="tables secondTable">
    <TableTitle title= "Part - II : Co-Scholastic Areas"/>
       <Table striped bordered hover>
         <thead>
@@ -18,7 +18,7 @@ function SecondPart() {
         </thead>
         <tbody className="tableBody tables">
         {sdata.map((e)=>( 
-          <tr>
+          <tr className="tableHeight">
             <td>{e.subject}</td>
             <td className="text-center">{e.grade}</td>
           </tr>
