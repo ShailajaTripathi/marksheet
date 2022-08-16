@@ -13,10 +13,10 @@ function BottomPart() {
         <p className="mt-5 fst-italic parentSign">Parent's Signature</p>
       </div>
       <div>
+        <p className="fw-bold">Grade: A 1</p>
         <p className="mt-5 fst-italic principalSign">Principal Signature</p>
       </div>
     </div>
   );
 }
-
 export default BottomPart;

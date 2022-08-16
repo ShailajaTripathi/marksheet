@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import "./styles/firstPart.css";
 import "../../assets/css/table.css";
-import axios from "axios";
+
 
 function FirstPart() {
+  const [firstData, setFirstdata] = useState([]);
+  const [result, setResult] = useState([]);
 
-
-  const [fdata, setFdata] = useState([]);
-  const getFdata = async () => {
+  const getFirstdata = async () => {
     const response = await axios("http://localhost:3000/firstpart");
-    setFdata(response.data);
+    setFirstdata(response.data);
+  };
+  const getResult = async () => {
+    const response = await axios("http://localhost:3000/result");
+    setResult(response.data);
   };
 
-
   useEffect(() => {
-    getFdata();
+    getFirstdata();
+    getResult();
   }, []);
-
-  console.log("fdata-->",fdata);
-
-
-
 
   return (
     <div className="tables firstPart">
@@ -58,9 +58,9 @@ function FirstPart() {
         </thead>
 
         <tbody className="tableBody">
-          {fdata.map((e) => (
+          {firstData.map((e) => (
             <tr>
-              <td>{e.id}</td>
+              <td className="text-center">{e.id}</td>
               <td>{e.subject}</td>
               <td className="text-center">{e.fa}</td>
               <td className="text-center">{e.fmarks}</td>
@@ -69,17 +69,18 @@ function FirstPart() {
               <td className="text-center">70</td>
             </tr>
           ))}
-
-          <tr>
-            <td colSpan={2} className="fw-bold text-uppercase">
-              Grand Total
-            </td>
-            <td colSpan={5} className="text-right">
-              482
-            </td>
-          </tr>
-          <tr>
-            <td colSpan={2} className="fw-bold text-uppercase">
+          {result.map((e) => (
+            <tr>
+              <td colSpan={2} className="fw-bold text-uppercase">
+                {e.label}
+              </td>
+              <td colSpan={5} className="text-right">
+                {e.value}
+              </td>
+            </tr>
+          ))}
+          {/* <tr> */}
+          {/* <td colSpan={2} className="fw-bold text-uppercase">
               Percentage
             </td>
             <td colSpan={5} className="text-right ">
@@ -93,7 +94,7 @@ function FirstPart() {
             <td colSpan={5} className="text-right">
               V
             </td>
-          </tr>
+          </tr> */}
         </tbody>
       </Table>
     </div>

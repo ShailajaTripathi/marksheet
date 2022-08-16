@@ -156,16 +156,74 @@
         "id": 11,
         "subject": "Regularity and punctuality",
         "grade": "A"
-      }
+      }],
+      "result":[{
+"id":1,
+"label":"Grand Total",
+"value":482
+      },
+      {
+        "id":2,
+        "label":"Percentage",
+        "value":93.4
+              },{
+                "id":3,
+                "label":"Rank",
+                "value":"V"
+                      }
     ],
     "thirdpart":[
       {
         "id": 1,
-        "subject": "Term -I",
-        "fnum":"83",
-        "snum":"83",
-        "tnum":"100"    
+        "term": "Term -I",
+        "workingDays":"83",
+        "presentDays":"83",
+        "percentage":"100"    
       }
-    ]
-   
-  }
+    ],
+    "grading": [
+      		{
+      			"id": 1,
+      			"range": "91-100",
+      			"grade": "A1",
+      			"remarks": "Excellent"
+      		},
+      		{
+      			"id": 2,
+      			"range": "81-90",
+      			"grade": "A2",
+      			"remarks": "Very Good"
+      		},
+      		{
+      			"id": 3,
+      			"range": "71-80",
+      			"grade": "B1",
+      			"remarks": "Good"
+      		},
+      		{
+      			"id": 4,
+      			"range": "61-70",
+      			"grade": "B2",
+      			"remarks": "Satisfactory"
+      		},
+      		{
+      			"id": 5,
+      			"range": "51-60",
+      			"grade": "C1",
+      			"remarks": "Satisfactory"
+      		},
+      		{
+      			"id": 6,
+      			"range": "40-50",
+      			"grade": "C2",
+      			"remarks": "Satisfactory"
+      		},
+      		{
+      			"id": 7,
+      			"range": "Below 40",
+      			"grade": "D",
+      			"remarks": "Fail:Poor"
+      		}
+      	]
+      }
+      

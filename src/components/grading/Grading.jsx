@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import './Grading.css';
 
-
 function Grading() {
+  const [grading, setGrading] = useState([]);
+  const getGrading = async () => {
+    const response = await axios("http://localhost:3000/grading");
+    setGrading(response.data);
+  };
+  useEffect(() => {
+    getGrading();
+  }, []);
+
   return (
     <div className="gradingTable">
       <h3 className="text-uppercase"> Grading Scale</h3>
@@ -16,13 +25,13 @@ function Grading() {
           </tr>
         </thead>
         <tbody>
-        {/* {data.grading.map((e)=>(  */}
+        {grading.map((e)=>( 
           <tr>
-           {/* <td className="col-md-1">{e.range}</td>
+           <td className="col-md-1">{e.range}</td>
            <td className="col-md-1">{e.grade}</td>
-           <td className="col-sm-1">{e.remarks}</td> */}
+           <td className="col-sm-1">{e.remarks}</td>
           </tr>
-        {/* ))} */}
+         ))} 
 
         </tbody>
       </Table>

@@ -4,7 +4,15 @@ import Table from "react-bootstrap/Table";
 import "../../assets/css/table.css";
 
 function ThirdPart() {
-  
+  const [thirdData, setThirddata] = useState([]);
+  const getThirddata = async () => {
+    const response = await axios("http://localhost:3000/thirdpart");
+    setThirddata(response.data);
+  };
+  useEffect(() => {
+    getThirddata();
+  }, []);
+
   return (
     <div className="tables">
       <h3>Part - III : Attendence </h3>
@@ -23,13 +31,14 @@ function ThirdPart() {
           </tr>
         </thead>
         <tbody>
+        {thirdData.map((e) => (
           <tr>
-            {/* <td className="text-uppercase"> {posts.term}</td>
-            <td>{posts.workingDays}</td>
-            <td>{posts.presentDays}</td>
-            <td>{posts.percentage}</td>
-       */}
+            <td className="text-uppercase"> {e.term}</td>
+            <td>{e.workingDays}</td>
+            <td>{e.presentDays}</td>
+            <td>{e.percentage}</td>
           </tr>
+           ))}
         </tbody>
       </Table>
     </div>

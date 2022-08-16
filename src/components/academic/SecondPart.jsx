@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import './styles/secondPart.css';
@@ -6,6 +7,18 @@ import '../../assets/css/table.css';
 
 
 function SecondPart() {
+
+  const [secondData, setSeconddata] = useState([]);
+  const getSeconddata = async () => {
+    const response = await axios("http://localhost:3000/secondpart");
+    setSeconddata(response.data);
+  };
+
+
+  useEffect(() => {
+    getSeconddata();
+  }, []);
+
   return (
     <div className="tables secondTable">
    <TableTitle title= "Part - II : Co-Scholastic Areas"/>
@@ -17,12 +30,12 @@ function SecondPart() {
           </tr>
         </thead>
         <tbody className="tableBody tables">
-        
+        {secondData.map((e) => (
           <tr className="tableHeight">
-            {/* <td>{e.subject}</td>
-            <td className="text-center">{e.grade}</td> */}
+            <td>{e.subject}</td>
+            <td className="text-center">{e.grade}</td>
           </tr>
-      
+        ))}
         </tbody>
       </Table>
     </div>
