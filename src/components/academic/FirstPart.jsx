@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import "./styles/firstPart.css";
-import '../../assets/css/table.css';
-import fdata from '../JsonData/FirstPart.json';
+import "../../assets/css/table.css";
+import axios from "axios";
 
 function FirstPart() {
-  
+
+
+  const [fdata, setFdata] = useState([]);
+  const getFdata = async () => {
+    const response = await axios("http://localhost:3000/firstpart");
+    setFdata(response.data);
+  };
+
+
+  useEffect(() => {
+    getFdata();
+  }, []);
+
+  console.log("fdata-->",fdata);
+
+
+
+
   return (
-    <div className="tables">
-    
-      <TableTitle title="Part - I : Scholastic Areas"/>
-      <Table striped bordered hover>
+    <div className="tables firstPart">
+      <TableTitle title="Part - I : Scholastic Areas" />
+      <Table
+        striped
+        bordered
+        hover
+        size="lg"
+        className="table-responsive border border-dark"
+      >
         <thead>
           <tr>
             <th className="tableHead" rowspan={2}>
@@ -27,30 +49,30 @@ function FirstPart() {
             <th>Overall Marks</th>
           </tr>
           <tr>
-            <td className="border-top fw-bold">70</td>
-            <td className="border-top fw-bold">70</td>
-            <td className="border-top fw-bold">70</td>
-            <td className="border-top fw-bold">90</td>
-            <td className="border-top fw-bold">100</td>
+            <td className="border-top border-dark">70</td>
+            <td className="border-top border-dark">70</td>
+            <td className="border-top border-dark">70</td>
+            <td className="border-top border-dark">90</td>
+            <td className="border-top border-dark">100</td>
           </tr>
         </thead>
-        {console.log("fdata",fdata)}
+
         <tbody className="tableBody">
-          {fdata.map((e)=>(                
-          <tr>
-            <td>{e.id}</td>
-            <td>{e.subject}</td>
-            <td className="text-center">{e.fa}</td>
-            <td className="text-center">{e.fmarks}</td>
-            <td className="text-center">{e.sa}</td>
-            <td className="text-center">{e.smarks}</td>
-            <td className="text-center">70</td>
+          {fdata.map((e) => (
+            <tr>
+              <td>{e.id}</td>
+              <td>{e.subject}</td>
+              <td className="text-center">{e.fa}</td>
+              <td className="text-center">{e.fmarks}</td>
+              <td className="text-center">{e.sa}</td>
+              <td className="text-center">{e.smarks}</td>
+              <td className="text-center">70</td>
             </tr>
-              ))}
-               <tr>
-          
-               <td colSpan={2} className="fw-bold text-uppercase">
-           Grand Total
+          ))}
+
+          <tr>
+            <td colSpan={2} className="fw-bold text-uppercase">
+              Grand Total
             </td>
             <td colSpan={5} className="text-right">
               482
@@ -72,7 +94,7 @@ function FirstPart() {
               V
             </td>
           </tr>
-            </tbody>
+        </tbody>
       </Table>
     </div>
   );

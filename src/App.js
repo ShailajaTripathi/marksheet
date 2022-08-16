@@ -4,9 +4,7 @@ import Sheet from './pages/scoresheet/Sheet';
 function App() {
   return (
     <div className="App">
-<div>
   <Sheet/>
-</div>
     </div>
   );
 }

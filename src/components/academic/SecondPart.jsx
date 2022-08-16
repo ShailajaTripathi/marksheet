@@ -3,26 +3,26 @@ import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import './styles/secondPart.css';
 import '../../assets/css/table.css';
-import sdata from '../JsonData/SecondPart.json';
+
 
 function SecondPart() {
   return (
     <div className="tables secondTable">
    <TableTitle title= "Part - II : Co-Scholastic Areas"/>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="table-responsive border-bottom border-dark">
         <thead>
           <tr>
-            <th></th>
-            <th>Grade</th>
+            <th className="col-sm-2"></th>
+            <th className="col-sm-1">Grade</th>
           </tr>
         </thead>
         <tbody className="tableBody tables">
-        {sdata.map((e)=>( 
+        
           <tr className="tableHeight">
-            <td>{e.subject}</td>
-            <td className="text-center">{e.grade}</td>
+            {/* <td>{e.subject}</td>
+            <td className="text-center">{e.grade}</td> */}
           </tr>
-          ))}
+      
         </tbody>
       </Table>
     </div>

@@ -1,9 +1,9 @@
-.secondTable{
-    
-}
+/* .secondTable{
+    border: 1px solid black;
+} */
 .tableBody{
     text-align:left;
 }
 .tableHeight{
-    height: 56px !important;
+    height: 58px !important;
 }

@@ -7,8 +7,8 @@ import Grading from '../../components/grading/Grading';
 function Sheet() {
   return (
     <div>
-<h1 className='text-danger sheetTitle'>First Terminal Examination 2018-2019</h1>
-<hr/>
+<h1 className='text-danger sheetTitle border-bottom border-dark'>First Terminal Examination 2018-2019</h1>
+
 
 <Academic/>
 <Grading/>
