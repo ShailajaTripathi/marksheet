@@ -31,22 +31,22 @@ function FirstPart() {
         striped
         bordered
         hover
-        size="lg"
+        size="md"
         className="table-responsive border border-dark"
       >
         <thead>
           <tr>
-            <th className="tableHead" rowspan={2}>
+            <th className="tableHead col-sm-1" rowspan={2}>
               S.No
             </th>
-            <th className="tableHead text-uppercase" rowspan={2}>
+            <th className="tableHead text-uppercase col-sm-2" rowspan={2} >
               Subjects
             </th>
-            <th>FA</th>
-            <th>Total</th>
-            <th>SA</th>
-            <th>Total</th>
-            <th>Overall Marks</th>
+            <th className="col-sm-1">FA</th>
+            <th className="col-sm-1">Total</th>
+            <th className="col-sm-1">SA</th>
+            <th className="col-sm-1">Total</th>
+            <th className="col-sm-1">Overall Marks</th>
           </tr>
           <tr>
             <td className="border-top border-dark">70</td>
@@ -79,22 +79,7 @@ function FirstPart() {
               </td>
             </tr>
           ))}
-          {/* <tr> */}
-          {/* <td colSpan={2} className="fw-bold text-uppercase">
-              Percentage
-            </td>
-            <td colSpan={5} className="text-right ">
-              80.8
-            </td>
-          </tr>
-          <tr>
-            <td colSpan={2} className="fw-bold text-uppercase">
-              Rank
-            </td>
-            <td colSpan={5} className="text-right">
-              V
-            </td>
-          </tr> */}
+              
         </tbody>
       </Table>
     </div>

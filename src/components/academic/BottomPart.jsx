@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/bottom.css";
 
+
 function BottomPart() {
   return (
     <div className="d-flex justify-content-between bg-light bottomPart">
