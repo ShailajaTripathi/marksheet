@@ -49,11 +49,11 @@ function FirstPart() {
             <th className="col-sm-1">Overall Marks</th>
           </tr>
           <tr>
-            <td className="border-top border-dark">70</td>
-            <td className="border-top border-dark">70</td>
-            <td className="border-top border-dark">70</td>
-            <td className="border-top border-dark">90</td>
-            <td className="border-top border-dark">100</td>
+            <td className="border-top border-dark fw-bold">70</td>
+            <td className="border-top border-dark fw-bold">70</td>
+            <td className="border-top border-dark fw-bold">70</td>
+            <td className="border-top border-dark fw-bold">90</td>
+            <td className="border-top border-dark fw-bold">100</td>
           </tr>
         </thead>
 
