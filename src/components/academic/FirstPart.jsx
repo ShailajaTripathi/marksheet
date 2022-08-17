@@ -43,9 +43,9 @@ function FirstPart() {
               Subjects
             </th>
             <th className="col-sm-1">FA</th>
-            <th className="col-sm-1">Total</th>
+            <th className="col-sm-1">Oral</th>
             <th className="col-sm-1">SA</th>
-            <th className="col-sm-1">Total</th>
+            <th className="col-sm-1">Oral</th>
             <th className="col-sm-1">Overall Marks</th>
           </tr>
           <tr>
@@ -66,7 +66,7 @@ function FirstPart() {
               <td className="text-center">{e.fmarks}</td>
               <td className="text-center">{e.sa}</td>
               <td className="text-center">{e.smarks}</td>
-              <td className="text-center">70</td>
+              <td className="text-center">{e.total}</td>
             </tr>
           ))}
           {result.map((e) => (
