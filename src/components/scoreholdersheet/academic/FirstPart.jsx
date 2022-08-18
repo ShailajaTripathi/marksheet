@@ -3,8 +3,7 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import "./styles/firstPart.css";
-import "../../assets/css/table.css";
-
+import "../../../assets/css/table.css"
 
 function FirstPart() {
   const [firstData, setFirstdata] = useState([]);
@@ -39,7 +38,7 @@ function FirstPart() {
             <th className="tableHead col-sm-1" rowspan={2}>
               S.No
             </th>
-            <th className="tableHead text-uppercase col-sm-2" rowspan={2} >
+            <th className="tableHead text-uppercase col-sm-2" rowspan={2}>
               Subjects
             </th>
             <th className="col-sm-1">FA</th>
@@ -49,10 +48,10 @@ function FirstPart() {
             <th className="col-sm-1">Overall Marks</th>
           </tr>
           <tr>
-            <td className="border-top border-dark fw-bold">70</td>
-            <td className="border-top border-dark fw-bold">70</td>
-            <td className="border-top border-dark fw-bold">70</td>
-            <td className="border-top border-dark fw-bold">90</td>
+            <td className="border-top border-dark fw-bold">40</td>
+            <td className="border-top border-dark fw-bold">10</td>
+            <td className="border-top border-dark fw-bold">40</td>
+            <td className="border-top border-dark fw-bold">10</td>
             <td className="border-top border-dark fw-bold">100</td>
           </tr>
         </thead>
@@ -79,7 +78,6 @@ function FirstPart() {
               </td>
             </tr>
           ))}
-              
         </tbody>
       </Table>
     </div>

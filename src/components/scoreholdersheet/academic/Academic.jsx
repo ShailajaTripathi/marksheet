@@ -3,7 +3,7 @@ import FirstPart from "./FirstPart";
 import SecondPart from "./SecondPart";
 import ThirdPart from "./ThirdPart";
 import "./styles/academic.css";
-import "../../assets/css/table.css";
+import "../../../assets/css/table.css";
 import BottomPart from "./BottomPart";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";

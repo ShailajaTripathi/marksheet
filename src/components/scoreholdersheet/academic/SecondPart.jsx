@@ -3,7 +3,7 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import './styles/secondPart.css';
-import '../../assets/css/table.css';
+import "../../../assets/css/table.css"
 
 
 function SecondPart() {
