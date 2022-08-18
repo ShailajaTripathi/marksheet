@@ -7,7 +7,7 @@ function CoscholasticArea() {
   return (
     <div>
       {" "}
-      <h3> Part- II Co- Scholastic Areas</h3>
+      <h3> Part-II : Co- Scholastic Areas</h3>
       <Row>
         <Col>
           <FloatingLabel controlId="floatingSelect" label="Select Area">

@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 function ScholasticArea() {
   return (
     <div>
-        <h3> Part- I Scholastic Areas</h3>
+        <h3> Part-I : Scholastic Areas</h3>
       <Row>
         <Col>
           <FloatingLabel controlId="floatingSelect" label="Select Subject">

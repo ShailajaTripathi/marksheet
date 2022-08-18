@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 function Attendence() {
   return (
     <div>
-        <h3>Part-III: Attendence</h3>
+        <h3>Part-III : Attendence</h3>
       <Row>
         <Col>
           <FloatingLabel controlId="fa" label="Term-I">
