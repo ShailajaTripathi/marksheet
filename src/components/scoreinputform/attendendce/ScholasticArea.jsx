@@ -1,55 +1,92 @@
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+import React from "react";
+import "antd/dist/antd.css";
+import { Button, Form, Input, Space, Select } from "antd";
+const { Option } = Select;
+
 function ScholasticArea() {
+  const [form] = Form.useForm();
   return (
     <div>
-        <h3> Part-I : Scholastic Areas</h3>
-      <Row>
-        <Col>
-          <FloatingLabel controlId="floatingSelect" label="Select Subject">
-            <Form.Select aria-label="Floating label select example">
-              <option value="1">English</option>
-              <option value="2">Hindi</option>
-              <option value="3">Sanskrit</option>
-              <option value="4">Math</option>
-              <option value="5">EVS</option>
-              <option value="6">Social Study</option>
-              <option value="7">Computer</option>
-              <option value="8">Moral</option>
-              <option value="9">G.K.</option>
-              <option value="10">Conversation</option>
-              <option value="11">Drawing</option>
-            </Form.Select>
-          </FloatingLabel>
-        </Col>
-        <Col>
-          <FloatingLabel controlId="fa" label="FA / Out of 40">
-            <Form.Control type="number" placeholder="Out of 40" />
-          </FloatingLabel>
-        </Col>
-        <Col>
-          <FloatingLabel controlId="faOral" label="Oral / Out of 10">
-            <Form.Control type="number" placeholder="Out of 10" />
-          </FloatingLabel>
-        </Col>
-        <Col>
-          <FloatingLabel controlId="sa" label="SA / Out of 40">
-            <Form.Control type="number" placeholder="Out of 40" />
-          </FloatingLabel>
-        </Col>
-        <Col>
-          <FloatingLabel controlId="saOral" label="Oral / Out of 10">
-            <Form.Control type="number" placeholder="Out of 10" />
-          </FloatingLabel>
-        </Col>
-        <Col>
-          <FloatingLabel controlId="total" label="">
-            <Form.Label>Overall Marks: </Form.Label>
-          </FloatingLabel>
-        </Col>
-      </Row>
+      <h3> Part-I: Scholastic Areas</h3>
+      <Space>
+        <Form
+          form={form}
+          initialValues={{
+            layout: "horizontal",
+          }}
+        >
+          <Form.Item
+            name="skill"
+            label="Skill"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Select placeholder="Select a Subject" allowClear>
+              <Option value="English">English</Option>
+              <Option value="Hindi">Hindi</Option>
+              <Option value="Sanskrit">Sanskrit</Option>
+              <Option value="Math">Math</Option>
+              <Option value="EVS">EVS</Option>
+              <Option value="Social Study">Social Study</Option>
+              <Option value="Computer">Computer</Option>
+              <Option value="Moral">Moral</Option>
+              <Option value="G.K.">G.K.</Option>
+              <Option value="Conversation">Conversation</Option>
+              <Option value="Drawing">Drawing</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name="fa"
+            label="FA"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input placeholder="Out of 40" />
+          </Form.Item>
+          <Form.Item
+            name="oral"
+            label="Oral"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input placeholder="Out of 10" />
+          </Form.Item>
+          <Form.Item
+            name="sa"
+            label="SA"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input placeholder="Out of 40" />
+          </Form.Item>
+          <Form.Item
+            name="oral"
+            label="Oral"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input placeholder="Out of 10" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary">Add</Button>
+          </Form.Item>
+        </Form>
+      </Space>
     </div>
   );
 }
