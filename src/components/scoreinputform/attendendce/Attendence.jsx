@@ -1,6 +1,7 @@
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
-import { Button, Form, InputNumber,Space } from "antd";
+import axios from "axios";
+import { Button, Form, InputNumber,Space,Input} from "antd";
 import {
   ContainerOutlined,
   ContactsOutlined,
@@ -9,24 +10,69 @@ import {
 import { Row, Col } from "antd";
 
 function Attendence() {
-  const [form] = Form.useForm();
-  const [, forceUpdate] = useState({}); // To disable submit button at the beginning.
+  const [form] = Form.useForm(); 
   const [percentage, setPercentage] = useState("45");
-  useEffect(() => {
-    forceUpdate({});
-  }, []);
+ const [term,setTerm]=useState({
+  id: null,
+        term: null,
+        workingDays:null,
+        presentDays:null,
+        percentage:null 
 
-  const onFinish = (values) => {
-    console.log("Finish:", values);
-  };
+ });
+
+ const postData = async () => {
+  
+  const response = await axios.post(
+    `http://localhost:3000/thirdpart`,
+    {
+      
+      term: term.term,
+      workingDays:term.workingDays,
+      presentDays:term.presentDays,
+      percentage:term.percentage
+    }
+  );
+    if (response.status === 200) {
+      setTerm(null);
+          form.resetFields()
+          
+    }
+ }
+
+ const handleClick = e => {
+  postData()
+ }
+
+
 
   return (
     <div>
-      <h3>Part-III : Attendence</h3>
+      {/* <h3>Part-III : Attendence</h3> */}
       <Space>
       <Row>
-        <Form form={form} name="horizontal_login" onFinish={onFinish}>
+        <Form form={form} name="horizontal_login">
           <Col>
+          <Form.Item
+              name="Term"
+              label="Term"
+              rules={[
+                {
+                  required: true,
+                  message: "Please put term number",
+                },
+              ]}
+            >
+              <Input
+                prefix={<ContactsOutlined className="site-form-item-icon" />}
+                placeholder="For e.g Term -I"
+                onChange={(e) =>
+                  setTerm((prev) => {
+                    return { ...prev, term: e.target.value };
+                  })
+                }
+              />
+            </Form.Item>
             <Form.Item
               name="No. of Working days"
               label="No. of Working Days"
@@ -40,8 +86,15 @@ function Attendence() {
               <InputNumber
                 prefix={<ContactsOutlined className="site-form-item-icon" />}
                 placeholder="Days"
+                onChange={(e) =>
+                  setTerm((prev) => {
+                    return { ...prev, workingDays: e };
+                  })
+                }
               />
             </Form.Item>
+          
+
             <Form.Item
               name="No. of Present Days"
               label="No. of Present Days"
@@ -57,6 +110,11 @@ function Attendence() {
                 max={300}
                 placeholder="Days"
                 prefix={<ContainerOutlined className="site-form-item-icon" />}
+                onChange={(e) =>
+                  setTerm((prev) => {
+                    return { ...prev, presentDays: e };
+                  })
+                }
                 //  value={percentage}
                 //  onChange={setPercentage}
               />
@@ -81,17 +139,21 @@ function Attendence() {
                 parser={(value) => value.replace("%", "")}
                 prefix={<LineChartOutlined className="site-form-item-icon" />}
                 value={percentage}
-                onChange={setPercentage}
+                // onChange={setPercentage}
+                onChange={(e) =>
+                  setTerm((prev) => {
+                    return { ...prev, percentage: e };
+                  })
+                }
               />
             </Form.Item>
             <Button
               type="primary"
-              onClick={() => {
-                setPercentage(40);
-              }}
+              htmlType="submit"
+              onClick={handleClick}
              
             >
-              Reset
+              Add
             </Button>
           </Col>
         </Form>

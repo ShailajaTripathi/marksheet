@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import "./styles/firstPart.css";
 import "../../../assets/css/table.css"
+import { Modal } from "antd";
 
 function FirstPart() {
   const [firstData, setFirstdata] = useState([]);

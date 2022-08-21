@@ -7,6 +7,19 @@ import "../../../assets/css/table.css"
 
 
 function SecondPart() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const [secondData, setSeconddata] = useState([]);
   const getSeconddata = async () => {
@@ -21,7 +34,15 @@ function SecondPart() {
 
   return (
     <div className="tables secondTable">
-   <TableTitle title= "Part - II : Co-Scholastic Areas"/>
+   <TableTitle title= "Part - II : Co-Scholastic Areas" onClick={showModal}/>
+   {/* <Modal
+        title="Part - III : Attendence"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <CoscholasticArea/>
+      </Modal> */}
       <Table striped bordered hover className="table-responsive border-bottom border-dark">
         <thead>
           <tr>

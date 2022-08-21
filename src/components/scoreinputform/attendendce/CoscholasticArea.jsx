@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
+import axios from "axios";
+import data from "../../../db.json";
 import { Button, Form, Input, Select, Space } from "antd";
-
 const { Option } = Select;
 
 const layout = {
@@ -21,27 +22,48 @@ const tailLayout = {
 
 function CoscholasticArea() {
   const [form] = Form.useForm();
-
-  const onSkillChange = (value) => {
-    switch (value) {
-      case "Development & Maturity":
-        form.setFieldsValue({
-          note: "A+",
-        });
-        return;
-
-      case "Responsibility":
-        form.setFieldsValue({
-          note: "Set Grade",
-        });
-        return;
-
-      case "other":
-        form.setFieldsValue({
-          note: "Set a grade",
-        });
+  const [db, setDb] = useState(null);
+  const [state, setState] = useState({
+    subject: null,
+      grade: null,
+      id:null,
+  });
+ 
+  const postData = async () => {
+     const response = await axios.put(
+    `http://localhost:3000/secondpart/${state.id}`,
+    {
+      subject: db.filter(item => item.id === state.id)[0].subject,
+      grade: state.grade,
+    }
+  );
+    if (response.status === 200) {
+      setState({
+            subject: null,
+            grade: null,
+            id:null
+          });
+          form.resetFields()
+          res();
+          // form.resetFields()
+          // form.forceUpdate()
     }
   };
+
+  const handleClick = (e) => {
+    postData();
+  };
+  useEffect(() => {
+    
+    res();
+  }, []);
+
+  const res = async () => {
+    let resp = await axios.get("http://localhost:3000/secondpart");
+    setDb(resp.data);
+  };
+
+
 
   const onFinish = (values) => {
     console.log(values);
@@ -60,7 +82,7 @@ function CoscholasticArea() {
 
   return (
     <div>
-      <h3> Part-II : Co- Scholastic Areas</h3>
+      {/* <h3> Part-II : Co- Scholastic Areas</h3> */}
       <Space>
         <Form {...layout} form={form} name="control-hooks">
           <Form.Item
@@ -74,28 +96,23 @@ function CoscholasticArea() {
           >
             <Select
               placeholder="Select a skill"
-              onChange={onSkillChange}
+              value={state.id}
+              onSelect={(e) =>
+                setState((prev) => {
+                  return { ...prev, id: e };
+                })
+              }
               allowClear
             >
-              <Option value="Development & Maturity">
-                Development & Maturity
-              </Option>
-              <Option value="Responsibility">Responsibility</Option>
-              <Option value="Self Confidence">Self Confidence</Option>
-              <Option value="Participation in Group Work">
-                Participation in Group Work
-              </Option>
-              <Option value="Neatness">Neatness</Option>
-              <Option value="Music">Music</Option>
-              <Option value="Discipline">Discipline</Option>
-              <Option value="Hand Work">Hand Work</Option>
-              <Option value="Attitude towards home work">
-                Attitude towards home work
-              </Option>
-              <Option value="Craft">Craft</Option>
-              <Option value="Regularity and punctuality">
-                Regularity and punctuality
-              </Option>
+              {db &&
+                db.map(
+                  (item) =>
+                    !item.grade && (
+                      <Option key={Math.random()} value={item.id}>
+                        {item.subject}
+                      </Option>
+                    )
+                )}
             </Select>
           </Form.Item>
           <Form.Item
@@ -107,7 +124,13 @@ function CoscholasticArea() {
               },
             ]}
           >
-            <Input />
+            <Input  
+            value={state.grade}
+            onChange={(e) =>
+                setState((prev) => {
+                  return { ...prev, grade: e.target.value };
+                })
+              }/>
           </Form.Item>
 
           <Form.Item
@@ -127,7 +150,11 @@ function CoscholasticArea() {
                     },
                   ]}
                 >
-                  <Input />
+                  <Input  onChange={(e) =>
+                setState((prev) => {
+                  return { ...prev, orals: e.target.value };
+                })
+              }/>
                 </Form.Item>
               ) : null
             }
@@ -138,6 +165,7 @@ function CoscholasticArea() {
               type="primary"
               htmlType="submit"
               style={{ marginRight: 12 }}
+              onClick={handleClick}
             >
               Add Grade
             </Button>
@@ -156,6 +184,5 @@ function CoscholasticArea() {
       </Space>
     </div>
   );
-}
-
+          }
 export default CoscholasticArea;
