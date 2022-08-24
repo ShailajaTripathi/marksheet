@@ -183,7 +183,7 @@
       "percentage": "100"
     },
     {
-<<<<<<< HEAD
+
       "id": 2,
       "term": "Term -II",
       "workingDays": null,
@@ -191,13 +191,12 @@
       "percentage": null
     },
     {
-=======
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
+
       "term": null,
       "workingDays": null,
       "presentDays": null,
       "percentage": null,
-<<<<<<< HEAD
+
       "id": 3
     },
     {
@@ -227,8 +226,7 @@
       "presentDays": null,
       "percentage": null,
       "id": 7
-=======
-      "id": 2
+
     },
     {
       "term": null,
@@ -236,8 +234,9 @@
       "presentDays": 34,
       "percentage": 45,
       "id": 3
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
+
     }
+
   ],
   "grading": [
     {

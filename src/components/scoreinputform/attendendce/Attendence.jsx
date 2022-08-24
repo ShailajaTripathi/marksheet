@@ -223,7 +223,6 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "antd/dist/antd.css";
 import axios from "axios";
-<<<<<<< HEAD
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -240,17 +239,6 @@ let attendenceSchema = yup.object({
   presentDays: yup.number().required("Set Present Days"),
   percentage: yup.number().required("Enter Percentage"),
 });
-=======
-import { Button, Form, InputNumber,Space,Input,Select} from "antd";
-
-import {
-  ContainerOutlined,
-  ContactsOutlined,
-  LineChartOutlined,
-} from "@ant-design/icons";
-import { Row, Col } from "antd";
-const { Option } = Select;
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
 
 function Attendence() {
   const [db, setDb] = useState(null);
@@ -296,7 +284,6 @@ function Attendence() {
 
   return (
     <div>
-<<<<<<< HEAD
      <Form onSubmit={handleSubmit} className="ml-5 mt-5">
         <Form.Group as={Row} className="mb-3" controlId="formGridState">
           <Form.Label column sm={2}>
@@ -383,119 +370,6 @@ function Attendence() {
           </Col>
         </Form.Group>
       </Form>
-=======
-      {/* <h3>Part-III : Attendence</h3> */}
-      <Space>
-      {/* <Row> */}
-        <Form form={form} name="horizontal_login">
-          {/* <Col> */}
-          <Form.Item
-              name="Term"
-              label="Term"
-               // onSelect={(e) =>
-              //   setState((prev) => {
-              //     return { ...prev, id: e };
-              //   })
-              // }
-            >      
-            <Select
-              placeholder="Select a Term"
-              allowClear
-              // value={state.id}
-              // onSelect={(e) =>
-              //   setState((prev) => {
-              //     return { ...prev, id: e };
-              //   })
-              // }
-            >
-              <Option>Term-I</Option>
-              <Option>Term-II</Option>
-            </Select>
-            </Form.Item> 
-            <Form.Item
-              name="No. of Working days"
-              label="No. of Working Days"
-              rules={[
-                {
-                  required: true,
-                  message: "Please set No. of working days",
-                },
-              ]}
-            >
-              <InputNumber
-                prefix={<ContactsOutlined className="site-form-item-icon" />}
-                placeholder="Days"
-                onChange={(e) =>
-                  setTerm((prev) => {
-                    return { ...prev, workingDays: e };
-                  })
-                }
-              />
-            </Form.Item>
-          
-
-            <Form.Item
-              name="No. of Present Days"
-              label="No. of Present Days"
-              rules={[
-                {
-                  required: true,
-                  message: "Please give No. of Present Days",
-                },
-              ]}
-            >
-              <InputNumber
-                min={1}
-                max={300}
-                placeholder="Days"
-                prefix={<ContainerOutlined className="site-form-item-icon" />}
-                onChange={(e) =>
-                  setTerm((prev) => {
-                    return { ...prev, presentDays: e };
-                  })
-                }
-              
-              />
-            </Form.Item>
-      
-            <Form.Item
-              name="percentage"
-              label="Percentage"
-              rules={[
-                {
-                  required: true,
-                  message: "Please give percentage",
-                },
-              ]}
-            >
-              <InputNumber
-                min={40}
-                max={100}
-                formatter={(value) => `${value}%`}
-                parser={(value) => value.replace("%", "")}
-                prefix={<LineChartOutlined className="site-form-item-icon" />}
-                value={percentage}
-                // onChange={setPercentage}
-                onChange={(e) =>
-                  setTerm((prev) => {
-                    return { ...prev, percentage: e };
-                  })
-                }
-              />
-            </Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={handleClick}
-             
-            >
-              Add
-            </Button>
-          {/* </Col> */}
-        </Form>
-      {/* </Row> */}
-      </Space> 
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
     </div>
   )
 }

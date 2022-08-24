@@ -54,22 +54,12 @@ function ScholasticArea() {
         orals: null,
         id: null,
       });
-<<<<<<< HEAD
       form.resetFields();
       res();
-=======
-      form.resetFields()
-      res(); // so that api calls again with 
-
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
     }
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-=======
-    //api call which saves data inside state
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
     res();
   }, []);
 
@@ -101,14 +91,14 @@ function ScholasticArea() {
               placeholder="Select a Subject"
               allowClear
               value={state.id}
-              onSelect={(e) => 
+              onSelect={(e) =>
                 setState((prev) => {
                   return { ...prev, id: e };
                 })
               }
             >
               {db &&
-                db.map( // check state is null or not
+                db.map(
                   (item) =>
                     !item.fa && (
                       <Option key={Math.random()} value={item.id}>
@@ -199,11 +189,7 @@ function ScholasticArea() {
               value={state.orals}
               onChange={(e) =>
                 setState((prev) => {
-<<<<<<< HEAD
                   return { ...prev, orals: e};
-=======
-                  return { ...prev, orals: e };
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
                 })
               }
             />

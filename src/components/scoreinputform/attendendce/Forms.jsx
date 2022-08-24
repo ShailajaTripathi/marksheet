@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from 'yup';
@@ -67,14 +66,6 @@ action.resetForm();
 		{errors.phone && touched.phone?(<p>{errors.phone}</p>):null}
         <input type="submit" value="Submit" />
       </form>
-=======
-import React from 'react'
-
-function Forms() {
-  return (
-    <div>
-
->>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
     </div>
   );
 }
