@@ -137,9 +137,9 @@
       "grade": null
     },
     {
-      "id": 8,
       "subject": "Hand Work",
-      "grade": null
+      "grade": "C",
+      "id": 8
     },
     {
       "id": 9,
@@ -183,7 +183,6 @@
       "percentage": "100"
     },
     {
-
       "id": 2,
       "term": "Term -II",
       "workingDays": null,
@@ -191,12 +190,10 @@
       "percentage": null
     },
     {
-
       "term": null,
       "workingDays": null,
       "presentDays": null,
       "percentage": null,
-
       "id": 3
     },
     {
@@ -226,7 +223,6 @@
       "presentDays": null,
       "percentage": null,
       "id": 7
-
     },
     {
       "term": null,
@@ -234,9 +230,7 @@
       "presentDays": 34,
       "percentage": 45,
       "id": 3
-
     }
-
   ],
   "grading": [
     {

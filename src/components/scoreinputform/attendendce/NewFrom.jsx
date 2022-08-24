@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -11,53 +11,40 @@ const initialValues = {
   skill: "",
   grade: "",
 };
+
 let cosholasticSchema = yup.object({
   skill: yup.string().required("Please select skill"),
   grade: yup.string().required("Kindly provide Grade"),
 });
 
 function NewFrom() {
-    
-  const [form] = Form.useForm();
-  const [db, setDb] = useState(null);
-  const [state, setState] = useState({
-    subject: null,
-    grade: null,
-    id: null,
-  });
-
+  
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: cosholasticSchema,
       onSubmit: (values, action) => {
-        console.log(values);
+        postData()
         action.resetForm();
       },
-    });
+    });  
+  const [db, setDb] = useState(null);
 
   const postData = async () => {
     const response = await axios.put(
-      `http://localhost:3000/secondpart/${state.id}`,
+      `http://localhost:3000/secondpart/${values.skill}`,
       {
-        subject: db.filter((item) => item.id === state.id)[0].subject,
-        grade: state.grade,
+        subject: db.filter((item) => item.id == values.skill)[0].subject,
+        grade: values.grade,
       }
     );
     if (response.status === 200) {
-      setState({
-        subject: null,
-        grade: null,
-        id: null,
-      });
-      form.resetFields();
+     
       res();
     }
   };
 
-  const handleClick = (e) => {
-    postData();
-  };
+ 
   useEffect(() => {
     res();
   }, []);
@@ -65,6 +52,7 @@ function NewFrom() {
   const res = async () => {
     let resp = await axios.get("http://localhost:3000/secondpart");
     setDb(resp.data);
+    
   };
 
   return (
@@ -81,11 +69,6 @@ function NewFrom() {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.skill}
-              onSelect={(e) =>
-                setState((prev) => {
-                  return { ...prev, id: e };
-                })
-              }
               allowClear
             >
               {db &&
@@ -112,10 +95,10 @@ function NewFrom() {
             <Form.Control
               type="string"
               placeholder="Enter Grade"
-              name="garde"
-              value={values.grade}
+              name="grade"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.grade}
             />
             {errors.grade && touched.grade ? (
               <p className="text-danger">{errors.grade}</p>
@@ -127,7 +110,7 @@ function NewFrom() {
           <Col sm={{ span: 5, offset: 0 }}>
             <Button
               type="submit"
-              onClick={handleClick}
+
               className="px-4"
               variant="btn btn-outline-primary"
             >
@@ -136,6 +119,7 @@ function NewFrom() {
           </Col>
         </Form.Group>
       </Form>
+      
     </div>
   );
 }
