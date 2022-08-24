@@ -2,153 +2,137 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 const initialValues = {
-  term: "",
-  workingDays: "",
-  presentDays: "",
-  percentage: "",
+  skill: "",
+  grade: "",
 };
-let attendenceSchema = yup.object({
-  term: yup.string().required("Select Term"),
-  workingDays: yup.number().required("Set Working Days"),
-  presentDays: yup.number().required("Set Present Days"),
-  percentage: yup.number().required("Enter Percentage"),
+let cosholasticSchema = yup.object({
+  skill: yup.string().required("Please select skill"),
+  grade: yup.string().required("Kindly provide Grade"),
 });
 
 function NewFrom() {
-  //   const [form] = Form.useForm();
+    
+  const [form] = Form.useForm();
   const [db, setDb] = useState(null);
-  const [term, setTerm] = useState({
+  const [state, setState] = useState({
+    subject: null,
+    grade: null,
     id: null,
-    term: null,
-    workingDays: null,
-    presentDays: null,
-    percentage: null,
   });
 
-  const postData = async () => {
-    const response = await axios.post(`http://localhost:3000/thirdpart`, {
-      term: term.term,
-      workingDays: term.workingDays,
-      presentDays: term.presentDays,
-      percentage: term.percentage,
-    });
-    if (response.status === 200) {
-      setTerm(null);
-      res();
-    }
-  };
-  const res = async () => {
-    let resp = await axios.get("http://localhost:3000/thirdpart");
-    setDb(resp.data);
-  };
-  useEffect(() => {
-    res();
-  }, []);
-  const handleClick = (e) => {
-    postData();
-  };
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
-      validationSchema: attendenceSchema,
+      validationSchema: cosholasticSchema,
       onSubmit: (values, action) => {
         console.log(values);
         action.resetForm();
       },
     });
 
+  const postData = async () => {
+    const response = await axios.put(
+      `http://localhost:3000/secondpart/${state.id}`,
+      {
+        subject: db.filter((item) => item.id === state.id)[0].subject,
+        grade: state.grade,
+      }
+    );
+    if (response.status === 200) {
+      setState({
+        subject: null,
+        grade: null,
+        id: null,
+      });
+      form.resetFields();
+      res();
+    }
+  };
+
+  const handleClick = (e) => {
+    postData();
+  };
+  useEffect(() => {
+    res();
+  }, []);
+
+  const res = async () => {
+    let resp = await axios.get("http://localhost:3000/secondpart");
+    setDb(resp.data);
+  };
+
   return (
     <div>
       <Form onSubmit={handleSubmit} className="ml-5 mt-5">
         <Form.Group as={Row} className="mb-3" controlId="formGridState">
           <Form.Label column sm={2}>
-            Term
+            Skills
           </Form.Label>
           <Col sm={3}>
             <Form.Select
               defaultValue="Choose..."
-              name="term"
-              value={values.term}
+              name="skill"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.skill}
+              onSelect={(e) =>
+                setState((prev) => {
+                  return { ...prev, id: e };
+                })
+              }
+              allowClear
             >
-              <option disabled>Choose Term..</option>
-              <option>Term-I</option>
-              <option>Term-II</option>
+              {db &&
+                db.map(
+                  (item) =>
+                    !item.grade && (
+                      <option key={Math.random()} value={item.id}>
+                        {item.subject}
+                      </option>
+                    )
+                )}
             </Form.Select>
-            {errors.workingDays && touched.workingDays ? (
-              <p className="text-danger">{errors.term}</p>
+            {errors.skill && touched.skill ? (
+              <p className="text-danger">{errors.skill}</p>
             ) : null}
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="number">
+        <Form.Group as={Row} className="mb-3" controlId="string">
           <Form.Label column sm={2}>
-            Working Days
+            Grade
           </Form.Label>
           <Col sm={3}>
             <Form.Control
-              type="number"
-              placeholder="Set working Days"
-              name="workingDays"
-              value={values.workingDays}
+              type="string"
+              placeholder="Enter Grade"
+              name="garde"
+              value={values.grade}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {errors.workingDays && touched.workingDays ? (
-              <p className="text-danger">{errors.workingDays}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3" controlId="number">
-          <Form.Label column sm={2}>
-            Present Days
-          </Form.Label>
-          <Col sm={3}>
-            <Form.Control
-              type="Number"
-              placeholder="Fill Present Days"
-              name="presentDays"
-              value={values.presentDays}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errors.presentDays && touched.presentDays ? (
-              <p className="text-danger">{errors.presentDays}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3" controlId="number">
-          <Form.Label column sm={2} >
-            Percentage
-          </Form.Label>
-          <Col sm={3}>
-            <Form.Control
-              type="number"
-              placeholder="Enter Percentage"
-              name="percentage"
-              value={values.percentage}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errors.percentage && touched.percentage ? (
-              <p className="text-danger">{errors.percentage}</p>
+            {errors.grade && touched.grade ? (
+              <p className="text-danger">{errors.grade}</p>
             ) : null}
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} className="mb-3">
           <Col sm={{ span: 5, offset: 0 }}>
-            <Button type="submit" onClick={handleClick} className= "px-4" variant="btn btn-outline-primary">Add</Button>
+            <Button
+              type="submit"
+              onClick={handleClick}
+              className="px-4"
+              variant="btn btn-outline-primary"
+            >
+              Add
+            </Button>
           </Col>
         </Form.Group>
       </Form>
@@ -157,3 +141,5 @@ function NewFrom() {
 }
 
 export default NewFrom;
+
+
