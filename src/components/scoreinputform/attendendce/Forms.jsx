@@ -1,32 +1,73 @@
-import React, { useState } from 'react';
-import 'antd/dist/antd.css';
-import { Button, Modal } from 'antd';
-import Attendence from './Attendence';
+import React from "react";
+import { useFormik } from "formik";
+import * as yup from 'yup';
+
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+};
+
+  let signUpSchema= yup.object().shape({
+	name: yup.string().required("fill it name"),
+	// age: yup.number().required().positive().integer(),
+	email: yup.string().email().required("fill it email"),
+	phone: yup.string().required("fill it phone"),
+  });
 
 function Forms() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+  const { values, errors,touched, handleBlur, handleChange, handleSubmit } = useFormik({
+  
+  initialValues: initialValues,
+ validationSchema:signUpSchema,
+    onSubmit: (values,action) => {
+      console.log(values);
+action.resetForm();
+    },
+  });
+// console.log(errors)
   return (
     <div>
-<Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-     <Attendence/>
-      </Modal>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </label>
+		{errors.name &&touched.name ?(<p>{errors.name}</p>):null}
+        <br />
+        <label>
+          Email:
+          <input
+            type="text"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </label>
+		{errors.email &&touched.email ?(<p>{errors.email}</p>):null}
+        <br />
+        <label>
+          Phone number:
+          <input
+            type="text"
+            name="phone"
+            value={values.phone}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </label>
+		{errors.phone && touched.phone?(<p>{errors.phone}</p>):null}
+        <input type="submit" value="Submit" />
+      </form>
     </div>
-  )
+  );
 }
 
-export default Forms
+export default Forms;

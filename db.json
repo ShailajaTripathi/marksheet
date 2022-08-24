@@ -46,22 +46,22 @@
       "id": 5
     },
     {
-      "id": 6,
       "subject": "Social Study",
-      "fa": null,
-      "fmarks": null,
-      "sa": null,
-      "smarks": null,
-      "total": null
+      "fa": 1,
+      "fmarks": 10,
+      "sa": 20,
+      "smarks": 30,
+      "total": 61,
+      "id": 6
     },
     {
-      "id": 7,
       "subject": "Computer",
-      "fa": null,
-      "fmarks": null,
-      "sa": null,
-      "smarks": null,
-      "total": null
+      "fa": 50,
+      "fmarks": 10,
+      "sa": 30,
+      "smarks": 20,
+      "total": 110,
+      "id": 7
     },
     {
       "id": 8,
@@ -73,13 +73,13 @@
       "total": null
     },
     {
-      "id": 9,
       "subject": "G.K.",
-      "fa": null,
-      "fmarks": null,
-      "sa": null,
-      "smarks": null,
-      "total": null
+      "fa": 20,
+      "fmarks": 10,
+      "sa": 20,
+      "smarks": 30,
+      "total": 80,
+      "id": 9
     },
     {
       "id": 10,
@@ -123,13 +123,13 @@
     },
     {
       "subject": "Neatness",
-      "grade": "C",
+      "grade": "A",
       "id": 5
     },
     {
-      "id": 6,
       "subject": "Music",
-      "grade": null
+      "grade": "A+",
+      "id": 6
     },
     {
       "id": 7,
@@ -181,6 +181,48 @@
       "workingDays": "83",
       "presentDays": "83",
       "percentage": "100"
+    },
+    {
+      "id": 2,
+      "term": "Term -II",
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null
+    },
+    {
+      "term": null,
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null,
+      "id": 3
+    },
+    {
+      "term": null,
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null,
+      "id": 4
+    },
+    {
+      "term": null,
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null,
+      "id": 5
+    },
+    {
+      "term": null,
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null,
+      "id": 6
+    },
+    {
+      "term": null,
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null,
+      "id": 7
     }
   ],
   "grading": [

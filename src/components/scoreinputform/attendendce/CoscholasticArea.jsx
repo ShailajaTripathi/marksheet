@@ -25,28 +25,26 @@ function CoscholasticArea() {
   const [db, setDb] = useState(null);
   const [state, setState] = useState({
     subject: null,
-      grade: null,
-      id:null,
+    grade: null,
+    id: null,
   });
- 
+
   const postData = async () => {
-     const response = await axios.put(
-    `http://localhost:3000/secondpart/${state.id}`,
-    {
-      subject: db.filter(item => item.id === state.id)[0].subject,
-      grade: state.grade,
-    }
-  );
+    const response = await axios.put(
+      `http://localhost:3000/secondpart/${state.id}`,
+      {
+        subject: db.filter((item) => item.id === state.id)[0].subject,
+        grade: state.grade,
+      }
+    );
     if (response.status === 200) {
       setState({
-            subject: null,
-            grade: null,
-            id:null
-          });
-          form.resetFields()
-          res();
-          // form.resetFields()
-          // form.forceUpdate()
+        subject: null,
+        grade: null,
+        id: null,
+      });
+      form.resetFields();
+      res();
     }
   };
 
@@ -54,7 +52,6 @@ function CoscholasticArea() {
     postData();
   };
   useEffect(() => {
-    
     res();
   }, []);
 
@@ -62,8 +59,6 @@ function CoscholasticArea() {
     let resp = await axios.get("http://localhost:3000/secondpart");
     setDb(resp.data);
   };
-
-
 
   const onFinish = (values) => {
     console.log(values);
@@ -124,13 +119,14 @@ function CoscholasticArea() {
               },
             ]}
           >
-            <Input  
-            value={state.grade}
-            onChange={(e) =>
+            <Input
+              value={state.grade}
+              onChange={(e) =>
                 setState((prev) => {
                   return { ...prev, grade: e.target.value };
                 })
-              }/>
+              }
+            />
           </Form.Item>
 
           <Form.Item
@@ -150,11 +146,13 @@ function CoscholasticArea() {
                     },
                   ]}
                 >
-                  <Input  onChange={(e) =>
-                setState((prev) => {
-                  return { ...prev, orals: e.target.value };
-                })
-              }/>
+                  <Input
+                    onChange={(e) =>
+                      setState((prev) => {
+                        return { ...prev, orals: e.target.value };
+                      })
+                    }
+                  />
                 </Form.Item>
               ) : null
             }
@@ -184,5 +182,5 @@ function CoscholasticArea() {
       </Space>
     </div>
   );
-          }
+}
 export default CoscholasticArea;

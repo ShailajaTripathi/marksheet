@@ -2,11 +2,21 @@ import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
 import data from "../../../db.json";
 import axios from "axios";
-import { Button, Form, Input, Space, Select } from "antd";
+import { Button, Form, Input, Space, Select, InputNumber } from "antd";
 const { Option } = Select;
 
-function ScholasticArea() {
 
+
+
+// const initialValues = {
+//   subject: "",
+//   fa: "",
+//   oral: "",
+//   sa: "",
+//  oral: ""
+// };
+
+function ScholasticArea() {
   const { firstpart } = data;
   const [form] = Form.useForm();
   const [db, setDb] = useState(null);
@@ -27,7 +37,7 @@ function ScholasticArea() {
     const response = await axios.put(
       `http://localhost:3000/firstpart/${state.id}`,
       {
-        subject: db.filter(item => item.id === state.id)[0].subject,
+        subject: db.filter((item) => item.id === state.id)[0].subject,
         fa: parseInt(state.fa),
         fmarks: parseInt(state.oralf),
         sa: parseInt(state.sa),
@@ -44,14 +54,12 @@ function ScholasticArea() {
         orals: null,
         id: null,
       });
-      form.resetFields()
+      form.resetFields();
       res();
-
     }
   };
 
   useEffect(() => {
-    
     res();
   }, []);
 
@@ -59,7 +67,6 @@ function ScholasticArea() {
     let resp = await axios.get("http://localhost:3000/firstpart");
     setDb(resp.data);
   };
-  
 
   return (
     <div>
@@ -104,24 +111,24 @@ function ScholasticArea() {
           <Form.Item
             name="fa"
             label="FA"
-           
             rules={[
               {
                 required: true,
               },
               {
-                maxLength: 40,
+                max: 3,
                 message: "Value should be less than 40",
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 40"
               value={state.fa}
-              min={1} max={10}
+              min={1}
+              max={40}
               onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, fa: e.target.value };
+                  return { ...prev, fa: e };
                 })
               }
             />
@@ -134,17 +141,17 @@ function ScholasticArea() {
                 required: true,
               },
               {
-                maxLength: 10,
+                max: 10,
                 message: "Value should be less than 10",
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 10"
               value={state.oralf}
-               onChange={(e) =>
+              onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, oralf: e.target.value };
+                  return { ...prev, oralf: e };
                 })
               }
             />
@@ -158,12 +165,12 @@ function ScholasticArea() {
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 40"
               value={state.sa}
               onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, sa: e.target.value };
+                  return { ...prev, sa: e };
                 })
               }
             />
@@ -177,18 +184,18 @@ function ScholasticArea() {
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 10"
               value={state.orals}
               onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, orals: e.target.value };
+                  return { ...prev, orals: e};
                 })
               }
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" onClick={()=>postData()}>
+            <Button type="primary" htmlType="submit" onClick={() => postData()}>
               Add
             </Button>
           </Form.Item>
