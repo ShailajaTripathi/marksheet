@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
 import data from "../../../db.json";
 import axios from "axios";
-import { Button, Form, Input, Space, Select } from "antd";
+import { Button, Form, Input, Space, Select, InputNumber } from "antd";
 const { Option } = Select;
 
 function ScholasticArea() {
@@ -45,13 +45,13 @@ function ScholasticArea() {
         id: null,
       });
       form.resetFields()
-      res();
+      res(); // so that api calls again with 
 
     }
   };
 
   useEffect(() => {
-    
+    //api call which saves data inside state
     res();
   }, []);
 
@@ -84,14 +84,14 @@ function ScholasticArea() {
               placeholder="Select a Subject"
               allowClear
               value={state.id}
-              onSelect={(e) =>
+              onSelect={(e) => 
                 setState((prev) => {
                   return { ...prev, id: e };
                 })
               }
             >
               {db &&
-                db.map(
+                db.map( // check state is null or not
                   (item) =>
                     !item.fa && (
                       <Option key={Math.random()} value={item.id}>
@@ -115,13 +115,13 @@ function ScholasticArea() {
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 40"
               value={state.fa}
               min={1} max={10}
               onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, fa: e.target.value };
+                  return { ...prev, fa: e };
                 })
               }
             />
@@ -139,12 +139,12 @@ function ScholasticArea() {
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 10"
               value={state.oralf}
                onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, oralf: e.target.value };
+                  return { ...prev, oralf: e };
                 })
               }
             />
@@ -158,12 +158,12 @@ function ScholasticArea() {
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 40"
               value={state.sa}
               onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, sa: e.target.value };
+                  return { ...prev, sa: e };
                 })
               }
             />
@@ -177,12 +177,12 @@ function ScholasticArea() {
               },
             ]}
           >
-            <Input
+            <InputNumber
               placeholder="Out of 10"
               value={state.orals}
               onChange={(e) =>
                 setState((prev) => {
-                  return { ...prev, orals: e.target.value };
+                  return { ...prev, orals: e };
                 })
               }
             />

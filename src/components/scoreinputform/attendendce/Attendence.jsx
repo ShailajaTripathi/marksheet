@@ -1,13 +1,15 @@
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Form, InputNumber,Space,Input} from "antd";
+import { Button, Form, InputNumber,Space,Input,Select} from "antd";
+
 import {
   ContainerOutlined,
   ContactsOutlined,
   LineChartOutlined,
 } from "@ant-design/icons";
 import { Row, Col } from "antd";
+const { Option } = Select;
 
 function Attendence() {
   const [form] = Form.useForm(); 
@@ -50,29 +52,32 @@ function Attendence() {
     <div>
       {/* <h3>Part-III : Attendence</h3> */}
       <Space>
-      <Row>
+      {/* <Row> */}
         <Form form={form} name="horizontal_login">
-          <Col>
+          {/* <Col> */}
           <Form.Item
               name="Term"
               label="Term"
-              rules={[
-                {
-                  required: true,
-                  message: "Please put term number",
-                },
-              ]}
+               // onSelect={(e) =>
+              //   setState((prev) => {
+              //     return { ...prev, id: e };
+              //   })
+              // }
+            >      
+            <Select
+              placeholder="Select a Term"
+              allowClear
+              // value={state.id}
+              // onSelect={(e) =>
+              //   setState((prev) => {
+              //     return { ...prev, id: e };
+              //   })
+              // }
             >
-              <Input
-                prefix={<ContactsOutlined className="site-form-item-icon" />}
-                placeholder="For e.g Term -I"
-                onChange={(e) =>
-                  setTerm((prev) => {
-                    return { ...prev, term: e.target.value };
-                  })
-                }
-              />
-            </Form.Item>
+              <Option>Term-I</Option>
+              <Option>Term-II</Option>
+            </Select>
+            </Form.Item> 
             <Form.Item
               name="No. of Working days"
               label="No. of Working Days"
@@ -115,13 +120,10 @@ function Attendence() {
                     return { ...prev, presentDays: e };
                   })
                 }
-                //  value={percentage}
-                //  onChange={setPercentage}
+              
               />
             </Form.Item>
-          </Col>
-          {/* -------------------percentage--------------- */}
-          <Col>
+      
             <Form.Item
               name="percentage"
               label="Percentage"
@@ -155,10 +157,10 @@ function Attendence() {
             >
               Add
             </Button>
-          </Col>
+          {/* </Col> */}
         </Form>
-      </Row>
-      </Space>
+      {/* </Row> */}
+      </Space> 
     </div>
   );
 }

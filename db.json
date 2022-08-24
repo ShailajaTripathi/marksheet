@@ -181,6 +181,20 @@
       "workingDays": "83",
       "presentDays": "83",
       "percentage": "100"
+    },
+    {
+      "term": null,
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null,
+      "id": 2
+    },
+    {
+      "term": null,
+      "workingDays": 34,
+      "presentDays": 34,
+      "percentage": 45,
+      "id": 3
     }
   ],
   "grading": [

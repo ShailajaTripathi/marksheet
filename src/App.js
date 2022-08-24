@@ -14,7 +14,7 @@ function App() {
     <div className="App">
   <Sheet/>
   {/* <ScoreForm/> */}
-  {/* <Form/> */}
+  <Form/>
   {/* <hr/>
   <ScholasticArea/>
   <hr/>
