@@ -17,6 +17,12 @@ function App() {
       {/* <ScoreForm/> */}
       {/* <Form />    */}
       {/* <hr/>
+=======
+  <Sheet/>
+  {/* <ScoreForm/> */}
+  <Form/>
+  {/* <hr/>
+>>>>>>> 1aa7963f64475ce4757c313e99cce70fd605a0af
   <ScholasticArea/>
   <hr/>
   <CoscholasticArea/>
