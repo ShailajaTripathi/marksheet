@@ -20,11 +20,11 @@
     },
     {
       "subject": "Sanskrit",
-      "fa": null,
-      "oralf": null,
-      "sa": null,
-      "orals": null,
-      "total": null,
+      "fa": 40,
+      "oralf": 9,
+      "sa": 40,
+      "orals": 10,
+      "total": 99,
       "id": 3
     },
     {
@@ -38,11 +38,11 @@
     },
     {
       "subject": "EVS",
-      "fa": null,
-      "oralf": null,
-      "sa": null,
-      "orals": null,
-      "total": null,
+      "fa": 34,
+      "oralf": 10,
+      "sa": 30,
+      "orals": 10,
+      "total": 84,
       "id": 5
     },
     {
@@ -82,13 +82,13 @@
       "id": 9
     },
     {
-      "id": 10,
       "subject": "Conversation",
       "fa": null,
       "fmarks": null,
       "sa": null,
       "smarks": null,
-      "total": null
+      "total": null,
+      "id": 10
     },
     {
       "subject": "Drawing",

@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useFormik } from "formik";
+import { Formik, Field } from "formik";
 import * as yup from "yup";
 
 const initialValues = {
@@ -52,68 +53,89 @@ function CoscholasticArea() {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className="mb-3" controlId="formGridState">
-          <Form.Label column sm={2}>
-            Skills
-          </Form.Label>
-          <Col sm={8}>
-            <Form.Select
-              defaultValue="Choose..."
-              name="skill"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.skill}
-              allowClear
-            >
-              <option disabled>Choose Skill..</option>
-              {db &&
-                db.map(
-                  (item) =>
-                    !item.grade && (
-                      <option key={Math.random()} value={item.id}>
-                        {item.subject}
-                      </option>
-                    )
-                )}
-            </Form.Select>
-            {errors.skill && touched.skill ? (
-              <p className="text-danger">{errors.skill}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
+      {/* <Formik
+        initialValues={initialValues}
+        validationSchema={cosholasticSchema}
+        onSubmit={(values, actions) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null));
+            actions.setSubmitting(false);
+          }, 1000);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+        }) => ( */}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group as={Row} className="mb-3" controlId="formGridState">
+              <Form.Label column sm={2}>
+                Skills
+              </Form.Label>
+              <Col sm={8}>
+                <Form.Select
+                  defaultValue="Choose..."
+                  name="skill"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.skill}
+                  allowClear
+                >
+                  <option disabled>Choose Skill..</option>
+                  {db &&
+                    db.map(
+                      (item) =>
+                        !item.grade && (
+                          <option key={Math.random()} value={item.id}>
+                            {item.subject}
+                          </option>
+                        )
+                    )}
+                </Form.Select>
 
-        <Form.Group as={Row} className="mb-3" controlId="string">
-          <Form.Label column sm={2}>
-            Grade
-          </Form.Label>
-          <Col sm={8}>
-            <Form.Control
-              type="string"
-              placeholder="Enter Grade"
-              name="grade"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.grade}
-            />
-            {errors.grade && touched.grade ? (
-              <p className="text-danger">{errors.grade}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
+                {errors.skill && touched.skill ? (
+                  <p className="text-danger">{errors.skill}</p>
+                ) : null}
+              </Col>
+            </Form.Group>
 
-        <Form.Group as={Row} className="mb-3">
-          <Col sm={{ span: 5, offset: 0 }}>
-            <Button
-              type="submit"
-              className="px-4"
-              variant="btn btn-outline-primary"
-            >
-              Add
-            </Button>
-          </Col>
-        </Form.Group>
-      </Form>
+            <Form.Group as={Row} className="mb-3" controlId="string">
+              <Form.Label column sm={2}>
+                Grade
+              </Form.Label>
+              <Col sm={8}>
+                <Form.Control
+                  type="string"
+                  placeholder="Enter Grade"
+                  name="grade"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.grade}
+                />
+                {errors.grade && touched.grade ? (
+                  <p className="text-danger">{errors.grade}</p>
+                ) : null}
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3">
+              <Col sm={{ span: 5, offset: 0 }}>
+                <Button
+                  type="submit"
+                  className="px-4"
+                  variant="btn btn-outline-primary"
+                >
+                  Add
+                </Button>
+              </Col>
+            </Form.Group>
+          </Form>
+      
     </div>
   );
 }

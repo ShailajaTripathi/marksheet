@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -40,14 +41,7 @@ let scholasticSchema = yup.object({
 
 function ScholasticArea() {
   const [db, setDb] = useState(null);
-  const [state, setState] = useState({
-    subject: null,
-    fa: null,
-    oralf: null,
-    sa: null,
-    orals: null,
-    id: null,
-  });
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
@@ -72,13 +66,6 @@ function ScholasticArea() {
       }
     );
     if (response.status === 200) {
-      setState({
-        fa: null,
-        oralf: null,
-        sa: null,
-        orals: null,
-        id: null,
-      });
       res();
     }
   };
@@ -94,6 +81,7 @@ function ScholasticArea() {
 
   return (
     <div>
+    
       <Form onSubmit={handleSubmit}>
         <Form.Group as={Row} className="mb-3" controlId="formGridState">
           <Form.Label column sm={3}>
@@ -209,6 +197,7 @@ function ScholasticArea() {
           </Col>
         </Form.Group>
       </Form>
+    
     </div>
   );
 }
