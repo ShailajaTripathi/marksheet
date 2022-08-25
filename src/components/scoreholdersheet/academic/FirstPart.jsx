@@ -63,9 +63,9 @@ function FirstPart() {
               <td className="text-center">{e.id}</td>
               <td>{e.subject}</td>
               <td className="text-center">{e.fa}</td>
-              <td className="text-center">{e.fmarks}</td>
+              <td className="text-center">{e.oralf}</td>
               <td className="text-center">{e.sa}</td>
-              <td className="text-center">{e.smarks}</td>
+              <td className="text-center">{e.orals}</td>
               <td className="text-center">{e.total}</td>
             </tr>
           ))}

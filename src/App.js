@@ -11,7 +11,7 @@ import NewFrom from "./components/scoreinputform/attendendce/NewFrom";
 function App() {
   return (
     <div className="App">
-      {/* <Sheet/> */}
+      <Sheet/>
       {/* <ScoreForm/> */}
       {/* <Form />    */}
       {/* <hr/>
@@ -20,8 +20,8 @@ function App() {
   <CoscholasticArea/>
   <hr/>
   <Attendence/> */}
-
-  <NewFrom/>
+{/* <CoscholasticArea/> */}
+  {/* <NewFrom/> */}
     </div>
   );
 }

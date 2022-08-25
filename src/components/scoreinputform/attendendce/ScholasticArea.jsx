@@ -1,51 +1,76 @@
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
 import React, { useEffect, useState } from "react";
-import "antd/dist/antd.css";
-import data from "../../../db.json";
 import axios from "axios";
-import { Button, Form, Input, Space, Select, InputNumber } from "antd";
-const { Option } = Select;
+import { useFormik } from "formik";
+import * as yup from "yup";
 
-
-
-
-// const initialValues = {
-//   subject: "",
-//   fa: "",
-//   oral: "",
-//   sa: "",
-//  oral: ""
-// };
+const initialValues = {
+  subject: "",
+  fa: "",
+  oralf: "",
+  sa: "",
+  orals: "",
+};
+let scholasticSchema = yup.object({
+  subject: yup.string().required("Please select Subject"),
+  fa: yup
+    .number()
+    .min(0, "Min value 0.")
+    .max(40, "Max value 40.")
+    .required("Kindly provide FA Marks"),
+  oralf: yup
+    .number()
+    .min(0, "Min value 0.")
+    .max(10, "Max value 10.")
+    .required("Kindly enter Oral Marks"),
+  sa: yup
+    .number()
+    .min(0, "Min value 0.")
+    .max(40, "Max value 40.")
+    .required("Please give SA Marks"),
+  orals: yup
+    .number()
+    .min(0, "Min value 0.")
+    .max(10, "Max value 10.")
+    .required("Kindly fill Oral Marks"),
+});
 
 function ScholasticArea() {
-  const { firstpart } = data;
-  const [form] = Form.useForm();
   const [db, setDb] = useState(null);
   const [state, setState] = useState({
+    subject: null,
     fa: null,
     oralf: null,
     sa: null,
     orals: null,
     id: null,
   });
-
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: initialValues,
+      validationSchema: scholasticSchema,
+      onSubmit: (values, action) => {
+        postData();
+        action.resetForm();
+      },
+    });
   const postData = async () => {
-    let totalMarks =
-      parseInt(state.fa) +
-      parseInt(state.oralf) +
-      parseInt(state.sa) +
-      parseInt(state.orals);
+    let totalMarks = values.fa + values.oralf + values.sa + values.orals;
+
     const response = await axios.put(
-      `http://localhost:3000/firstpart/${state.id}`,
+      `http://localhost:3000/firstpart/${values.subject}`,
       {
-        subject: db.filter((item) => item.id === state.id)[0].subject,
-        fa: parseInt(state.fa),
-        fmarks: parseInt(state.oralf),
-        sa: parseInt(state.sa),
-        smarks: parseInt(state.orals),
+        subject: db.filter((item) => item.id == values.subject)[0].subject,
+        fa: values.fa,
+        oralf: values.oralf,
+        sa: values.sa,
+        orals: values.orals,
         total: totalMarks,
       }
     );
-
     if (response.status === 200) {
       setState({
         fa: null,
@@ -54,7 +79,6 @@ function ScholasticArea() {
         orals: null,
         id: null,
       });
-      form.resetFields();
       res();
     }
   };
@@ -70,137 +94,121 @@ function ScholasticArea() {
 
   return (
     <div>
-      {/* <h3> Part-I: Scholastic Areas</h3> */}
-      <Space>
-        <Form
-          form={form}
-          initialValues={{
-            layout: "horizontal",
-          }}
-        >
-          <Form.Item
-            name="subject"
-            label="Subject"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Select
-              placeholder="Select a Subject"
+      <Form onSubmit={handleSubmit}>
+        <Form.Group as={Row} className="mb-3" controlId="formGridState">
+          <Form.Label column sm={3}>
+            Subject
+          </Form.Label>
+          <Col sm={8}>
+            <Form.Select
+              defaultValue="Choose..."
+              name="subject"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.subject}
               allowClear
-              value={state.id}
-              onSelect={(e) =>
-                setState((prev) => {
-                  return { ...prev, id: e };
-                })
-              }
             >
+              <option disabled>Choose Subject..</option>
               {db &&
                 db.map(
                   (item) =>
                     !item.fa && (
-                      <Option key={Math.random()} value={item.id}>
+                      <option key={Math.random()} value={item.id}>
                         {item.subject}
-                      </Option>
+                      </option>
                     )
                 )}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name="fa"
-            label="FA"
-            rules={[
-              {
-                required: true,
-              },
-              {
-                max: 3,
-                message: "Value should be less than 40",
-              },
-            ]}
-          >
-            <InputNumber
-              placeholder="Out of 40"
-              value={state.fa}
-              min={1}
-              max={40}
-              onChange={(e) =>
-                setState((prev) => {
-                  return { ...prev, fa: e };
-                })
-              }
+            </Form.Select>
+            {errors.subject && touched.subject ? (
+              <p className="text-danger">{errors.subject}</p>
+            ) : null}
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="string">
+          <Form.Label column sm={3}>
+            FA Marks
+          </Form.Label>
+          <Col sm={8}>
+            <Form.Control
+              type="number"
+              placeholder="Enter Marks of FA"
+              name="fa"
+              value={values.fa}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-          </Form.Item>
-          <Form.Item
-            name="oralf"
-            label="Oral"
-            rules={[
-              {
-                required: true,
-              },
-              {
-                max: 10,
-                message: "Value should be less than 10",
-              },
-            ]}
-          >
-            <InputNumber
-              placeholder="Out of 10"
-              value={state.oralf}
-              onChange={(e) =>
-                setState((prev) => {
-                  return { ...prev, oralf: e };
-                })
-              }
+            {errors.fa && touched.fa ? (
+              <p className="text-danger">{errors.fa}</p>
+            ) : null}
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3" controlId="string">
+          <Form.Label column sm={3}>
+            Oral Marks
+          </Form.Label>
+          <Col sm={8}>
+            <Form.Control
+              type="number"
+              placeholder="Enter Marks of First Oral"
+              name="oralf"
+              value={values.oralf}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-          </Form.Item>
-          <Form.Item
-            name="sa"
-            label="SA"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <InputNumber
-              placeholder="Out of 40"
-              value={state.sa}
-              onChange={(e) =>
-                setState((prev) => {
-                  return { ...prev, sa: e };
-                })
-              }
+            {errors.oralf && touched.oralf ? (
+              <p className="text-danger">{errors.oralf}</p>
+            ) : null}
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3" controlId="string">
+          <Form.Label column sm={3}>
+            SA Marks
+          </Form.Label>
+          <Col sm={8}>
+            <Form.Control
+              type="number"
+              placeholder="Enter Marks of SA"
+              name="sa"
+              value={values.sa}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-          </Form.Item>
-          <Form.Item
-            name="orals"
-            label="Oral"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <InputNumber
-              placeholder="Out of 10"
-              value={state.orals}
-              onChange={(e) =>
-                setState((prev) => {
-                  return { ...prev, orals: e};
-                })
-              }
+            {errors.sa && touched.sa ? (
+              <p className="text-danger">{errors.sa}</p>
+            ) : null}
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId="string">
+          <Form.Label column sm={3}>
+            Oral Marks
+          </Form.Label>
+          <Col sm={8}>
+            <Form.Control
+              type="number"
+              placeholder="Enter Marks of Second Oral"
+              name="orals"
+              value={values.orals}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" onClick={() => postData()}>
+            {errors.orals && touched.orals ? (
+              <p className="text-danger">{errors.orals}</p>
+            ) : null}
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3">
+          <Col sm={{ span: 5, offset: 0 }}>
+            <Button
+              type="submit"
+              className="px-4"
+              variant="btn btn-outline-primary"
+            >
               Add
             </Button>
-          </Form.Item>
-        </Form>
-      </Space>
+          </Col>
+        </Form.Group>
+      </Form>
     </div>
   );
 }
