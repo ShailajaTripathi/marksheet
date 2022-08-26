@@ -120,7 +120,7 @@ function ScholasticArea() {
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Enter Marks of FA"
+              placeholder="Marks of FA out of 40"
               name="fa"
               value={values.fa}
               onChange={handleChange}
@@ -138,7 +138,7 @@ function ScholasticArea() {
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Enter Marks of First Oral"
+              placeholder="Marks of First Oral out of 10"
               name="oralf"
               value={values.oralf}
               onChange={handleChange}
@@ -156,7 +156,7 @@ function ScholasticArea() {
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Enter Marks of SA"
+              placeholder="Marks of SA out of 40"
               name="sa"
               value={values.sa}
               onChange={handleChange}
@@ -174,7 +174,7 @@ function ScholasticArea() {
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Enter Marks of Second Oral"
+              placeholder="Marks of Second Oral out of 10"
               name="orals"
               value={values.orals}
               onChange={handleChange}

@@ -38,11 +38,11 @@
     },
     {
       "subject": "EVS",
-      "fa": 34,
-      "oralf": 10,
-      "sa": 30,
-      "orals": 10,
-      "total": 84,
+      "fa": null,
+      "oralf": null,
+      "sa": null,
+      "orals": null,
+      "total": null,
       "id": 5
     },
     {
@@ -103,7 +103,7 @@
   "secondpart": [
     {
       "subject": "Development & Maturity",
-      "grade": "A+",
+      "grade": null,
       "id": 1
     },
     {
@@ -117,9 +117,9 @@
       "id": 3
     },
     {
-      "id": 4,
       "subject": "Participation in Group Work",
-      "grade": null
+      "grade": null,
+      "id": 4
     },
     {
       "subject": "Neatness",
@@ -183,11 +183,11 @@
       "percentage": "100"
     },
     {
-      "id": 2,
       "term": "Term -II",
       "workingDays": null,
       "presentDays": null,
-      "percentage": null
+      "percentage": null,
+      "id": 2
     }
   ],
   "grading": [

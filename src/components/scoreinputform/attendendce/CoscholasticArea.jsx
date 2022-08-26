@@ -28,7 +28,7 @@ function CoscholasticArea() {
       },
     });
   const [db, setDb] = useState(null);
-
+  
   const postData = async () => {
     const response = await axios.put(
       `http://localhost:3000/secondpart/${values.skill}`,
@@ -40,6 +40,7 @@ function CoscholasticArea() {
     if (response.status === 200) {
       res();
     }
+    console.log(values);
   };
 
   useEffect(() => {
@@ -111,7 +112,7 @@ function CoscholasticArea() {
               <Col sm={8}>
                 <Form.Control
                   type="string"
-                  placeholder="Enter Grade"
+                  placeholder="for ex. A+ / A / B etc.."
                   name="grade"
                   onChange={handleChange}
                   onBlur={handleBlur}

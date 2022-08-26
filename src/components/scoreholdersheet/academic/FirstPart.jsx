@@ -3,7 +3,8 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import TableTitle from "./TableTitle";
 import "./styles/firstPart.css";
-import "../../../assets/css/table.css"
+import "../../../assets/css/table.css";
+import Button from "react-bootstrap/Button";
 import { Modal } from "antd";
 
 function FirstPart() {
@@ -27,6 +28,7 @@ function FirstPart() {
   return (
     <div className="tables firstPart">
       <TableTitle title="Part - I : Scholastic Areas" />
+
       <Table
         striped
         bordered
