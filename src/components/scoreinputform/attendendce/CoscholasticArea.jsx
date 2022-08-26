@@ -54,25 +54,6 @@ function CoscholasticArea() {
 
   return (
     <div>
-      {/* <Formik
-        initialValues={initialValues}
-        validationSchema={cosholasticSchema}
-        onSubmit={(values, actions) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null));
-            actions.setSubmitting(false);
-          }, 1000);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => ( */}
           <Form onSubmit={handleSubmit}>
             <Form.Group as={Row} className="mb-3" controlId="formGridState">
               <Form.Label column sm={2}>
@@ -87,7 +68,7 @@ function CoscholasticArea() {
                   value={values.skill}
                   allowClear
                 >
-                  <option disabled>Choose Skill..</option>
+                  <option>Choose Skill..</option>
                   {db &&
                     db.map(
                       (item) =>

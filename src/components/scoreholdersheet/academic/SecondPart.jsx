@@ -46,7 +46,7 @@ function SecondPart() {
       <Table striped bordered hover className="table-responsive border-bottom border-dark">
         <thead>
           <tr>
-            <th className="col-sm-2"></th>
+            <th className="col-sm-2">Skills</th>
             <th className="col-sm-1">Grade</th>
           </tr>
         </thead>

@@ -2,11 +2,11 @@
   "firstpart": [
     {
       "subject": "English",
-      "fa": null,
-      "fmarks": null,
-      "sa": null,
-      "smarks": null,
-      "total": null,
+      "fa": 30,
+      "oralf": 9,
+      "sa": 40,
+      "orals": 8,
+      "total": 87,
       "id": 1
     },
     {
@@ -113,7 +113,7 @@
     },
     {
       "subject": "Self Confidence",
-      "grade": null,
+      "grade": "A",
       "id": 3
     },
     {
@@ -177,16 +177,16 @@
   "thirdpart": [
     {
       "id": 1,
-      "term": "Term -I",
+      "term": "Term - I",
       "workingDays": "83",
       "presentDays": "83",
       "percentage": "95"
     },
     {
-      "term": "Term -II",
-      "workingDays": 345,
-      "presentDays": 400,
-      "percentage": 56,
+      "term": "Term - II",
+      "workingDays": 300,
+      "presentDays": 200,
+      "percentage": 60,
       "id": 2
     }
   ],

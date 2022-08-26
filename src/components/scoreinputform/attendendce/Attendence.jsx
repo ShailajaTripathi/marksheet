@@ -20,20 +20,20 @@ let attendenceSchema = yup.object({
     .max(365, "Please fill days within a year")
     .required("Set Working Days"),
   presentDays: yup
-    .number() 
+    .number()
     .required("Invalid Present Days")
+
     .test({
-      test:function(value) {
-        return value<= parseInt(this.parent.workingDays);
-      }
-      
-    }),  
-    
+      message: "Should be less than or equal to working days",
+      test: function (value) {
+        return value <= parseInt(this.parent.workingDays);
+      },
+    }),
+
   percentage: yup.number().min(0).max(100).required("Give Percentage"),
 });
 
 function Attendence() {
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,

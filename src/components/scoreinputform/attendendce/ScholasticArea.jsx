@@ -96,7 +96,7 @@ function ScholasticArea() {
               value={values.subject}
               allowClear
             >
-              <option disabled>Choose Subject..</option>
+              <option >Choose Subject..</option>
               {db &&
                 db.map(
                   (item) =>
@@ -120,7 +120,7 @@ function ScholasticArea() {
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Marks of FA out of 40"
+              placeholder="Marks out of 40"
               name="fa"
               value={values.fa}
               onChange={handleChange}
@@ -133,12 +133,12 @@ function ScholasticArea() {
         </Form.Group>
         <Form.Group as={Row} className="mb-3" controlId="string">
           <Form.Label column sm={3}>
-            Oral Marks
+            First Oral
           </Form.Label>
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Marks of First Oral out of 10"
+              placeholder="Marks out of 10"
               name="oralf"
               value={values.oralf}
               onChange={handleChange}
@@ -156,7 +156,7 @@ function ScholasticArea() {
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Marks of SA out of 40"
+              placeholder="Marks out of 40"
               name="sa"
               value={values.sa}
               onChange={handleChange}
@@ -169,12 +169,12 @@ function ScholasticArea() {
         </Form.Group>
         <Form.Group as={Row} controlId="string">
           <Form.Label column sm={3}>
-            Oral Marks
+           Second Oral
           </Form.Label>
           <Col sm={8}>
             <Form.Control
               type="number"
-              placeholder="Marks of Second Oral out of 10"
+              placeholder="Marks out of 10"
               name="orals"
               value={values.orals}
               onChange={handleChange}

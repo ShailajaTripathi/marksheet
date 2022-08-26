@@ -26,12 +26,11 @@ const onButtonClick = (e) => {
     fileName: "Scoresheet.json",
     fileType: "text/json",
   });
-
-
 };
-function Sheet() {
+
+export const Sheet = React.forwardRef((props, ref) => {
   return (
-    <div className="sheetContainer">
+    <div className="sheetContainer" ref={ref}>
       <div className="position-absolute top-0 end-0">
         <Button onClick={onButtonClick}>Download Sheet</Button>
       </div>
@@ -42,7 +41,8 @@ function Sheet() {
       <Academic />
       <Grading />
     </div>
-  );
-}
 
-export default Sheet;
+  );
+});
+
+
