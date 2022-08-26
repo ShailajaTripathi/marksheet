@@ -180,13 +180,13 @@
       "term": "Term -I",
       "workingDays": "83",
       "presentDays": "83",
-      "percentage": "100"
+      "percentage": "95"
     },
     {
       "term": "Term -II",
-      "workingDays": null,
-      "presentDays": null,
-      "percentage": null,
+      "workingDays": 345,
+      "presentDays": 400,
+      "percentage": 56,
       "id": 2
     }
   ],
