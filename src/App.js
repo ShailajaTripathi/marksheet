@@ -8,7 +8,6 @@ import ReactToPrint from "react-to-print";
 import jsPDF from "jspdf";
 import html2pdf from "html2pdf.js";
 
-
 function App() {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({

@@ -184,9 +184,9 @@
     },
     {
       "term": "Term - II",
-      "workingDays": 300,
-      "presentDays": 200,
-      "percentage": 60,
+      "workingDays": null,
+      "presentDays": null,
+      "percentage": null,
       "id": 2
     }
   ],

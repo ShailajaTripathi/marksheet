@@ -30,9 +30,9 @@ const onButtonClick = (e) => {
 
 export const Sheet = React.forwardRef((props, ref) => {
   return (
-    <div id ="sheet" className="sheetContainer" ref={ref}> //iif
+    <div id ="sheet" className="sheetContainer" ref={ref}>
       <div className="position-absolute top-0 end-0">
-        <Button onClick={onButtonClick}>Download Sheet</Button>
+        <Button onClick={onButtonClick}>Download json</Button>
       </div>
 
       <h2 className="text-danger text-center border-bottom border-dark">
