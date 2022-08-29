@@ -35,14 +35,6 @@ function SecondPart() {
   return (
     <div className="tables secondTable">
    <TableTitle title= "Part - II : Co-Scholastic Areas" onClick={showModal}/>
-   {/* <Modal
-        title="Part - III : Attendence"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <CoscholasticArea/>
-      </Modal> */}
       <Table striped bordered hover className="table-responsive border-bottom border-dark">
         <thead>
           <tr>
