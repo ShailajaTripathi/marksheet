@@ -5,8 +5,11 @@ import "../../../assets/css/table.css";
 import "antd/dist/antd.css";
 import { Modal } from "antd";
 import Attendence from "../../scoreinputform/attendendce/Attendence";
+import Button from "react-bootstrap/Button";
 
 function ThirdPart() {
+  // const { handleDelete, firstpart, getNoteDetails } = props;
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -53,6 +56,8 @@ function ThirdPart() {
             <th>No. of working days</th>
             <th>No. of Days Present</th>
             <th>Percentage</th>
+            <th>Edit</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -62,6 +67,18 @@ function ThirdPart() {
               <td>{e.workingDays}</td>
               <td>{e.presentDays}</td>
               <td>{e.percentage}</td>
+              <td><Button
+                      className="me-2 btn btn-primary"
+                     
+                    >
+                      Edit
+                    </Button></td>
+                   <td> <Button
+                      className="btn btn-danger"
+                      // onClick={(e) => handleDelete(firstpart.id, e)}
+                    >
+                      Delete
+                    </Button></td>
             </tr>
           ))}
         </tbody>

@@ -49,6 +49,8 @@ function FirstPart() {
             <th className="col-sm-1">SA</th>
             <th className="col-sm-1">Oral</th>
             <th className="col-sm-1">Overall Marks</th>
+            <th className="col-sm-1" rowspan={2}>Edit</th>
+            <th className="col-sm-1" rowspan={2}>Delete</th>
           </tr>
           <tr>
             <td className="border-top border-dark fw-bold">40</td>
@@ -69,14 +71,28 @@ function FirstPart() {
               <td className="text-center">{e.sa}</td>
               <td className="text-center">{e.orals}</td>
               <td className="text-center">{e.total}</td>
+              <td>
+                <Button
+                  className="me-2 btn btn-primary"
+                
+                >
+                  Edit
+                </Button>
+              </td>
+              <td> <Button
+                      className="btn btn-danger"
+                      // onClick={(e) => handleDelete(note.note_id, e)}
+                    >
+                      Delete
+                    </Button></td>
             </tr>
           ))}
           {result.map((e) => (
             <tr>
-              <td colSpan={2} className="fw-bold text-uppercase">
+              <td colSpan={3} className="fw-bold text-uppercase">
                 {e.label}
               </td>
-              <td colSpan={5} className="text-right">
+              <td colSpan={6} className="align-items-end">
                 {e.value}
               </td>
             </tr>

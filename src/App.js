@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import ReactToPrint from "react-to-print";
-import jsPDF from "jspdf";
 import html2pdf from "html2pdf.js";
 
 function App() {
@@ -31,7 +30,6 @@ function App() {
           trigger={() => <Button>Print</Button>}
           content={() => componentRef.current}
         />
-
         <Button onClick={generatePDF}>Download</Button>
       </div>
     </div>
