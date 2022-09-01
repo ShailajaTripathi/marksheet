@@ -7,6 +7,8 @@ import axios from "axios";
 import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { Modal } from "antd";
+
 
 const initialValues = {
   subject: "",
@@ -39,8 +41,13 @@ let scholasticSchema = yup.object({
     .required("Kindly fill Oral Marks"),
 });
 
-function ScholasticArea() {
+function ScholasticArea({status,setStatus}) {
   const [db, setDb] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -79,9 +86,22 @@ function ScholasticArea() {
     setDb(resp.data);
   };
 
+  const handleOk = () => {
+    setStatus(false)
+  };
+
+  const handleCancel = () => {
+    setStatus(false)
+  };
+
   return (
     <div>
-    
+        <Modal
+          title="update"
+          visible={status}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
       <Form onSubmit={handleSubmit}>
         <Form.Group as={Row} className="mb-3" controlId="formGridState">
           <Form.Label column sm={3}>
@@ -197,7 +217,7 @@ function ScholasticArea() {
           </Col>
         </Form.Group>
       </Form>
-    
+      </Modal>
     </div>
   );
 }

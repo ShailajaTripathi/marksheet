@@ -7,6 +7,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { Formik, Field } from "formik";
 import * as yup from "yup";
+import { Modal } from "antd";
 
 const initialValues = {
   skill: "",
@@ -17,7 +18,9 @@ let cosholasticSchema = yup.object({
   skill: yup.string().required("Please select skill"),
   grade: yup.string().max(2).min(1).required("Kindly provide Grade"),
 });
-function CoscholasticArea() {
+function CoscholasticArea({status,setStatus,data,edit}) {
+  console.log("data",edit);
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
@@ -51,9 +54,21 @@ function CoscholasticArea() {
     let resp = await axios.get("http://localhost:3000/secondpart");
     setDb(resp.data);
   };
+  const handleOk = () => {
+    setStatus(false)
+  };
 
+  const handleCancel = () => {
+    setStatus(false)
+  };
   return (
     <div>
+      <Modal
+          title="update"
+          visible={status}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
           <Form onSubmit={handleSubmit}>
             <Form.Group as={Row} className="mb-3" controlId="formGridState">
               <Form.Label column sm={2}>
@@ -61,15 +76,16 @@ function CoscholasticArea() {
               </Form.Label>
               <Col sm={8}>
                 <Form.Select
-                  defaultValue="Choose..."
+                 
                   name="skill"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.skill}
+                   value={values.skill}
+                  // value ={data.subject}
                   allowClear
                 >
                   <option>Choose Skill..</option>
-                  {db &&
+                  { !edit db &&
                     db.map(
                       (item) =>
                         !item.grade && (
@@ -117,6 +133,7 @@ function CoscholasticArea() {
               </Col>
             </Form.Group>
           </Form>
+          </Modal>
       
     </div>
   );

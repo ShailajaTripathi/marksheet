@@ -6,11 +6,11 @@ import "./styles/firstPart.css";
 import "../../../assets/css/table.css";
 import Button from "react-bootstrap/Button";
 import { Modal } from "antd";
-
+import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
 function FirstPart() {
   const [firstData, setFirstdata] = useState([]);
   const [result, setResult] = useState([]);
-
+  const [status,setStatus]=useState(false)
   const getFirstdata = async () => {
     const response = await axios("http://localhost:3000/firstpart");
     setFirstdata(response.data);
@@ -27,8 +27,8 @@ function FirstPart() {
 
   return (
     <div className="tables firstPart">
-      <TableTitle title="Part - I : Scholastic Areas" />
-
+      {/* <TableTitle title="Part - I : Scholastic Areas" /> */}
+<h3 className="text-primary" onClick={()=>{setStatus(true)}}>Part - I : Scholastic Areas</h3>
       <Table
         striped
         bordered
@@ -99,6 +99,7 @@ function FirstPart() {
           ))}
         </tbody>
       </Table>
+      <ScholasticArea status={status} setStatus={setStatus}/>
     </div>
   );
 }
