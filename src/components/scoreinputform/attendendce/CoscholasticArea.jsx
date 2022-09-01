@@ -18,8 +18,8 @@ let cosholasticSchema = yup.object({
   skill: yup.string().required("Please select skill"),
   grade: yup.string().max(2).min(1).required("Kindly provide Grade"),
 });
-function CoscholasticArea({status,setStatus,data,edit}) {
-  console.log("data",edit);
+function CoscholasticArea({ status, setStatus, data, edit }) {
+  console.log("data", edit);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -31,7 +31,7 @@ function CoscholasticArea({status,setStatus,data,edit}) {
       },
     });
   const [db, setDb] = useState(null);
-  
+
   const postData = async () => {
     const response = await axios.put(
       `http://localhost:3000/secondpart/${values.skill}`,
@@ -55,86 +55,85 @@ function CoscholasticArea({status,setStatus,data,edit}) {
     setDb(resp.data);
   };
   const handleOk = () => {
-    setStatus(false)
+    setStatus(false);
   };
 
   const handleCancel = () => {
-    setStatus(false)
+    setStatus(false);
   };
   return (
     <div>
       <Modal
-          title="update"
-          visible={status}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
-          <Form onSubmit={handleSubmit}>
-            <Form.Group as={Row} className="mb-3" controlId="formGridState">
-              <Form.Label column sm={2}>
-                Skills
-              </Form.Label>
-              <Col sm={8}>
-                <Form.Select
-                 
-                  name="skill"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                   value={values.skill}
-                  // value ={data.subject}
-                  allowClear
-                >
-                  <option>Choose Skill..</option>
-                  { !edit db &&
-                    db.map(
-                      (item) =>
-                        !item.grade && (
-                          <option key={Math.random()} value={item.id}>
-                            {item.subject}
-                          </option>
-                        )
-                    )}
-                </Form.Select>
+        title="update"
+        visible={status}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Form onSubmit={handleSubmit}>
+          <Form.Group as={Row} className="mb-3" controlId="formGridState">
+            <Form.Label column sm={2}>
+              Skills
+            </Form.Label>
+            <Col sm={8}>
+              <Form.Select
+                name="skill"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.skill}
+                // value ={data.subject}
+                allowClear
+              >
+                <option>Choose Skill..</option>
+                {db &&
+                  db.map(
+                    (item) =>
+                      !item.grade && (
+                        <option key={Math.random()} value={item.id}>
+                          {item.subject}
+                        </option>
+                      )
+                  )}
+                {/* !edit  */}
+              </Form.Select>
 
-                {errors.skill && touched.skill ? (
-                  <p className="text-danger">{errors.skill}</p>
-                ) : null}
-              </Col>
-            </Form.Group>
+              {errors.skill && touched.skill ? (
+                <p className="text-danger">{errors.skill}</p>
+              ) : null}
+            </Col>
+          </Form.Group>
 
-            <Form.Group as={Row} className="mb-3" controlId="string">
-              <Form.Label column sm={2}>
-                Grade
-              </Form.Label>
-              <Col sm={8}>
-                <Form.Control
-                  type="string"
-                  placeholder="for ex. A+ / A / B etc.."
-                  name="grade"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.grade}
-                />
-                {errors.grade && touched.grade ? (
-                  <p className="text-danger">{errors.grade}</p>
-                ) : null}
-              </Col>
-            </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="string">
+            <Form.Label column sm={2}>
+              Grade
+            </Form.Label>
+            <Col sm={8}>
+              <Form.Control
+                type="string"
+                placeholder="for ex. A+ / A / B etc.."
+                name="grade"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.grade}
+              />
+              {errors.grade && touched.grade ? (
+                <p className="text-danger">{errors.grade}</p>
+              ) : null}
+            </Col>
+          </Form.Group>
 
-            <Form.Group as={Row} className="mb-3">
-              <Col sm={{ span: 5, offset: 0 }}>
-                <Button
-                  type="submit"
-                  className="px-4"
-                  variant="btn btn-outline-primary"
-                >
-                  Add
-                </Button>
-              </Col>
-            </Form.Group>
-          </Form>
-          </Modal>
-      
+          <Form.Group as={Row} className="mb-3">
+            <Col sm={{ span: 5, offset: 0 }}>
+              <Button
+                type="submit"
+                className="px-4"
+                variant="btn btn-outline-primary"
+              >
+                Add
+              </Button>
+            </Col>
+          </Form.Group>
+        </Form>
+      </Modal>
     </div>
   );
 }
