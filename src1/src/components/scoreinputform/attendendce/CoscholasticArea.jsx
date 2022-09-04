@@ -127,38 +127,19 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
             <Form.Label column sm={2}>
               Grade
             </Form.Label>
-          
-            
             <Col sm={8}>
-              
-              {edit ?(
-                 <Form.Control
-                 type="string"
-                 placeholder="for ex. A+ / A / B etc.."
-                 name="grade"
-                 onChange={handleChange}
-                 onBlur={handleBlur}
-                 value={ data.grade || values.grade }
-                 
-               />
-               
-              ):(<Form.Control
+              <Form.Control
                 type="string"
                 placeholder="for ex. A+ / A / B etc.."
                 name="grade"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={ data.grade }
-              />)}
-              
-              {console.log("data",data.grade)}
-              {console.log("values",values.grade)}
-
+                value={data.grade || values.grade}
+              />
               {errors.grade && touched.grade ? (
                 <p className="text-danger">{errors.grade}</p>
               ) : null}
             </Col>
-        
           </Form.Group>
 
           <Form.Group as={Row} className="mb-3">

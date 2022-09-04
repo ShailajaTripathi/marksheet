@@ -1,0 +1,229 @@
+{
+    "firstpart": [
+      {
+        "id": 1,
+        "subject": "English",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 2,
+        "subject": "Hindi",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 3,
+        "subject": "Sanskrit",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 4,
+        "subject": "Math",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 5,
+        "subject": "EVS",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 6,
+        "subject": "Social Study",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 7,
+        "subject": "Computer",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 8,
+        "subject": "Moral",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 9,
+        "subject": "G.K.",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 10,
+        "subject": "Conversation",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      },
+      {
+        "id": 11,
+        "subject": "Drawing",
+        "fa": null,
+        "fmarks": null,
+        "sa": null,
+        "smarks": null,
+        "total": null
+      }
+    ],
+
+    "secondpart": [
+      {
+        "id": 1,
+        "subject": "Development & Maturity",
+        "grade": "A+"
+      },
+      {
+        "id": 2,
+        "subject": "Responsibility",
+        "grade": "A"
+      },
+      {
+        "id": 3,
+        "subject": "Self Confidence",
+        "grade": "A+"
+      },
+      {
+        "id": 4,
+        "subject": "Participation in Group Work",
+        "grade": "A"
+      },
+      {
+        "id": 5,
+        "subject": "Neatness",
+        "grade": "A+"
+      },
+      {
+        "id": 6,
+        "subject": "Music",
+        "grade": "A"
+      },
+      {
+        "id": 7,
+        "subject": "Discipline",
+        "grade": "A"
+      },
+      {
+        "id": 8,
+        "subject": "Hand Work",
+        "grade": "A+"
+      },
+      {
+        "id": 9,
+        "subject": "Attitude towards home work",
+        "grade": "A"
+      },
+      {
+        "id": 10,
+        "subject": "Craft",
+        "grade": "A+"
+      },
+      {
+        "id": 11,
+        "subject": "Regularity and punctuality",
+        "grade": "A"
+      }],
+      "result":[{
+"id":1,
+"label":"Grand Total",
+"value":482
+      },
+      {
+        "id":2,
+        "label":"Percentage",
+        "value":93.4
+              },{
+                "id":3,
+                "label":"Rank",
+                "value":"V"
+                      }
+    ],
+    "thirdpart":[
+      {
+        "id": 1,
+        "term": "Term -I",
+        "workingDays":"83",
+        "presentDays":"83",
+        "percentage":"100"    
+      }
+    ],
+    "grading": [
+      		{
+      			"id": 1,
+      			"range": "91-100",
+      			"grade": "A1",
+      			"remarks": "Excellent"
+      		},
+      		{
+      			"id": 2,
+      			"range": "81-90",
+      			"grade": "A2",
+      			"remarks": "Very Good"
+      		},
+      		{
+      			"id": 3,
+      			"range": "71-80",
+      			"grade": "B1",
+      			"remarks": "Good"
+      		},
+      		{
+      			"id": 4,
+      			"range": "61-70",
+      			"grade": "B2",
+      			"remarks": "Satisfactory"
+      		},
+      		{
+      			"id": 5,
+      			"range": "51-60",
+      			"grade": "C1",
+      			"remarks": "Satisfactory"
+      		},
+      		{
+      			"id": 6,
+      			"range": "40-50",
+      			"grade": "C2",
+      			"remarks": "Satisfactory"
+      		},
+      		{
+      			"id": 7,
+      			"range": "Below 40",
+      			"grade": "D",
+      			"remarks": "Fail:Poor"
+      		}
+      	]
+      }
+      

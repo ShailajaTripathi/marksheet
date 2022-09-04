@@ -18,6 +18,8 @@ function Academic() {
       </h2>
 
       <Container fluid="md">
+        {/* <div className="row">
+        <div className="table-responsive col-md-6"> */}
         <Row>
   
           <Col
@@ -37,15 +39,20 @@ function Academic() {
           </Col>
         </Row>
 
-      
+        {/* </div>
+        <div className="table-responsive col-md-6"> */}
+
+        {/* /</Container>  </div> */}
+        {/* </div> */}
         <Row>
           <ThirdPart />
         </Row>
         <div>
           <BottomPart />
         </div>
-       
+        {/* <div> */}
       </Container>
+      {/* </div> */}
     </div>
   );
 }

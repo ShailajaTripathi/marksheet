@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Modal } from "antd";
 
 const initialValues = {
   term: "",
@@ -34,18 +33,13 @@ let attendenceSchema = yup.object({
   percentage: yup.number().min(0).max(100).required("Give Percentage"),
 });
 
-function Attendence({ status, setStatus, data, edit }) {
-  const initialValues = {
-    workingDays: data.workingDays,
-    presentDays: data.presentDays,
-    percentage:data.percentage,
-  };
+function Attendence() {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: attendenceSchema,
       onSubmit: (values, action) => {
-        postData(values);
+        postData();
         action.resetForm();
       },
     });
@@ -69,13 +63,7 @@ function Attendence({ status, setStatus, data, edit }) {
   useEffect(() => {
     res();
   }, []);
-  const handleOk = () => {
-    setStatus(false);
-  };
 
-  const handleCancel = () => {
-    setStatus(false);
-  };
   const res = async () => {
     let resp = await axios.get("http://localhost:3000/thirdpart");
     setDb(resp.data);
@@ -83,12 +71,6 @@ function Attendence({ status, setStatus, data, edit }) {
 
   return (
     <div>
-        <Modal
-        title="update"
-        visible={status}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
       <Form onSubmit={handleSubmit}>
         <Form.Group as={Row} className="mb-3" controlId="formGridState">
           <Form.Label column sm={3}>
@@ -188,7 +170,6 @@ function Attendence({ status, setStatus, data, edit }) {
           </Col>
         </Form.Group>
       </Form>
-      </Modal>
     </div>
   );
 }

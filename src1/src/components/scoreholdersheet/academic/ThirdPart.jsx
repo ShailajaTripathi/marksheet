@@ -8,19 +8,12 @@ import Attendence from "../../scoreinputform/attendendce/Attendence";
 import Button from "react-bootstrap/Button";
 
 function ThirdPart() {
-  const [data, setData] = useState({
-    workingDays: "",
-    presentDays: "",
-    percentage: "",
-    id: "",
-  });
-  const [status, setStatus] = useState(false);
-  const [edit, setEdit] = useState(false);
+  // const { handleDelete, firstpart, getNoteDetails } = props;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
-    setStatus(true);
+    setIsModalVisible(true);
   };
 
   const handleOk = () => {
@@ -31,18 +24,6 @@ function ThirdPart() {
     setIsModalVisible(false);
   };
 
-  const editData = (item) => {
-    console.log("aaaa", item);
-    setData({
-      workingDays: item.workingDays,
-      presentDays: item.presentDays,
-      percentage: item.percentage,
-      id: item.id,
-    });
-    // setData(item);
-    console.log(item);
-    setEdit(true);
-  };
   const [thirdData, setThirddata] = useState([]);
   const getThirddata = async () => {
     const response = await axios("http://localhost:3000/thirdpart");
@@ -54,9 +35,15 @@ function ThirdPart() {
 
   return (
     <div className="tables">
-      <h3 className="text-primary" onClick={showModal}>
-        Part - III : Attendence{" "}
-      </h3>
+      <h3 onClick={showModal}>Part - III : Attendence </h3>
+      <Modal
+        title="Part - III : Attendence"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Attendence />
+      </Modal>
       <Table
         striped
         bordered
@@ -70,6 +57,7 @@ function ThirdPart() {
             <th>No. of Days Present</th>
             <th>Percentage</th>
             <th>Edit</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -79,29 +67,22 @@ function ThirdPart() {
               <td>{e.workingDays}</td>
               <td>{e.presentDays}</td>
               <td>{e.percentage}</td>
-              <td>
-                <Button
-                  className="me-2 btn btn-primary"
-                  onClick={() => {
-                    // setSkill(item.subject);
-                    showModal();
-                    // console.log("Status", status);
-                    editData(e);
-                  }}
-                >
-                  Edit
-                </Button>
-              </td>
+              <td><Button
+                      className="me-2 btn btn-primary"
+                     
+                    >
+                      Edit
+                    </Button></td>
+                   <td> <Button
+                      className="btn btn-danger"
+                      // onClick={(e) => handleDelete(firstpart.id, e)}
+                    >
+                      Delete
+                    </Button></td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <Attendence
-        status={status}
-        setStatus={setStatus}
-        data={data}
-        edit={edit}
-      />
     </div>
   );
 }

@@ -113,7 +113,7 @@
     },
     {
       "subject": "Self Confidence",
-      "grade": "A",
+      "grade": "A+",
       "id": 3
     },
     {
@@ -142,9 +142,9 @@
       "id": 8
     },
     {
-      "id": 9,
       "subject": "Attitude towards home work",
-      "grade": null
+      "grade": null,
+      "id": 9
     },
     {
       "subject": "Craft",

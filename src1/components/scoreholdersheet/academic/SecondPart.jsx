@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment, Form } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-
+import TableTitle from "./TableTitle";
 import "./styles/secondPart.css";
 import "../../../assets/css/table.css";
 import Button from "react-bootstrap/Button";
@@ -13,11 +13,7 @@ import Editablerow from "./Editablerow";
 import CoscholasticArea from "../../scoreinputform/attendendce/CoscholasticArea";
 
 function SecondPart() {
-  const [data, setData] = useState({
-    skill: "",
-    grade: "",
-    id: "",
-  });
+  const [data, setData] = useState(null);
   const [status, setStatus] = useState(false);
   const [edit, setEdit] = useState(false);
 
@@ -30,8 +26,7 @@ function SecondPart() {
   };
 
   const editData = (item) => {
-    console.log("aaaa", item);
-    setData({ skill: item.subject, grade: item.grade, id: item.id });    // setData(item);
+    setData(item);
     console.log(item);
     setEdit(true);
   };
@@ -124,7 +119,8 @@ function SecondPart() {
     <div className="tables secondTable">
       {/* <TableTitle title="Part - II : Co-Scholastic Areas" onClick={showModal} status={true} /> */}
       {/* <Form onSubmit={handleEditFormSubmit}> */}
-      <h3 className="text-primary" onClick={showModal}>Part- II : CoScholastic Area</h3>
+      <h1 onClick={showModal}>CoScholastic Area</h1>
+
       <Table
         striped
         bordered
@@ -135,7 +131,7 @@ function SecondPart() {
           <tr>
             <th className="col-sm-7">Skills</th>
             <th className="col-sm-1">Grade</th>
-            <th className="col-sm-1">Edit</th>
+            <th className="col-sm-1">Actions</th>
           </tr>
         </thead>
         <tbody className="tableBody tables">
@@ -150,8 +146,9 @@ function SecondPart() {
                   <Button
                     className="me-2 btn btn-primary"
                     onClick={() => {
+                      // setSkill(item.subject);
                       showModal();
-
+                      // console.log("Status", status);
                       editData(item);
                     }}
                   >
@@ -161,15 +158,28 @@ function SecondPart() {
               </td>
             </tr>
           ))}
+          {/* 
+            {secondData.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? (
+                  <Editablerow
+                    // editFormData={editFormData}
+                    // handleEditFormChange={handleEditFormChange}
+                    // handleCancelClick={handleCancelClick}
+                  />
+                ) : (
+                  <ReadOnlyRow
+                    // contact={contact}
+                    // handleEditClick={handleEditClick}
+                    // handleDeleteClick={handleDeleteClick}
+                  />
+                )}
+              </Fragment>
+            ))} */}
         </tbody>
       </Table>
       {/* </Form> */}
-      <CoscholasticArea
-        status={status}
-        setStatus={setStatus}
-        data={data}
-        edit={edit}
-      />
+      <CoscholasticArea status={status} setStatus={setStatus} data={data} edit={edit} />
     </div>
   );
 }

@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-
+import TableTitle from "./TableTitle";
 import "./styles/firstPart.css";
 import "../../../assets/css/table.css";
 import Button from "react-bootstrap/Button";
 import { Modal } from "antd";
 import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
-
 function FirstPart() {
-  const [data, setData] = useState({
-    subject: "",
-    fa: "",
-    oralf: "",
-    sa: "",
-    orals: "",
-    id: "",
-  });
   const [firstData, setFirstdata] = useState([]);
   const [result, setResult] = useState([]);
-  const [edit, setEdit] = useState(false);
-  const [status, setStatus] = useState(false);
+  const [status,setStatus]=useState(false)
   const getFirstdata = async () => {
     const response = await axios("http://localhost:3000/firstpart");
     setFirstdata(response.data);
@@ -29,24 +19,7 @@ function FirstPart() {
     const response = await axios("http://localhost:3000/result");
     setResult(response.data);
   };
-  const showModal = () => {
-    setStatus(true);
-  };
-  const editData = (item) => {
-    console.log("aaaa", item);
-    setData({
-      subject: item.subject,
-      fa: item.fa,
-      oralf: item.oralf,
-      sa: item.sa,
-      orals: item.orals,
-      id: item.id,
-    });
 
-    // setData(item);
-    console.log(item);
-    setEdit(true);
-  };
   useEffect(() => {
     getFirstdata();
     getResult();
@@ -55,14 +28,7 @@ function FirstPart() {
   return (
     <div className="tables firstPart">
       {/* <TableTitle title="Part - I : Scholastic Areas" /> */}
-      <h3
-        className="text-primary"
-        onClick={() => {
-          setStatus(true);
-        }}
-      >
-        Part - I : Scholastic Areas
-      </h3>
+<h3 className="text-primary" onClick={()=>{setStatus(true)}}>Part - I : Scholastic Areas</h3>
       <Table
         striped
         bordered
@@ -83,9 +49,8 @@ function FirstPart() {
             <th className="col-sm-1">SA</th>
             <th className="col-sm-1">Oral</th>
             <th className="col-sm-1">Overall Marks</th>
-            <th className="col-sm-1" rowspan={2}>
-              Edit
-            </th>
+            <th className="col-sm-1" rowspan={2}>Edit</th>
+            <th className="col-sm-1" rowspan={2}>Delete</th>
           </tr>
           <tr>
             <td className="border-top border-dark fw-bold">40</td>
@@ -109,14 +74,17 @@ function FirstPart() {
               <td>
                 <Button
                   className="me-2 btn btn-primary"
-                  onClick={() => {
-                    showModal();
-                    editData(e);
-                  }}
+                
                 >
                   Edit
                 </Button>
               </td>
+              <td> <Button
+                      className="btn btn-danger"
+                      // onClick={(e) => handleDelete(note.note_id, e)}
+                    >
+                      Delete
+                    </Button></td>
             </tr>
           ))}
           {result.map((e) => (
@@ -131,7 +99,7 @@ function FirstPart() {
           ))}
         </tbody>
       </Table>
-      <ScholasticArea status={status} setStatus={setStatus} />
+      <ScholasticArea status={status} setStatus={setStatus}/>
     </div>
   );
 }

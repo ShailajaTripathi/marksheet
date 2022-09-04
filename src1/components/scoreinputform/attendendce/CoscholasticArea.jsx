@@ -9,31 +9,30 @@ import { Formik, Field } from "formik";
 import * as yup from "yup";
 import { Modal } from "antd";
 
+const initialValues = {
+  skill: "",
+  grade: "",
+};
+
 let cosholasticSchema = yup.object({
   skill: yup.string().required("Please select skill"),
   grade: yup.string().max(2).min(1).required("Kindly provide Grade"),
 });
 function CoscholasticArea({ status, setStatus, data, edit }) {
-  console.log("data", data);
+  console.log("data", edit);
 
-  const initialValues = {
-    skill: data.skill,
-    grade: data.grade,
-  };
-  console.log(initialValues);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: cosholasticSchema,
       onSubmit: (values, action) => {
-        postData(values);
+        postData();
         action.resetForm();
       },
     });
   const [db, setDb] = useState(null);
 
-  const postData = async (e) => {
-    console.log("eeee", e);
+  const postData = async () => {
     const response = await axios.put(
       `http://localhost:3000/secondpart/${values.skill}`,
       {
@@ -46,10 +45,6 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
     }
     console.log(values);
   };
-  function updateData() {
-    console.log("Updated");
-    console.log(values);
-  }
 
   useEffect(() => {
     res();
@@ -59,7 +54,6 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
     let resp = await axios.get("http://localhost:3000/secondpart");
     setDb(resp.data);
   };
-  console.log("db", db);
   const handleOk = () => {
     setStatus(false);
   };
@@ -81,40 +75,25 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
               Skills
             </Form.Label>
             <Col sm={8}>
-              {console.log("Hii", values.skill)}
               <Form.Select
                 name="skill"
-                value={values.skill || data.id}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                // defaultValue={values.skill || "Music"}
+                value={values.skill}
+                // value ={data.subject}
                 allowClear
               >
-                {edit ? (
-                  <>
-                    <option>Choose Skill..</option>
-
-                    {db &&
-                      db.map((item) => (
+                <option>Choose Skill..</option>
+                {db &&
+                  db.map(
+                    (item) =>
+                      !item.grade && (
                         <option key={Math.random()} value={item.id}>
                           {item.subject}
                         </option>
-                      ))}
-                  </>
-                ) : (
-                  <>
-                    <option>Choose Skill..</option>
-                    {db &&
-                      db.map(
-                        (item) =>
-                          !item.grade && (
-                            <option key={Math.random()} value={item.id}>
-                              {item.subject}
-                            </option>
-                          )
-                      )}
-                  </>
-                )}
+                      )
+                  )}
+                {/* !edit  */}
               </Form.Select>
 
               {errors.skill && touched.skill ? (
@@ -127,38 +106,19 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
             <Form.Label column sm={2}>
               Grade
             </Form.Label>
-          
-            
             <Col sm={8}>
-              
-              {edit ?(
-                 <Form.Control
-                 type="string"
-                 placeholder="for ex. A+ / A / B etc.."
-                 name="grade"
-                 onChange={handleChange}
-                 onBlur={handleBlur}
-                 value={ data.grade || values.grade }
-                 
-               />
-               
-              ):(<Form.Control
+              <Form.Control
                 type="string"
                 placeholder="for ex. A+ / A / B etc.."
                 name="grade"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={ data.grade }
-              />)}
-              
-              {console.log("data",data.grade)}
-              {console.log("values",values.grade)}
-
+                value={values.grade}
+              />
               {errors.grade && touched.grade ? (
                 <p className="text-danger">{errors.grade}</p>
               ) : null}
             </Col>
-        
           </Form.Group>
 
           <Form.Group as={Row} className="mb-3">
@@ -167,7 +127,6 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
                 type="submit"
                 className="px-4"
                 variant="btn btn-outline-primary"
-                onClick={updateData}
               >
                 Add
               </Button>

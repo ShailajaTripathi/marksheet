@@ -54,7 +54,7 @@ function ScholasticArea({status,setStatus}) {
       initialValues: initialValues,
       validationSchema: scholasticSchema,
       onSubmit: (values, action) => {
-        postData(values);
+        postData();
         action.resetForm();
       },
     });
@@ -116,8 +116,6 @@ function ScholasticArea({status,setStatus}) {
               value={values.subject}
               allowClear
             >
-           
-                
               <option >Choose Subject..</option>
               {db &&
                 db.map(
