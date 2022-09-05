@@ -32,7 +32,14 @@ let scholasticSchema = yup.object({
     .required("Kindly fill Oral Marks"),
 });
 
-function ScholasticArea({ status, setStatus, data, edit }) {
+function ScholasticArea({
+  status,
+  setStatus,
+  data,
+  edit,
+  setGrandTotal,
+  grandTotal,
+}) {
   const initialValues = {
     subject: data.subject,
     fa: data.fa,
@@ -41,17 +48,19 @@ function ScholasticArea({ status, setStatus, data, edit }) {
     orals: data.orals,
   };
 
+  console.log({ initialValues });
   const [db, setDb] = useState(null);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
+      enableReinitialize: true,
       initialValues: initialValues,
       validationSchema: scholasticSchema,
-      onSubmit: (values, action) => {
+      onSubmit: (values) => {
         postData(values);
-        action.resetForm();
       },
     });
+
   const postData = async () => {
     let totalMarks = values.fa + values.oralf + values.sa + values.orals;
 
@@ -127,7 +136,7 @@ function ScholasticArea({ status, setStatus, data, edit }) {
                 ) : (
                   <>
                     <option>Choose Subject..</option>
-                    {db &&
+                   {db &&
                       db.map(
                         (item) =>
                           !item.fa && (
@@ -135,9 +144,19 @@ function ScholasticArea({ status, setStatus, data, edit }) {
                               {item.subject}
                             </option>
                           )
-                      )}
+                      )} 
                   </>
                 )}
+                <option>Choose Subject..</option>
+                {db &&
+                  db.map(
+                    (item) =>
+                      !item.fa && (
+                        <option key={Math.random()} value={item.id}>
+                          {item.subject}
+                        </option>
+                      )
+                  )}
               </Form.Select>
               {errors.subject && touched.subject ? (
                 <p className="text-danger">{errors.subject}</p>
@@ -150,6 +169,20 @@ function ScholasticArea({ status, setStatus, data, edit }) {
               FA Marks
             </Form.Label>
             <Col sm={8}>
+              {/* {edit ? (
+                <>
+                  <Form.Control
+                    type="number"
+                    placeholder="Marks out of 40"
+                    name="fa"
+                    // value={data.fa }
+                    value={values.fa}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </>
+              ) : (
+                <> */}
               <Form.Control
                 type="number"
                 placeholder="Marks out of 40"
@@ -158,6 +191,9 @@ function ScholasticArea({ status, setStatus, data, edit }) {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+              {/* </>
+              )} */}
+
               {errors.fa && touched.fa ? (
                 <p className="text-danger">{errors.fa}</p>
               ) : null}

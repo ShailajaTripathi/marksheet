@@ -23,6 +23,7 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
   console.log(initialValues);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
+      enableReinitialize: true,
       initialValues: initialValues,
       validationSchema: cosholasticSchema,
       onSubmit: (values, action) => {
@@ -89,7 +90,6 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
                 value={values.skill || data.id}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                // defaultValue={values.skill || "Music"}
                 allowClear
               >
                 {edit ? (

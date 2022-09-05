@@ -161,12 +161,12 @@
     {
       "id": 1,
       "label": "Grand Total",
-      "value": 482
+      "value": null
     },
     {
       "id": 2,
       "label": "Percentage",
-      "value": 93.4
+      "value": null
     },
     {
       "id": 3,

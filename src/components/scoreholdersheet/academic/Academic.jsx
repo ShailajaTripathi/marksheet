@@ -4,7 +4,6 @@ import SecondPart from "./SecondPart";
 import ThirdPart from "./ThirdPart";
 import "./styles/academic.css";
 import "../../../assets/css/table.css";
-import Button from "react-bootstrap/Button";
 import BottomPart from "./BottomPart";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -19,16 +18,12 @@ function Academic() {
 
       <Container fluid="md">
         <Row>
-  
           <Col
             sm={8}
             className="first_column table-responsive border border-dark"
           >
-          
             <FirstPart />
-                
           </Col>
-       
           <Col
             sm={4}
             className="second_column table-responsive border border-dark"
@@ -36,15 +31,12 @@ function Academic() {
             <SecondPart />
           </Col>
         </Row>
-
-      
         <Row>
-          <ThirdPart />
+          <ThirdPart/>
         </Row>
         <div>
-          <BottomPart />
+          <BottomPart/>
         </div>
-       
       </Container>
     </div>
   );

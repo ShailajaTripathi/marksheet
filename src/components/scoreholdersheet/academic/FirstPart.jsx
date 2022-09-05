@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-
 import "./styles/firstPart.css";
 import "../../../assets/css/table.css";
 import Button from "react-bootstrap/Button";
-import { Modal } from "antd";
 import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
 
 function FirstPart() {
@@ -17,21 +15,35 @@ function FirstPart() {
     orals: "",
     id: "",
   });
+
   const [firstData, setFirstdata] = useState([]);
   const [result, setResult] = useState([]);
   const [edit, setEdit] = useState(false);
   const [status, setStatus] = useState(false);
+  const [grandTotal, setGrandTotal] = useState(0);
+  const [percentage, setPercentage] = useState(0);
+
   const getFirstdata = async () => {
     const response = await axios("http://localhost:3000/firstpart");
+    const total = response.data.reduce(
+      (previousValue, currentValue) => previousValue + currentValue.total,
+      0
+    );
+    const percent = Math.round((total / 1100) * 100);
+    setGrandTotal(total);
+    setPercentage(percent);
     setFirstdata(response.data);
   };
+
   const getResult = async () => {
     const response = await axios("http://localhost:3000/result");
     setResult(response.data);
   };
+
   const showModal = () => {
     setStatus(true);
   };
+
   const editData = (item) => {
     console.log("aaaa", item);
     setData({
@@ -46,6 +58,7 @@ function FirstPart() {
     console.log(item);
     setEdit(true);
   };
+
   useEffect(() => {
     getFirstdata();
     getResult();
@@ -104,6 +117,7 @@ function FirstPart() {
               <td className="text-center">{e.sa}</td>
               <td className="text-center">{e.orals}</td>
               <td className="text-center">{e.total}</td>
+
               <td>
                 <Button
                   className="me-2 btn btn-primary"
@@ -117,16 +131,47 @@ function FirstPart() {
               </td>
             </tr>
           ))}
-          {result.map((e) => (
+          {/* {result.map((e) => (
             <tr>
               <td colSpan={3} className="fw-bold text-uppercase">
                 {e.label}
               </td>
+
               <td colSpan={6} className="align-items-end">
-                {e.value}
+                {grandTotal}
               </td>
+              
             </tr>
-          ))}
+          ))} */}
+          <tr>
+            <td colSpan={3} className="fw-bold text-uppercase">
+              Grand Total
+            </td>
+
+            <td colSpan={6} className="align-items-end">
+              {grandTotal}
+            </td>
+          </tr>
+
+          <tr>
+            <td colSpan={3} className="fw-bold text-uppercase">
+              Percentage
+            </td>
+
+            <td colSpan={6} className="align-items-end">
+              {percentage} %
+            </td>
+          </tr>
+
+          <tr>
+            <td colSpan={3} className="fw-bold text-uppercase">
+              Rank
+            </td>
+
+            <td colSpan={6} className="align-items-end">
+              V
+            </td>
+          </tr>
         </tbody>
       </Table>
       <ScholasticArea
@@ -134,6 +179,8 @@ function FirstPart() {
         setStatus={setStatus}
         data={data}
         edit={edit}
+        grandTotal={grandTotal}
+        setGrandTotal={setGrandTotal}
       />
     </div>
   );

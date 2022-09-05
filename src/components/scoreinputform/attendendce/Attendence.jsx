@@ -29,6 +29,8 @@ let attendenceSchema = yup.object({
 });
 
 function Attendence({ status, setStatus, data, edit }) {
+  // const [cgpa, setCgpa] = useState(0)
+
   const initialValues = {
     workingDays: data.workingDays,
     presentDays: data.presentDays,
@@ -36,7 +38,9 @@ function Attendence({ status, setStatus, data, edit }) {
   };
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
+   
       initialValues: initialValues,
+      enableReinitialize: true,
       validationSchema: attendenceSchema,
       onSubmit: (values, action) => {
         postData(values);
@@ -44,6 +48,7 @@ function Attendence({ status, setStatus, data, edit }) {
       },
     });
   const [db, setDb] = useState(null);
+ 
 
   const postData = async () => {
     const response = await axios.put(
@@ -98,7 +103,7 @@ function Attendence({ status, setStatus, data, edit }) {
                 name="term"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.term || data.id}
+                value={values.term}
                 allowClear
               >
                 {edit ? (
@@ -125,6 +130,16 @@ function Attendence({ status, setStatus, data, edit }) {
                       )}
                   </>
                 )}
+                {/* <option>Choose Term..</option>
+                {db &&
+                  db.map(
+                    (item) =>
+                      !item.workingDays && (
+                        <option key={Math.random()} value={item.id}>
+                          {item.term}
+                        </option>
+                      )
+                  )} */}
               </Form.Select>
               {errors.term && touched.term ? (
                 <p className="text-danger">{errors.term}</p>
