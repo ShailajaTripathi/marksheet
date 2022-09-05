@@ -8,12 +8,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { Modal } from "antd";
 
-const initialValues = {
-  term: "",
-  workingDays: "",
-  presentDays: "",
-  percentage: "",
-};
 let attendenceSchema = yup.object({
   term: yup.string().required("Select Term"),
   workingDays: yup
@@ -38,7 +32,7 @@ function Attendence({ status, setStatus, data, edit }) {
   const initialValues = {
     workingDays: data.workingDays,
     presentDays: data.presentDays,
-    percentage:data.percentage,
+    percentage: data.percentage,
   };
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -55,7 +49,7 @@ function Attendence({ status, setStatus, data, edit }) {
     const response = await axios.put(
       `http://localhost:3000/thirdpart/${values.term}`,
       {
-        term: db.filter((item) => item.id == values.term)[0].term,
+        term: db.filter((item) => item.id === values.term)[0].term,
         workingDays: values.workingDays,
         presentDays: values.presentDays,
         percentage: values.percentage,
@@ -76,6 +70,10 @@ function Attendence({ status, setStatus, data, edit }) {
   const handleCancel = () => {
     setStatus(false);
   };
+  function updateData() {
+    console.log("Updated");
+    console.log(values);
+  }
   const res = async () => {
     let resp = await axios.get("http://localhost:3000/thirdpart");
     setDb(resp.data);
@@ -83,111 +81,126 @@ function Attendence({ status, setStatus, data, edit }) {
 
   return (
     <div>
-        <Modal
-        title="update"
+      <Modal
+        title="Part - III Attendence"
         visible={status}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-      <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className="mb-3" controlId="formGridState">
-          <Form.Label column sm={3}>
-            Term
-          </Form.Label>
-          <Col sm={5}>
-            <Form.Select
-              defaultValue="Choose..."
-              name="term"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.term}
-              allowClear
-            >
-              <option>Choose Term..</option>
-              {db &&
-                db.map(
-                  (item) =>
-                    !item.workingDays && (
-                      <option key={Math.random()} value={item.id}>
-                        {item.term}
-                      </option>
-                    )
+        <Form onSubmit={handleSubmit}>
+          <Form.Group as={Row} className="mb-3" controlId="formGridState">
+            <Form.Label column sm={3}>
+              Term
+            </Form.Label>
+            <Col sm={5}>
+              <Form.Select
+                defaultValue="Choose..."
+                name="term"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.term || data.id}
+                allowClear
+              >
+                {edit ? (
+                  <>
+                    <option>Choose Term..</option>
+                    {db &&
+                      db.map((item) => (
+                        <option key={Math.random()} value={item.id}>
+                          {item.term}
+                        </option>
+                      ))}
+                  </>
+                ) : (
+                  <>
+                    <option>Choose Term..</option>
+                    {db &&
+                      db.map(
+                        (item) =>
+                          !item.workingDays && (
+                            <option key={Math.random()} value={item.id}>
+                              {item.term}
+                            </option>
+                          )
+                      )}
+                  </>
                 )}
-            </Form.Select>
-            {errors.term && touched.term ? (
-              <p className="text-danger">{errors.term}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3" controlId="number">
-          <Form.Label column sm={3}>
-            Working Days
-          </Form.Label>
-          <Col sm={5}>
-            <Form.Control
-              type="number"
-              placeholder="Set working Days"
-              name="workingDays"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.workingDays}
-            />
-            {errors.workingDays && touched.workingDays ? (
-              <p className="text-danger">{errors.workingDays}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
+              </Form.Select>
+              {errors.term && touched.term ? (
+                <p className="text-danger">{errors.term}</p>
+              ) : null}
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="number">
+            <Form.Label column sm={3}>
+              Working Days
+            </Form.Label>
+            <Col sm={5}>
+              <Form.Control
+                type="number"
+                placeholder="Set working Days"
+                name="workingDays"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.workingDays}
+              />
+              {errors.workingDays && touched.workingDays ? (
+                <p className="text-danger">{errors.workingDays}</p>
+              ) : null}
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="number">
-          <Form.Label column sm={3}>
-            Present Days
-          </Form.Label>
-          <Col sm={5}>
-            <Form.Control
-              type="Number"
-              placeholder="Fill Present Days"
-              name="presentDays"
-              value={values.presentDays}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errors.presentDays && touched.presentDays ? (
-              <p className="text-danger">{errors.presentDays}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="number">
+            <Form.Label column sm={3}>
+              Present Days
+            </Form.Label>
+            <Col sm={5}>
+              <Form.Control
+                type="Number"
+                placeholder="Fill Present Days"
+                name="presentDays"
+                value={values.presentDays}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.presentDays && touched.presentDays ? (
+                <p className="text-danger">{errors.presentDays}</p>
+              ) : null}
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="number">
-          <Form.Label column sm={3}>
-            Percentage
-          </Form.Label>
-          <Col sm={5}>
-            <Form.Control
-              type="number"
-              placeholder="Enter Percentage"
-              name="percentage"
-              value={values.percentage}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errors.percentage && touched.percentage ? (
-              <p className="text-danger">{errors.percentage}</p>
-            ) : null}
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="number">
+            <Form.Label column sm={3}>
+              Percentage
+            </Form.Label>
+            <Col sm={5}>
+              <Form.Control
+                type="number"
+                placeholder="Enter Percentage"
+                name="percentage"
+                value={values.percentage}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.percentage && touched.percentage ? (
+                <p className="text-danger">{errors.percentage}</p>
+              ) : null}
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className="mb-3">
-          <Col sm={{ span: 5, offset: 0 }}>
-            <Button
-              type="submit"
-              className="px-4"
-              variant="btn btn-outline-primary"
-            >
-              Add
-            </Button>
-          </Col>
-        </Form.Group>
-      </Form>
+          <Form.Group as={Row} className="mb-3">
+            <Col sm={{ span: 5, offset: 0 }}>
+              <Button
+                type="submit"
+                className="px-4"
+                variant="btn btn-outline-primary"
+                onClick={updateData}
+              >
+                Add
+              </Button>
+            </Col>
+          </Form.Group>
+        </Form>
       </Modal>
     </div>
   );

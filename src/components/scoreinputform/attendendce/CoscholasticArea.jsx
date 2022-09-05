@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useFormik } from "formik";
-import { Formik, Field } from "formik";
 import * as yup from "yup";
 import { Modal } from "antd";
 
@@ -20,6 +19,7 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
     skill: data.skill,
     grade: data.grade,
   };
+
   console.log(initialValues);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -37,7 +37,7 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
     const response = await axios.put(
       `http://localhost:3000/secondpart/${values.skill}`,
       {
-        subject: db.filter((item) => item.id == values.skill)[0].subject,
+        subject: db.filter((item) => item.id === values.skill)[0].subject,
         grade: values.grade,
       }
     );
@@ -59,6 +59,7 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
     let resp = await axios.get("http://localhost:3000/secondpart");
     setDb(resp.data);
   };
+
   console.log("db", db);
   const handleOk = () => {
     setStatus(false);
@@ -67,10 +68,11 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
   const handleCancel = () => {
     setStatus(false);
   };
+
   return (
     <div>
       <Modal
-        title="update"
+        title="Part-II Co-scholastic Area"
         visible={status}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -93,7 +95,6 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
                 {edit ? (
                   <>
                     <option>Choose Skill..</option>
-
                     {db &&
                       db.map((item) => (
                         <option key={Math.random()} value={item.id}>
@@ -127,38 +128,23 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
             <Form.Label column sm={2}>
               Grade
             </Form.Label>
-          
-            
+
             <Col sm={8}>
-              
-              {edit ?(
-                 <Form.Control
-                 type="string"
-                 placeholder="for ex. A+ / A / B etc.."
-                 name="grade"
-                 onChange={handleChange}
-                 onBlur={handleBlur}
-                 value={ data.grade || values.grade }
-                 
-               />
-               
-              ):(<Form.Control
+              <Form.Control
                 type="string"
                 placeholder="for ex. A+ / A / B etc.."
                 name="grade"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={ data.grade }
-              />)}
-              
-              {console.log("data",data.grade)}
-              {console.log("values",values.grade)}
+                value={values.grade}
+              />
+              {console.log("data", data.grade)}
+              {console.log("values", values.grade)}
 
               {errors.grade && touched.grade ? (
                 <p className="text-danger">{errors.grade}</p>
               ) : null}
             </Col>
-        
           </Form.Group>
 
           <Form.Group as={Row} className="mb-3">

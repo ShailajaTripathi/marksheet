@@ -17,18 +17,16 @@ function ThirdPart() {
   const [status, setStatus] = useState(false);
   const [edit, setEdit] = useState(false);
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
   const showModal = () => {
     setStatus(true);
   };
 
   const handleOk = () => {
-    setIsModalVisible(false);
+    setStatus(false);
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setStatus(false);
   };
 
   const editData = (item) => {
@@ -55,7 +53,7 @@ function ThirdPart() {
   return (
     <div className="tables">
       <h3 className="text-primary" onClick={showModal}>
-        Part - III : Attendence{" "}
+        Part - III : Attendence
       </h3>
       <Table
         striped
@@ -83,9 +81,7 @@ function ThirdPart() {
                 <Button
                   className="me-2 btn btn-primary"
                   onClick={() => {
-                    // setSkill(item.subject);
                     showModal();
-                    // console.log("Status", status);
                     editData(e);
                   }}
                 >

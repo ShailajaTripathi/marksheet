@@ -35,20 +35,7 @@ function SecondPart() {
     console.log(item);
     setEdit(true);
   };
-  //
-  // const [contacts, setContacts] = useState(data);
 
-  // const [addFormData, setAddFormData] = useState({
-  //   subject: "",
-  //   grade: "",
-  // });
-
-  // const [editFormData, setEditFormData] = useState({
-  //   subject: "",
-  //   grade: "",
-  // });
-
-  // const [editContactId, setEditContactId] = useState(null);
 
   const showModal = () => {
     setStatus(true);
@@ -64,66 +51,8 @@ function SecondPart() {
     getSeconddata();
   }, []);
 
-  //
-
-  // const handleEditFormSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   const editedContact = {
-  //     id: editContactId,
-  //     subject: editFormData.subject,
-  //     grade: editFormData.grade,
-  //   };
-
-  //   const newContacts = [...contacts];
-
-  //   const index = contacts.findIndex((contact) => contact.id === editContactId);
-
-  //   newContacts[index] = editedContact;
-
-  //   setContacts(newContacts);
-  //   setEditContactId(null);
-  // };
-
-  // const handleEditFormChange = (event) => {
-  //   event.preventDefault();
-
-  //   const fieldName = event.target.getAttribute("name");
-  //   const fieldValue = event.target.value;
-  //   const newFormData = { ...editFormData };
-  //   newFormData[fieldName] = fieldValue;
-
-  //   setEditFormData(newFormData);
-  // };
-  // const handleCancelClick = () => {
-  //   setEditContactId(null);
-  // };
-
-  // const handleEditClick = (event, contact) => {
-  //   event.preventDefault();
-  //   setEditContactId(contact.id);
-
-  //   const formValues = {
-  //     subject: contact.subject,
-  //     grade: contact.grade,
-  //   };
-  //   setEditFormData(formValues);
-  // };
-
-  // const handleDeleteClick = (contactId) => {
-  //   const newContacts = [...contacts];
-
-  //   const index = contacts.findIndex((contact) => contact.id === contactId);
-
-  //   newContacts.splice(index, 1);
-
-  //   setContacts(newContacts);
-  // };
-
   return (
     <div className="tables secondTable">
-      {/* <TableTitle title="Part - II : Co-Scholastic Areas" onClick={showModal} status={true} /> */}
-      {/* <Form onSubmit={handleEditFormSubmit}> */}
       <h3 className="text-primary" onClick={showModal}>Part- II : CoScholastic Area</h3>
       <Table
         striped
@@ -142,16 +71,13 @@ function SecondPart() {
           {secondData.map((item) => (
             <tr className="tableHeight">
               <td>{item.subject}</td>
-
               <td className="text-center">{item.grade}</td>
-
               <td>
                 <div class="btn-group">
                   <Button
                     className="me-2 btn btn-primary"
                     onClick={() => {
                       showModal();
-
                       editData(item);
                     }}
                   >
@@ -163,7 +89,6 @@ function SecondPart() {
           ))}
         </tbody>
       </Table>
-      {/* </Form> */}
       <CoscholasticArea
         status={status}
         setStatus={setStatus}

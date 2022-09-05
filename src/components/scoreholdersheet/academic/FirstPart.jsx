@@ -43,7 +43,6 @@ function FirstPart() {
       id: item.id,
     });
 
-    // setData(item);
     console.log(item);
     setEdit(true);
   };
@@ -54,7 +53,6 @@ function FirstPart() {
 
   return (
     <div className="tables firstPart">
-      {/* <TableTitle title="Part - I : Scholastic Areas" /> */}
       <h3
         className="text-primary"
         onClick={() => {
@@ -131,7 +129,12 @@ function FirstPart() {
           ))}
         </tbody>
       </Table>
-      <ScholasticArea status={status} setStatus={setStatus} />
+      <ScholasticArea
+        status={status}
+        setStatus={setStatus}
+        data={data}
+        edit={edit}
+      />
     </div>
   );
 }
