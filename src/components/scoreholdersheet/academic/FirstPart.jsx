@@ -134,18 +134,6 @@ function FirstPart() {
               </td>
             </tr>
           ))}
-          {/* {result.map((e) => (
-            <tr>
-              <td colSpan={3} className="fw-bold text-uppercase">
-                {e.label}
-              </td>
-
-              <td colSpan={6} className="align-items-end">
-                {grandTotal}
-              </td>
-              
-            </tr>
-          ))} */}
           <tr>
             <td colSpan={3} className="fw-bold text-uppercase">
               Grand Total

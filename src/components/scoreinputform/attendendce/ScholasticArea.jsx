@@ -186,20 +186,7 @@ function ScholasticArea({
               FA Marks
             </Form.Label>
             <Col sm={8}>
-              {/* {edit ? (
-                <>
-                  <Form.Control
-                    type="number"
-                    placeholder="Marks out of 40"
-                    name="fa"
-                    // value={data.fa }
-                    value={values.fa}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </>
-              ) : (
-                <> */}
+              
               <Form.Control
                 type="number"
                 placeholder="Marks out of 40"
@@ -208,8 +195,6 @@ function ScholasticArea({
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {/* </>
-              )} */}
 
               {errors.fa && touched.fa ? (
                 <p className="text-danger">{errors.fa}</p>

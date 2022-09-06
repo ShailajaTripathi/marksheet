@@ -8,8 +8,6 @@ import Button from "react-bootstrap/Button";
 import { Modal } from "antd";
 // import data from "../../../db.json";
 import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
-import ReadOnlyRow from "./Readonlyrow";
-import Editablerow from "./Editablerow";
 import CoscholasticArea from "../../scoreinputform/attendendce/CoscholasticArea";
 
 function SecondPart() {
@@ -39,9 +37,7 @@ function SecondPart() {
   const showModal = () => {
     setStatus(true);
   };
-
   const [secondData, setSeconddata] = useState([]);
-
   const getSeconddata = async () => {
     const response = await axios("https://scorejson.herokuapp.com/secondpart");
     setSeconddata(response.data);

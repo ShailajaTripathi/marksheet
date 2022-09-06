@@ -4,7 +4,6 @@ import "./styles/bottom.css";
 
 function BottomPart() {
   const [percentage, setPercent] = useState(null);
-  // var percentage;
   setTimeout(() => {
     setPercent(localStorage.getItem("per"));
     console.log("asdasd", localStorage.getItem("per"));

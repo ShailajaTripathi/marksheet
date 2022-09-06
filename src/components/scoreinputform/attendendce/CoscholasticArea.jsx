@@ -22,21 +22,16 @@ function CoscholasticArea({
   setEdit,
 }) {
   const [db, setDb] = useState(null);
-  // console.log("data", data);
-
   const initialValues = {
     skill: edit ? data.id : "",
     grade: edit ? data.grade || "" : "",
   };
-
-  // console.log("====", initialValues);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       enableReinitialize: true,
       initialValues: initialValues,
       validationSchema: cosholasticSchema,
       onSubmit: (values, action) => {
-        // console.log("values==>", values);
         postData(values);
         action.resetForm();
       },
@@ -75,7 +70,6 @@ function CoscholasticArea({
     setDb(resp.data);
   };
 
-  // console.log("db", db);
   const handleOk = () => {
     setStatus(false);
     setDisable(false);
@@ -102,7 +96,6 @@ function CoscholasticArea({
               Skills
             </Form.Label>
             <Col sm={8}>
-              {/* {console.log("Hii", values.skill)} */}
               <Form.Select
                 name="skill"
                 value={values.skill || data.id}
@@ -157,8 +150,6 @@ function CoscholasticArea({
                 onBlur={handleBlur}
                 value={values.grade}
               />
-              {/* {console.log("data", data.grade)} */}
-              {/* {console.log("values", values.grade)} */}
 
               {errors.grade && touched.grade ? (
                 <p className="text-danger">{errors.grade}</p>
@@ -183,5 +174,4 @@ function CoscholasticArea({
     </div>
   );
 }
-
 export default CoscholasticArea;

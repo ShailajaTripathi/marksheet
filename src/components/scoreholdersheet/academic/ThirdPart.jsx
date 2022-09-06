@@ -37,7 +37,6 @@ function ThirdPart() {
       percentage: item.percentage,
       id: item.id,
     });
-    // setData(item);
     console.log(item);
     setEdit(true);
   };

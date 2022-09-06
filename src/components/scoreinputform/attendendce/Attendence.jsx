@@ -37,7 +37,6 @@ function Attendence({
   setDisable,
   setEdit,
 }) {
-  // const [cgpa, setCgpa] = useState(0)
   console.log("daat", data);
   const initialValues = {
     workingDays: edit ? data.workingDays || "" : "",
@@ -51,7 +50,6 @@ function Attendence({
       initialValues: initialValues,
       validationSchema: attendenceSchema,
       onSubmit: (values, action) => {
-        // console.log("heere", values);
         postData(values);
         action.resetForm();
       },
@@ -147,16 +145,7 @@ function Attendence({
                       )}
                   </>
                 )}
-                {/* <option>Choose Term..</option>
-                {db &&
-                  db.map(
-                    (item) =>
-                      !item.workingDays && (
-                        <option key={Math.random()} value={item.id}>
-                          {item.term}
-                        </option>
-                      )
-                  )} */}
+                
               </Form.Select>
               {errors.term && touched.term ? (
                 <p className="text-danger">{errors.term}</p>
