@@ -28,40 +28,53 @@ let attendenceSchema = yup.object({
   percentage: yup.number().min(0).max(100).required("Give Percentage"),
 });
 
-function Attendence({ status, setStatus, data, edit }) {
+function Attendence({
+  status,
+  setStatus,
+  data,
+  edit,
+  disable,
+  setDisable,
+  setEdit,
+}) {
   // const [cgpa, setCgpa] = useState(0)
-
+  console.log("daat", data);
   const initialValues = {
-    workingDays: data.workingDays,
-    presentDays: data.presentDays,
-    percentage: data.percentage,
+    workingDays: edit ? data.workingDays || "" : "",
+    presentDays: edit ? data.presentDays || "" : "",
+    percentage: edit ? data.percentage || "" : "",
+    term: edit ? data.id : "",
   };
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
-   
-      initialValues: initialValues,
       enableReinitialize: true,
+      initialValues: initialValues,
       validationSchema: attendenceSchema,
       onSubmit: (values, action) => {
+        // console.log("heere", values);
         postData(values);
         action.resetForm();
       },
     });
   const [db, setDb] = useState(null);
- 
 
-  const postData = async () => {
+  const postData = async (e) => {
+    console.log("essss", e);
+    const te = db.filter((a) => a.id == e.term);
     const response = await axios.put(
-      `http://localhost:3000/thirdpart/${values.term}`,
+      `https://scorejson.herokuapp.com/thirdpart/${e.term}`,
       {
-        term: db.filter((item) => item.id === values.term)[0].term,
-        workingDays: values.workingDays,
-        presentDays: values.presentDays,
-        percentage: values.percentage,
+        term: te[0].term,
+        workingDays: e.workingDays,
+        presentDays: e.presentDays,
+        percentage: e.percentage,
       }
     );
     if (response.status === 200) {
       res();
+      setStatus(false);
+      setDisable(false);
+      setEdit(false);
     }
   };
 
@@ -70,17 +83,20 @@ function Attendence({ status, setStatus, data, edit }) {
   }, []);
   const handleOk = () => {
     setStatus(false);
+    setEdit(false);
   };
 
   const handleCancel = () => {
     setStatus(false);
+    setDisable(false);
+    setEdit(false);
   };
   function updateData() {
     console.log("Updated");
     console.log(values);
   }
   const res = async () => {
-    let resp = await axios.get("http://localhost:3000/thirdpart");
+    let resp = await axios.get("https://scorejson.herokuapp.com/thirdpart");
     setDb(resp.data);
   };
 
@@ -103,8 +119,9 @@ function Attendence({ status, setStatus, data, edit }) {
                 name="term"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.term}
+                value={values.term || data.id}
                 allowClear
+                disabled={disable}
               >
                 {edit ? (
                   <>

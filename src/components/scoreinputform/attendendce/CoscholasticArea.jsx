@@ -12,44 +12,58 @@ let cosholasticSchema = yup.object({
   skill: yup.string().required("Please select skill"),
   grade: yup.string().max(2).min(1).required("Kindly provide Grade"),
 });
-function CoscholasticArea({ status, setStatus, data, edit }) {
-  console.log("data", data);
+function CoscholasticArea({
+  status,
+  setStatus,
+  data,
+  edit,
+  disable,
+  setDisable,
+  setEdit,
+}) {
+  const [db, setDb] = useState(null);
+  // console.log("data", data);
 
   const initialValues = {
-    skill: data.skill,
-    grade: data.grade,
+    skill: edit ? data.id : "",
+    grade: edit ? data.grade || "" : "",
   };
 
-  console.log(initialValues);
+  // console.log("====", initialValues);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       enableReinitialize: true,
       initialValues: initialValues,
       validationSchema: cosholasticSchema,
       onSubmit: (values, action) => {
+        // console.log("values==>", values);
         postData(values);
         action.resetForm();
       },
     });
-  const [db, setDb] = useState(null);
 
   const postData = async (e) => {
     console.log("eeee", e);
+    const sub = db.filter((a) => a.id == e.skill);
+    console.log("aa", sub);
     const response = await axios.put(
-      `http://localhost:3000/secondpart/${values.skill}`,
+      `https://scorejson.herokuapp.com/secondpart/${e.skill}`,
       {
-        subject: db.filter((item) => item.id === values.skill)[0].subject,
-        grade: values.grade,
+        subject: sub[0].subject,
+        grade: e.grade,
       }
     );
     if (response.status === 200) {
       res();
+      setStatus(false);
+      setDisable(false);
+      setEdit(false);
     }
     console.log(values);
   };
   function updateData() {
-    console.log("Updated");
-    console.log(values);
+    // console.log("Updated");
+    // console.log(values);
   }
 
   useEffect(() => {
@@ -57,17 +71,21 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
   }, []);
 
   const res = async () => {
-    let resp = await axios.get("http://localhost:3000/secondpart");
+    let resp = await axios.get("https://scorejson.herokuapp.com/secondpart");
     setDb(resp.data);
   };
 
-  console.log("db", db);
+  // console.log("db", db);
   const handleOk = () => {
     setStatus(false);
+    setDisable(false);
+    setEdit(false);
   };
 
   const handleCancel = () => {
     setStatus(false);
+    setDisable(false);
+    setEdit(false);
   };
 
   return (
@@ -84,13 +102,14 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
               Skills
             </Form.Label>
             <Col sm={8}>
-              {console.log("Hii", values.skill)}
+              {/* {console.log("Hii", values.skill)} */}
               <Form.Select
                 name="skill"
                 value={values.skill || data.id}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 allowClear
+                disabled={disable}
               >
                 {edit ? (
                   <>
@@ -138,8 +157,8 @@ function CoscholasticArea({ status, setStatus, data, edit }) {
                 onBlur={handleBlur}
                 value={values.grade}
               />
-              {console.log("data", data.grade)}
-              {console.log("values", values.grade)}
+              {/* {console.log("data", data.grade)} */}
+              {/* {console.log("values", values.grade)} */}
 
               {errors.grade && touched.grade ? (
                 <p className="text-danger">{errors.grade}</p>

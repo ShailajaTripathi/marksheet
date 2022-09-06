@@ -39,16 +39,21 @@ function ScholasticArea({
   edit,
   setGrandTotal,
   grandTotal,
+  disble,
+  setDisble,
+  setEdit,
 }) {
+  console.log("data", data);
   const initialValues = {
-    subject: data.subject,
-    fa: data.fa,
-    oralf: data.oralf,
-    sa: data.sa,
-    orals: data.orals,
+    subject: edit ? data.id || "" : "",
+    fa: edit ? data.fa || "" : "",
+    oralf: edit ? data.oralf || "" : "",
+    sa: edit ? data.sa || "" : "",
+    orals: edit ? data.orals || "" : "",
+    id: edit ? data.id || "" : "",
   };
 
-  console.log({ initialValues });
+  // console.log({ initialValues });
   const [db, setDb] = useState(null);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -57,26 +62,32 @@ function ScholasticArea({
       initialValues: initialValues,
       validationSchema: scholasticSchema,
       onSubmit: (values) => {
+        // console.log("values", values);
         postData(values);
       },
     });
 
-  const postData = async () => {
+  const postData = async (e) => {
+    console.log("db", db);
+    console.log("e", e);
+    const id = edit ? e.id : e.subject;
+    const sub = db.filter((a) => a.id == e.subject);
+    console.log("sub", sub);
     let totalMarks = values.fa + values.oralf + values.sa + values.orals;
 
-    const response = await axios.put(
-      `http://localhost:3000/firstpart/${values.subject}`,
-      {
-        subject: db.filter((item) => item.id === values.subject)[0].subject,
-        fa: values.fa,
-        oralf: values.oralf,
-        sa: values.sa,
-        orals: values.orals,
-        total: totalMarks,
-      }
-    );
+    const response = await axios.put(`https://scorejson.herokuapp.com/firstpart/${id}`, {
+      subject: sub[0].subject,
+      fa: e.fa,
+      oralf: e.oralf,
+      sa: e.sa,
+      orals: e.orals,
+      total: totalMarks,
+    });
     if (response.status === 200) {
       res();
+      setDisble(false);
+      setStatus(false);
+      setEdit(false);
     }
   };
 
@@ -85,20 +96,25 @@ function ScholasticArea({
   }, []);
 
   function updateData() {
-    console.log("Updated");
-    console.log(values);
+    // console.log("Updated");
+    // console.log(values);
+    postData();
   }
   const res = async () => {
-    let resp = await axios.get("http://localhost:3000/firstpart");
+    let resp = await axios.get("https://scorejson.herokuapp.com/firstpart");
     setDb(resp.data);
   };
 
   const handleOk = () => {
     setStatus(false);
+    setDisble(false);
+    setEdit(false);
   };
 
   const handleCancel = () => {
     setStatus(false);
+    setDisble(false);
+    setEdit(false);
   };
 
   return (
@@ -120,8 +136,9 @@ function ScholasticArea({
                 name="subject"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.subject || data.id}
+                value={values.subject}
                 allowClear
+                disabled={disble}
               >
                 {edit ? (
                   <>
@@ -136,7 +153,7 @@ function ScholasticArea({
                 ) : (
                   <>
                     <option>Choose Subject..</option>
-                   {db &&
+                    {db &&
                       db.map(
                         (item) =>
                           !item.fa && (
@@ -144,7 +161,7 @@ function ScholasticArea({
                               {item.subject}
                             </option>
                           )
-                      )} 
+                      )}
                   </>
                 )}
                 <option>Choose Subject..</option>

@@ -16,7 +16,7 @@ function ThirdPart() {
   });
   const [status, setStatus] = useState(false);
   const [edit, setEdit] = useState(false);
-
+  const [disable, setDisable] = useState(false);
   const showModal = () => {
     setStatus(true);
   };
@@ -43,7 +43,7 @@ function ThirdPart() {
   };
   const [thirdData, setThirddata] = useState([]);
   const getThirddata = async () => {
-    const response = await axios("http://localhost:3000/thirdpart");
+    const response = await axios("https://scorejson.herokuapp.com/thirdpart");
     setThirddata(response.data);
   };
   useEffect(() => {
@@ -82,6 +82,7 @@ function ThirdPart() {
                   className="me-2 btn btn-primary"
                   onClick={() => {
                     showModal();
+                    setDisable(true);
                     editData(e);
                   }}
                 >
@@ -97,6 +98,9 @@ function ThirdPart() {
         setStatus={setStatus}
         data={data}
         edit={edit}
+        disable={disable}
+        setDisable={setDisable}
+        setEdit={setEdit}
       />
     </div>
   );

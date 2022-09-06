@@ -6,7 +6,7 @@ import "./styles/secondPart.css";
 import "../../../assets/css/table.css";
 import Button from "react-bootstrap/Button";
 import { Modal } from "antd";
-import data from "../../../db.json";
+// import data from "../../../db.json";
 import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
 import ReadOnlyRow from "./Readonlyrow";
 import Editablerow from "./Editablerow";
@@ -20,7 +20,7 @@ function SecondPart() {
   });
   const [status, setStatus] = useState(false);
   const [edit, setEdit] = useState(false);
-
+  const [disable, setDisable] = useState(false);
   const handleOk = () => {
     setStatus(false);
   };
@@ -31,11 +31,10 @@ function SecondPart() {
 
   const editData = (item) => {
     console.log("aaaa", item);
-    setData({ skill: item.subject, grade: item.grade, id: item.id });    // setData(item);
+    setData({ skill: item.subject, grade: item.grade, id: item.id }); // setData(item);
     console.log(item);
     setEdit(true);
   };
-
 
   const showModal = () => {
     setStatus(true);
@@ -44,7 +43,7 @@ function SecondPart() {
   const [secondData, setSeconddata] = useState([]);
 
   const getSeconddata = async () => {
-    const response = await axios("http://localhost:3000/secondpart");
+    const response = await axios("https://scorejson.herokuapp.com/secondpart");
     setSeconddata(response.data);
   };
   useEffect(() => {
@@ -53,7 +52,9 @@ function SecondPart() {
 
   return (
     <div className="tables secondTable">
-      <h3 className="text-primary" onClick={showModal}>Part- II : CoScholastic Area</h3>
+      <h3 className="text-primary" onClick={showModal}>
+        Part- II : CoScholastic Area
+      </h3>
       <Table
         striped
         bordered
@@ -78,6 +79,7 @@ function SecondPart() {
                     className="me-2 btn btn-primary"
                     onClick={() => {
                       showModal();
+                      setDisable(true);
                       editData(item);
                     }}
                   >
@@ -94,6 +96,9 @@ function SecondPart() {
         setStatus={setStatus}
         data={data}
         edit={edit}
+        disable={disable}
+        setDisable={setDisable}
+        setEdit={setEdit}
       />
     </div>
   );

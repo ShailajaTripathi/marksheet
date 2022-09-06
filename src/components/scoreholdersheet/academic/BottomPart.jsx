@@ -1,12 +1,21 @@
 import React from "react";
+import { useState } from "react";
 import "./styles/bottom.css";
 
-
 function BottomPart() {
+  const [percentage, setPercent] = useState(null);
+  // var percentage;
+  setTimeout(() => {
+    setPercent(localStorage.getItem("per"));
+    console.log("asdasd", localStorage.getItem("per"));
+  }, [1000]);
+
   return (
     <div className="d-flex justify-content-between bg-light bottomPart">
       <div>
-        <p className="fw-bold">C.G.P. : 9.8</p>
+        <p className="fw-bold">
+          C.G.P. : {percentage ? percentage / 10 : null}
+        </p>
         <p>Teacher's Remarks - Excellent</p>
         <p className="mt-3 fst-italic teacherSign">Teacher's Signature</p>
       </div>

@@ -6,7 +6,7 @@ import './Grading.css';
 function Grading() {
   const [grading, setGrading] = useState([]);
   const getGrading = async () => {
-    const response = await axios("http://localhost:3000/grading");
+    const response = await axios("https://scorejson.herokuapp.com/grading");
     setGrading(response.data);
   };
   useEffect(() => {
