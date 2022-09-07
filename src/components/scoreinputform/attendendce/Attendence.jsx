@@ -49,7 +49,7 @@ function Attendence({
       enableReinitialize: true,
       initialValues: initialValues,
       validationSchema: attendenceSchema,
-      onSubmit: (values, action) => {
+      onSubmit: (values) => {
         postData(values);
         reloadPage();
       },

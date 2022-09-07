@@ -31,7 +31,7 @@ function CoscholasticArea({
       enableReinitialize: true,
       initialValues: initialValues,
       validationSchema: cosholasticSchema,
-      onSubmit: (values, action) => {
+      onSubmit: (values) => {
         postData(values);
         reloadPage();   
       },
