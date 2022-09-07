@@ -4,3 +4,6 @@
 .tableHeight{
     height: 4.34vw !important;
 }
+.second-btn{
+    white-space: nowrap;
+}
