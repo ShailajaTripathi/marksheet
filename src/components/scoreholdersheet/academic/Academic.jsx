@@ -19,13 +19,13 @@ function Academic() {
       <Container fluid="md">
         <Row>
           <Col
-            sm={8}
+            sm={7}
             className="first_column table-responsive border border-dark"
           >
             <FirstPart />
           </Col>
           <Col
-            sm={4}
+            sm={5}
             className="second_column table-responsive border border-dark"
           >
             <SecondPart />

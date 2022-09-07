@@ -9,6 +9,7 @@ import { Modal } from "antd";
 // import data from "../../../db.json";
 import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
 import CoscholasticArea from "../../scoreinputform/attendendce/CoscholasticArea";
+import { saveAs } from "file-saver";
 
 function SecondPart() {
   const [data, setData] = useState({
@@ -45,12 +46,33 @@ function SecondPart() {
   useEffect(() => {
     getSeconddata();
   }, []);
-
+  const saveFile = () => {
+    saveAs("https://scorejson.herokuapp.com/secondpart", "secondpart.json");
+  };
   return (
     <div className="tables secondTable">
-      <h3 className="text-primary" onClick={showModal}>
-        Part- II : CoScholastic Area
-      </h3>
+      <div className="d-flex justify-content-center">
+        <div className="mr-5 p-1">
+          <Button
+            onClick={saveFile}
+            variant="btn btn-outline-primary"
+            className="ml-5 part-head"
+          >
+            Download json
+          </Button>
+        </div>
+        <div className="p-1 flex-grow-1 ">
+          <h3
+            className="text-primary "
+            onClick={() => {
+              setStatus(true);
+            }}
+          >
+            Part- II : CoScholastic Area
+          </h3>
+        </div>
+      </div>
+
       <Table
         striped
         bordered
@@ -79,7 +101,7 @@ function SecondPart() {
                       editData(item);
                     }}
                   >
-                    {item.grade? "Edit":"Add"}
+                    {item.grade ? "Edit" : "Add"}
                   </Button>
                 </div>
               </td>

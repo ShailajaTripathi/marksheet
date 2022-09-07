@@ -5,6 +5,7 @@ import "./styles/firstPart.css";
 import "../../../assets/css/table.css";
 import Button from "react-bootstrap/Button";
 import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
+import { saveAs } from "file-saver";
 
 function FirstPart() {
   const [data, setData] = useState({
@@ -65,17 +66,33 @@ function FirstPart() {
     getFirstdata();
     getResult();
   }, []);
-
+  const saveFile = () => {
+    saveAs("https://scorejson.herokuapp.com/firstpart", "firstpart.json");
+  };
   return (
     <div className="tables firstPart">
-      <h3
-        className="text-primary"
-        onClick={() => {
-          setStatus(true);
-        }}
-      >
-        Part - I : Scholastic Areas
-      </h3>
+      <div className="d-flex justify-content-center">
+        <div className="mr-5 p-1">
+          <Button
+            onClick={saveFile}
+            variant="btn btn-outline-primary"
+            className="ml-5 part-head"
+          >
+            Download json
+          </Button>
+        </div>
+        <div className="p-1 flex-grow-1 ">
+          <h3
+            className="text-primary "
+            onClick={() => {
+              setStatus(true);
+            }}
+          >
+            Part - I : Scholastic Areas
+          </h3>
+        </div>
+      </div>
+
       <Table
         striped
         bordered
@@ -121,7 +138,6 @@ function FirstPart() {
               <td className="text-center">{e.total}</td>
 
               <td>
-
                 <Button
                   className="me-2 btn btn-primary"
                   onClick={() => {
@@ -130,7 +146,7 @@ function FirstPart() {
                     editData(e);
                   }}
                 >
-                { e.fa? "Edit":"Add"}
+                  {e.fa ? "Edit" : "Add"}
                 </Button>
               </td>
             </tr>
