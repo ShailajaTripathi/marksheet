@@ -56,7 +56,7 @@ function SecondPart() {
           <Button
             onClick={saveFile}
             variant="btn btn-outline-primary"
-            className="ml-5"
+            // className="ml-5"
           >
             Download json
           </Button>
