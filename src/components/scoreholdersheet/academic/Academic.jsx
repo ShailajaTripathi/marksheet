@@ -15,7 +15,6 @@ function Academic() {
       <h2 className="text-uppercase title border-bottom border-dark">
         Academic Performace
       </h2>
-
       <Container fluid="md">
         <Row>
           <Col
@@ -32,10 +31,10 @@ function Academic() {
           </Col>
         </Row>
         <Row>
-          <ThirdPart/>
+          <ThirdPart />
         </Row>
         <div>
-          <BottomPart/>
+          <BottomPart />
         </div>
       </Container>
     </div>
