@@ -53,7 +53,6 @@ function ScholasticArea({
     id: edit ? data.id || "" : "",
   };
 
-  // console.log({ initialValues });
   const [db, setDb] = useState(null);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -62,8 +61,8 @@ function ScholasticArea({
       initialValues: initialValues,
       validationSchema: scholasticSchema,
       onSubmit: (values) => {
-        // console.log("values", values);
         postData(values);
+        reloadPage();
       },
     });
 
@@ -73,17 +72,20 @@ function ScholasticArea({
     const id = edit ? e.id : e.subject;
     const sub = db.filter((a) => a.id == e.subject);
     console.log("sub", sub);
-    
+
     let totalMarks = values.fa + values.oralf + values.sa + values.orals;
 
-    const response = await axios.put(`https://scorejson.herokuapp.com/firstpart/${id}`, {
-      subject: sub[0].subject,
-      fa: e.fa,
-      oralf: e.oralf,
-      sa: e.sa,
-      orals: e.orals,
-      total: totalMarks,
-    });
+    const response = await axios.put(
+      `https://scorejson.herokuapp.com/firstpart/${id}`,
+      {
+        subject: sub[0].subject,
+        fa: e.fa,
+        oralf: e.oralf,
+        sa: e.sa,
+        orals: e.orals,
+        total: totalMarks,
+      }
+    );
     if (response.status === 200) {
       res();
       setDisble(false);
@@ -97,8 +99,6 @@ function ScholasticArea({
   }, []);
 
   function updateData() {
-    // console.log("Updated");
-    // console.log(values);
     postData();
   }
   const res = async () => {
@@ -117,7 +117,9 @@ function ScholasticArea({
     setDisble(false);
     setEdit(false);
   };
-
+  const reloadPage = () => {
+    window.location.reload();
+  };
   return (
     <div>
       <Modal
@@ -187,7 +189,6 @@ function ScholasticArea({
               FA Marks
             </Form.Label>
             <Col sm={8}>
-              
               <Form.Control
                 type="number"
                 placeholder="Marks out of 40"
@@ -264,7 +265,7 @@ function ScholasticArea({
                 variant="btn btn-outline-primary"
                 onClick={updateData}
               >
-                Add
+                {edit && data.fa ? "Update Marks" : "Add Marks"}
               </Button>
             </Col>
           </Form.Group>

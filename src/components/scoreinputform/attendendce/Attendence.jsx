@@ -52,6 +52,7 @@ function Attendence({
       onSubmit: (values, action) => {
         postData(values);
         action.resetForm();
+        reloadPage();
       },
     });
   const [db, setDb] = useState(null);
@@ -93,6 +94,10 @@ function Attendence({
     console.log("Updated");
     console.log(values);
   }
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
   const res = async () => {
     let resp = await axios.get("https://scorejson.herokuapp.com/thirdpart");
     setDb(resp.data);
@@ -145,7 +150,6 @@ function Attendence({
                       )}
                   </>
                 )}
-                
               </Form.Select>
               {errors.term && touched.term ? (
                 <p className="text-danger">{errors.term}</p>
@@ -217,7 +221,7 @@ function Attendence({
                 variant="btn btn-outline-primary"
                 onClick={updateData}
               >
-                Add
+                {edit && data.workingDays ? "Update Marks" : "Add Marks"}
               </Button>
             </Col>
           </Form.Group>

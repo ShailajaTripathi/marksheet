@@ -34,6 +34,7 @@ function CoscholasticArea({
       onSubmit: (values, action) => {
         postData(values);
         action.resetForm();
+        reloadPage();
       },
     });
 
@@ -60,7 +61,7 @@ function CoscholasticArea({
     // console.log("Updated");
     // console.log(values);
   }
-
+ 
   useEffect(() => {
     res();
   }, []);
@@ -81,7 +82,10 @@ function CoscholasticArea({
     setDisable(false);
     setEdit(false);
   };
-
+  const reloadPage = () => {
+    window.location.reload();
+  };
+  
   return (
     <div>
       <Modal
@@ -165,7 +169,7 @@ function CoscholasticArea({
                 variant="btn btn-outline-primary"
                 onClick={updateData}
               >
-                Add
+                {edit && data.grade ? "Update Marks" : "Add Marks"}
               </Button>
             </Col>
           </Form.Group>
