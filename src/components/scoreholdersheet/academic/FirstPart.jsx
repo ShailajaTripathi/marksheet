@@ -76,7 +76,7 @@ function FirstPart() {
           <Button
             onClick={saveFile}
             variant="btn btn-outline-primary"
-            className="ml-5 part-head"
+            className="ml-5"
           >
             Download json
           </Button>
