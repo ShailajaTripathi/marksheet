@@ -121,6 +121,7 @@ function FirstPart() {
               <td className="text-center">{e.total}</td>
 
               <td>
+
                 <Button
                   className="me-2 btn btn-primary"
                   onClick={() => {
@@ -129,7 +130,7 @@ function FirstPart() {
                     editData(e);
                   }}
                 >
-                  Edit
+                { e.fa? "Edit":"Add"}
                 </Button>
               </td>
             </tr>

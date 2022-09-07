@@ -79,7 +79,7 @@ function SecondPart() {
                       editData(item);
                     }}
                   >
-                    Edit
+                    {item.grade? "Edit":"Add"}
                   </Button>
                 </div>
               </td>

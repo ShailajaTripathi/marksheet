@@ -73,6 +73,7 @@ function ScholasticArea({
     const id = edit ? e.id : e.subject;
     const sub = db.filter((a) => a.id == e.subject);
     console.log("sub", sub);
+    
     let totalMarks = values.fa + values.oralf + values.sa + values.orals;
 
     const response = await axios.put(`https://scorejson.herokuapp.com/firstpart/${id}`, {

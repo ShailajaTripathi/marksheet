@@ -85,7 +85,8 @@ function ThirdPart() {
                     editData(e);
                   }}
                 >
-                  Edit
+                   {e.workingDays? "Edit":"Add"}
+                
                 </Button>
               </td>
             </tr>
