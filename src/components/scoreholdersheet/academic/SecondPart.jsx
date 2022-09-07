@@ -52,11 +52,11 @@ function SecondPart() {
   return (
     <div className="tables secondTable">
       <div className="d-flex justify-content-center">
-        <div className="mr-5 p-1">
+        <div className="mr-4 p-1">
           <Button
             onClick={saveFile}
             variant="btn btn-outline-primary"
-            className="ml-5 part-head"
+            className="ml-5"
           >
             Download json
           </Button>
