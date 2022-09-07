@@ -33,8 +33,7 @@ function CoscholasticArea({
       validationSchema: cosholasticSchema,
       onSubmit: (values, action) => {
         postData(values);
-        action.resetForm();
-        reloadPage();
+        reloadPage();   
       },
     });
 
@@ -85,7 +84,6 @@ function CoscholasticArea({
   const reloadPage = () => {
     window.location.reload();
   };
-  
   return (
     <div>
       <Modal

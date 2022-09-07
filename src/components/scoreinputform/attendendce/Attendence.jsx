@@ -51,7 +51,6 @@ function Attendence({
       validationSchema: attendenceSchema,
       onSubmit: (values, action) => {
         postData(values);
-        action.resetForm();
         reloadPage();
       },
     });
