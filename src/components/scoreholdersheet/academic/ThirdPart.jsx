@@ -71,7 +71,7 @@ function ThirdPart() {
               setStatus(true);
             }}
           >
-             Part - III : Attendence
+            Part - III : Attendence
           </h3>
         </div>
       </div>
@@ -99,15 +99,15 @@ function ThirdPart() {
               <td>{e.percentage}</td>
               <td>
                 <Button
-                  className="me-2 btn btn-primary"
+                  className="me-2"
+                  variant="btn btn-outline-primary"
                   onClick={() => {
                     showModal();
                     setDisable(true);
                     editData(e);
                   }}
                 >
-                   {e.workingDays? "Edit":"Add"}
-                
+                  {e.workingDays ? "Edit" : "Add"}
                 </Button>
               </td>
             </tr>

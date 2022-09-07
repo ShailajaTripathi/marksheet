@@ -94,7 +94,8 @@ function SecondPart() {
               <td>
                 <div class="btn-group">
                   <Button
-                    className="me-2 btn btn-primary"
+                    className="me-2"
+                    variant="btn btn-outline-primary"
                     onClick={() => {
                       showModal();
                       setDisable(true);
