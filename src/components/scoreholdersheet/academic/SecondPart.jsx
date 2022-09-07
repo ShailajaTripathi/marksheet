@@ -52,7 +52,7 @@ function SecondPart() {
   return (
     <div className="tables secondTable">
       <div className="d-flex justify-content-center">
-        <div className="mr-4 p-1">
+        <div className="mr-3 p-1">
           <Button
             onClick={saveFile}
             variant="btn btn-outline-primary"
@@ -63,7 +63,7 @@ function SecondPart() {
         </div>
         <div className="p-1 flex-grow-1 ">
           <h3
-            className="text-primary "
+            className="text-primary second-btn"
             onClick={() => {
               setStatus(true);
             }}
