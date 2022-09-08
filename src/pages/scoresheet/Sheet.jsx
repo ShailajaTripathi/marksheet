@@ -33,15 +33,15 @@ import { saveAs } from "file-saver";
 // };
 
 export const Sheet = React.forwardRef((props, ref) => {
-  // const saveFile = () => {
-  //   saveAs("https://scorejson.herokuapp.com/firstpart", "scorecard.json");
-  // };
+  const saveFile = () => {
+    saveAs("https://scorejson.herokuapp.com/firstpart", "scorecard.json");
+  };
   return (
     <div id="sheet" className="sheetContainer" ref={ref}>
       
-      {/* <div className="position-absolute top-0 end-0">
-        <Button onClick={saveFile}>Download json</Button>
-      </div> */}
+      <div className="position-absolute top-0 end-0">
+        <Button onClick={saveFile} >Download json</Button>
+      </div>
 
       <h2 className="text-danger text-center border-bottom border-dark">
         First Terminal Examination 2018-2019

@@ -2,18 +2,19 @@ import "./App.css";
 import "antd/dist/antd.min.css";
 import { Sheet } from "./pages/scoresheet/Sheet";
 import Button from "react-bootstrap/Button";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import ReactToPrint from "react-to-print";
 import html2pdf from "html2pdf.js";
 
 function App() {
+  // const [editbtn,setEditbtn] =useState(false);
+
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  //  pdf code //
   const generatePDF = () => {
     const source = document.getElementById("sheet");
     const fileName = "scoresheet.pdf";
@@ -22,10 +23,11 @@ function App() {
       .from(source)
       .save(fileName);
   };
+
   return (
     <div className="App">
+      {/* editbtn={editbtn} setEditbtn={setEditbtn} */}
       <Sheet ref={componentRef} />
-      {/* <h1>Radhe radhe</h1> */}
       <div className="save_download_btn_div">
         <ReactToPrint
           trigger={() => <Button>Print</Button>}
@@ -36,5 +38,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

@@ -10,14 +10,16 @@ import { saveAs } from "file-saver";
 
 function ThirdPart() {
   const [data, setData] = useState({
-    workingDays: "",
-    presentDays: "",
-    percentage: "",
+    workingDays:0,
+    presentDays: 0,
+    percentage: 0,
     id: "",
   });
   const [status, setStatus] = useState(false);
   const [edit, setEdit] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [percentagess, setPercentage] = useState(0);
+
   const showModal = () => {
     setStatus(true);
   };
@@ -45,6 +47,14 @@ function ThirdPart() {
   const getThirddata = async () => {
     const response = await axios("https://scorejson.herokuapp.com/thirdpart");
     setThirddata(response.data);
+
+    for (let i = 0; i <= response.data.length; i++) {
+      var percent = Math.round(
+        ((response.data[i].workingDays) / (response.data[i].presentDays)) * 100
+      );
+      setPercentage(percent);
+      console.log("percent",typeof percent);
+    }
   };
   useEffect(() => {
     getThirddata();
@@ -96,7 +106,7 @@ function ThirdPart() {
               <td className="text-uppercase"> {e.term}</td>
               <td>{e.workingDays}</td>
               <td>{e.presentDays}</td>
-              <td>{e.percentage}</td>
+              <td>{percentagess}</td>
               <td>
                 <Button
                   className="me-2"

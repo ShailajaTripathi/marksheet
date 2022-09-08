@@ -23,7 +23,7 @@ function FirstPart() {
   const [status, setStatus] = useState(false);
   const [grandTotal, setGrandTotal] = useState(0);
   const [percentage, setPercentage] = useState(0);
-  const [disble, setDisble] = useState(false);
+  const [disable, setDisable] = useState(false);
 
   const getFirstdata = async () => {
     const response = await axios("https://scorejson.herokuapp.com/firstpart");
@@ -37,7 +37,8 @@ function FirstPart() {
     setFirstdata(response.data);
   };
   console.log("percentage", percentage);
-  localStorage.setItem("per", percentage);
+  localStorage.setItem("per", percentage); 
+  
   const getResult = async () => {
     const response = await axios("https://scorejson.herokuapp.com/result");
     setResult(response.data);
@@ -143,7 +144,7 @@ function FirstPart() {
                   variant="btn btn-outline-primary"
                   onClick={() => {
                     showModal();
-                    setDisble(true);
+                    setDisable(true);
                     editData(e);
                   }}
                 >
@@ -190,8 +191,8 @@ function FirstPart() {
         edit={edit}
         grandTotal={grandTotal}
         setGrandTotal={setGrandTotal}
-        disble={disble}
-        setDisble={setDisble}
+        disable={disable}
+        setDisable={setDisable}
         setEdit={setEdit}
       />
     </div>

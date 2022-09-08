@@ -39,8 +39,8 @@ function ScholasticArea({
   edit,
   setGrandTotal,
   grandTotal,
-  disble,
-  setDisble,
+  disable,
+  setDisable,
   setEdit,
 }) {
   console.log("data", data);
@@ -88,7 +88,7 @@ function ScholasticArea({
     );
     if (response.status === 200) {
       res();
-      setDisble(false);
+      setDisable(false);
       setStatus(false);
       setEdit(false);
     }
@@ -108,13 +108,13 @@ function ScholasticArea({
 
   const handleOk = () => {
     setStatus(false);
-    setDisble(false);
+    setDisable(false);
     setEdit(false);
   };
 
   const handleCancel = () => {
     setStatus(false);
-    setDisble(false);
+    setDisable(false);
     setEdit(false);
   };
   const reloadPage = () => {
@@ -141,7 +141,7 @@ function ScholasticArea({
                 onBlur={handleBlur}
                 value={values.subject}
                 allowClear
-                disabled={disble}
+                disabled={disable}
               >
                 {edit ? (
                   <>
