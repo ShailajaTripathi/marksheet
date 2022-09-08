@@ -10,7 +10,7 @@ import { saveAs } from "file-saver";
 
 function ThirdPart() {
   const [data, setData] = useState({
-    workingDays:0,
+    workingDays: 0,
     presentDays: 0,
     percentage: 0,
     id: "",
@@ -50,10 +50,10 @@ function ThirdPart() {
 
     for (let i = 0; i <= response.data.length; i++) {
       var percent = Math.round(
-        ((response.data[i].workingDays) / (response.data[i].presentDays)) * 100
+        (response.data[i].workingDays / response.data[i].presentDays) * 100
       );
       setPercentage(percent);
-      console.log("percent",typeof percent);
+      console.log("percent", typeof percent);
     }
   };
   useEffect(() => {
