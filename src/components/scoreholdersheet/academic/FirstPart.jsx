@@ -67,20 +67,20 @@ function FirstPart() {
     getFirstdata();
     getResult();
   }, []);
-  const saveFile = () => {
-    saveAs("https://scorejson.herokuapp.com/firstpart", "firstpart.json");
-  };
+  // const saveFile = () => {
+  //   saveAs("https://scorejson.herokuapp.com/firstpart", "firstpart.json");
+  // };
   return (
     <div className="tables firstPart">
       <div className="d-flex justify-content-center">
         <div className="mr-5 p-1">
-          <Button
+          {/* <Button
             onClick={saveFile}
             variant="btn btn-outline-primary"
             className="ml-5"
           >
             Download json
-          </Button>
+          </Button> */}
         </div>
         <div className="p-1 flex-grow-1 ">
           <h3

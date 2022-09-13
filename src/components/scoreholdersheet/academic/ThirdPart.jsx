@@ -6,7 +6,7 @@ import "antd/dist/antd.css";
 import { Modal } from "antd";
 import Attendence from "../../scoreinputform/attendendce/Attendence";
 import Button from "react-bootstrap/Button";
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
 
 function ThirdPart() {
   const [data, setData] = useState({
@@ -59,20 +59,20 @@ function ThirdPart() {
   useEffect(() => {
     getThirddata();
   }, []);
-  const saveFile = () => {
-    saveAs("https://scorejson.herokuapp.com/thirdpart", "thirdpart.json");
-  };
+  // const saveFile = () => {
+  //   saveAs("https://scorejson.herokuapp.com/thirdpart", "thirdpart.json");
+  // };
   return (
     <div className="tables">
       <div className="d-flex justify-content-center mt-4">
         <div className="mr-5 p-1">
-          <Button
+          {/* <Button
             onClick={saveFile}
             variant="btn btn-outline-primary"
             className="ml-5"
           >
             Download json
-          </Button>
+          </Button> */}
         </div>
         <div className="p-1 flex-grow-1 ">
           <h3

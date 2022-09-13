@@ -46,20 +46,20 @@ function SecondPart() {
   useEffect(() => {
     getSeconddata();
   }, []);
-  const saveFile = () => {
-    saveAs("https://scorejson.herokuapp.com/secondpart", "secondpart.json");
-  };
+  // const saveFile = () => {
+  //   saveAs("https://scorejson.herokuapp.com/secondpart", "secondpart.json");
+  // };
   return (
     <div className="tables secondTable">
       <div className="d-flex justify-content-center">
         <div className="mr-3 p-1">
-          <Button
+          {/* <Button
             onClick={saveFile}
             variant="btn btn-outline-primary"
             className="second-btn"
           >
             Download json
-          </Button>
+          </Button> */}
         </div>
         <div className="p-1 flex-grow-1 ">
           <h3
