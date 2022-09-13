@@ -51,14 +51,15 @@ function Attendence({
       validationSchema: attendenceSchema,
       onSubmit: (values) => {
         postData(values);
-        reloadPage();
+        // reloadPage();
       },
     });
   const [db, setDb] = useState(null);
 
   const postData = async (e) => {
-    console.log("essss", e);
+    
     const te = db.filter((a) => a.id == e.term);
+    console.log("essss", te);
     const response = await axios.put(
       `https://scorejson.herokuapp.com/thirdpart/${e.term}`,
       {

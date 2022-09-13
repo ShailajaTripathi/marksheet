@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Academic from "../../components/scoreholdersheet/academic/Academic";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/table.css";
@@ -6,6 +6,8 @@ import Grading from "../../components/scoreholdersheet/grading/Grading";
 import Button from "react-bootstrap/Button";
 import scores from "../../db.json";
 import { saveAs } from "file-saver";
+import axios from "axios";
+import { useEffect } from "react";
 
 // import scores from 'https://scorejson.herokuapp.com/'
 
@@ -33,14 +35,36 @@ import { saveAs } from "file-saver";
 // };
 
 export const Sheet = React.forwardRef((props, ref) => {
+  const [firstData, setFirstData] = useState(null);
+  const [secondData, setSecondData] = useState(null);
+  const [thirdData, setThirdData] = useState(null);
+  useEffect(() => {
+    axios.get("https://scorejson.herokuapp.com/firstpart").then((res) => {
+      setFirstData(res.data);
+    });
+    axios.get("https://scorejson.herokuapp.com/secondpart").then((res) => {
+      setSecondData(res.data);
+    });
+    axios.get("https://scorejson.herokuapp.com/thirdpart").then((res) => {
+      setThirdData(res.data);
+    });
+  }, []);
   const saveFile = () => {
-    saveAs("https://scorejson.herokuapp.com/firstpart", "scorecard.json");
+    console.log("yyyy", firstData, secondData, thirdData);
+    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+      JSON.stringify([firstData, secondData, thirdData])
+    )}`;
+    const link = document.createElement("a");
+    link.href = jsonString;
+    link.download = "data.json";
+
+    link.click();
   };
+
   return (
     <div id="sheet" className="sheetContainer" ref={ref}>
-      
       <div className="position-absolute top-0 end-0">
-        <Button onClick={saveFile} >Download json</Button>
+        <Button onClick={saveFile}>Download json</Button>
       </div>
 
       <h2 className="text-danger text-center border-bottom border-dark">

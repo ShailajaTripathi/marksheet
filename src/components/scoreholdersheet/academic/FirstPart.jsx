@@ -66,7 +66,7 @@ function FirstPart() {
   useEffect(() => {
     getFirstdata();
     getResult();
-  }, []);
+  }, [status]);
   // const saveFile = () => {
   //   saveAs("https://scorejson.herokuapp.com/firstpart", "firstpart.json");
   // };

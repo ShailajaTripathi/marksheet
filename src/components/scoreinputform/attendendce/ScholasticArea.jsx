@@ -62,7 +62,7 @@ function ScholasticArea({
       validationSchema: scholasticSchema,
       onSubmit: (values) => {
         postData(values);
-        reloadPage();
+        // reloadPage();
       },
     });
 

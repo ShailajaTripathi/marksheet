@@ -45,7 +45,7 @@ function SecondPart() {
   };
   useEffect(() => {
     getSeconddata();
-  }, []);
+  }, [status]);
   // const saveFile = () => {
   //   saveAs("https://scorejson.herokuapp.com/secondpart", "secondpart.json");
   // };

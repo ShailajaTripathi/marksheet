@@ -15,10 +15,12 @@ function ThirdPart() {
     percentage: 0,
     id: "",
   });
+
   const [status, setStatus] = useState(false);
   const [edit, setEdit] = useState(false);
   const [disable, setDisable] = useState(false);
-  const [percentagess, setPercentage] = useState(0);
+const [percent1,setPercent1]=useState("")
+const [percent2,setPercent2]=useState("")
 
   const showModal = () => {
     setStatus(true);
@@ -47,21 +49,26 @@ function ThirdPart() {
   const getThirddata = async () => {
     const response = await axios("https://scorejson.herokuapp.com/thirdpart");
     setThirddata(response.data);
-
-    for (let i = 0; i <= response.data.length; i++) {
-      var percent = Math.round(
-        (response.data[i].workingDays / response.data[i].presentDays) * 100
-      );
-      setPercentage(percent);
-      console.log("percent", typeof percent);
-    }
+console.log("hii",response.data)
+    // for (let i = 0; i <= response.data.length; i++) {
+    //   console.log("daaaa",response.data[i])
+    //   var percent = Math.floor(
+    //     (response.data[i].presentDays / response.data[i].workingDays) * 100
+    //   );
+    //   setPercent`${i}`(percent)
+    //   // setPercentage(percent);
+    //   // console.log("percent", percent);
+    // }
   };
+  console.log("ppppp",thirdData)
   useEffect(() => {
     getThirddata();
-  }, []);
+  }, [status]);
+
   // const saveFile = () => {
   //   saveAs("https://scorejson.herokuapp.com/thirdpart", "thirdpart.json");
   // };
+
   return (
     <div className="tables">
       <div className="d-flex justify-content-center mt-4">
@@ -94,7 +101,7 @@ function ThirdPart() {
         <thead>
           <tr>
             <th> </th>
-            <th>No. of working days</th>
+            <th>No. of Working Days</th>
             <th>No. of Days Present</th>
             <th>Percentage</th>
             <th>Edit</th>
@@ -106,7 +113,7 @@ function ThirdPart() {
               <td className="text-uppercase"> {e.term}</td>
               <td>{e.workingDays}</td>
               <td>{e.presentDays}</td>
-              <td>{percentagess}</td>
+              <td>{Math.floor(e.presentDays/e.workingDays*100)}</td>
               <td>
                 <Button
                   className="me-2"
@@ -133,6 +140,10 @@ function ThirdPart() {
         setDisable={setDisable}
         setEdit={setEdit}
       />
+
+
+
+      
     </div>
   );
 }
