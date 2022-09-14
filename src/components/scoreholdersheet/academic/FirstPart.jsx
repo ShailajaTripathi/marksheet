@@ -37,8 +37,8 @@ function FirstPart(props) {
     setFirstdata(response.data);
   };
   // console.log("percentage", percentage);
-  localStorage.setItem("per", percentage); 
-  
+  localStorage.setItem("per", percentage);
+
   const getResult = async () => {
     const response = await axios("https://scorejson.herokuapp.com/result");
     setResult(response.data);
@@ -73,7 +73,10 @@ function FirstPart(props) {
   return (
     <div className="tables firstPart">
       <div className="d-flex justify-content-center">
-        <div className="mr-5 p-1" style={{display: props.showing ? "none":"inline-block"}}>
+        <div
+          className="mr-5 p-1"
+          style={{ display: props.showing ? "none" : "inline-block" }}
+        >
           <Button
             onClick={() => {
               setStatus(true);
@@ -81,15 +84,11 @@ function FirstPart(props) {
             variant="btn btn-outline-primary"
             className="ml-5"
           >
-          Add Marks
+            Add Marks
           </Button>
         </div>
         <div className="p-1 flex-grow-1 ">
-          <h3
-            className="text-primary "
-          >
-            Part - I : Scholastic Areas
-          </h3>
+          <h3 className="text-primary text-center">Part - I : Scholastic Areas</h3>
         </div>
       </div>
 
@@ -108,21 +107,25 @@ function FirstPart(props) {
             <th className="tableHead text-uppercase col-sm-2" rowspan={2}>
               Subjects
             </th>
-            <th className="col-sm-1">FA</th>
-            <th className="col-sm-1">Oral</th>
-            <th className="col-sm-1">SA</th>
-            <th className="col-sm-1">Oral</th>
-            <th className="col-sm-1">Overall Marks</th>
-            <th className="col-sm-1" rowspan={2} style={{display: props.showing ? "none":"table-cell"}}>
+            <th className="col-sm-1 text-center">FA</th>
+            <th className="col-sm-1 text-center">Oral</th>
+            <th className="col-sm-1 text-center">SA</th>
+            <th className="col-sm-1 text-center">Oral</th>
+            <th className="col-sm-1 text-center">Overall Marks</th>
+            <th
+              className="col-sm-1"
+              rowspan={2}
+              style={{ display: props.showing ? "none" : "table-cell" }}
+            >
               Edit
             </th>
           </tr>
           <tr>
-            <td className="border-top border-dark fw-bold">40</td>
-            <td className="border-top border-dark fw-bold">10</td>
-            <td className="border-top border-dark fw-bold">40</td>
-            <td className="border-top border-dark fw-bold">10</td>
-            <td className="border-top border-dark fw-bold">100</td>
+            <td className="border-top border-dark fw-bold text-center">40</td>
+            <td className="border-top border-dark fw-bold text-center">10</td>
+            <td className="border-top border-dark fw-bold text-center">40</td>
+            <td className="border-top border-dark fw-bold text-center">10</td>
+            <td className="border-top border-dark fw-bold text-center">100</td>
           </tr>
         </thead>
 
@@ -137,7 +140,7 @@ function FirstPart(props) {
               <td className="text-center">{e.orals}</td>
               <td className="text-center">{e.total}</td>
 
-              <td style={{display: props.showing ? "none":"table-cell"}}>
+              <td style={{ display: props.showing ? "none" : "table-cell" }}>
                 <Button
                   className="me-2"
                   variant="btn btn-outline-primary"

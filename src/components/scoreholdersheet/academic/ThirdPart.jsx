@@ -76,7 +76,7 @@ function ThirdPart(props) {
           </Button>
         </div>
         <div className="p-1 flex-grow-1 ">
-          <h3 className="text-primary ">Part - III : Attendence</h3>
+          <h3 className="text-primary text-center">Part - III : Attendence</h3>
         </div>
       </div>
       <Table

@@ -34,12 +34,12 @@ function App(remove, setRemove) {
       {/* editbtn={editbtn} setEditbtn={setEditbtn} */}
       <Sheet ref={componentRef} showbtn={showbtn} />
       <div className="save_download_btn_div">
-        <Button
+        <Button variant ="success"
           onClick={() => {
             setShowbtn(!showbtn); setRemove(!remove);
           }}
         >
-          Save Page
+         {!showbtn ?"Save Page":"Edit Page"} 
         </Button>
 
         <span style={{ display: showbtn ? "block" : "none" }}>
@@ -48,7 +48,7 @@ function App(remove, setRemove) {
             content={() => componentRef.current}
           />
 
-          <Button onClick={generatePDF}>Download</Button>
+          <Button onClick={generatePDF} style={{marginLeft:"5px"}}>Download</Button>
         </span>
 
         {/* <div className="save_btn">

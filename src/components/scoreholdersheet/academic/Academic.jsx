@@ -12,7 +12,7 @@ import Row from "react-bootstrap/Row";
 function Academic(props) {
   return (
     <div className="topPart">
-      <h2 className="text-uppercase title border-bottom border-dark">
+      <h2 className="text-uppercase title border-bottom border-dark text-center">
         Academic Performace
       </h2>
       <Container fluid="md">

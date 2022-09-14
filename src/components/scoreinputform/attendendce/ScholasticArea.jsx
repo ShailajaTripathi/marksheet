@@ -98,22 +98,22 @@ function ScholasticArea({
     res();
   }, []);
 
-  // const deleteData = async () => {
-  //   console.log("json", data.skill, data.id);
-  //   await axios
-  //     .put(`https://scorejson.herokuapp.com/firstpart/${data.id}`, {
-  //       subject: data.subject,
-  //       fa: ,
-  //       oralf: e.oralf,
-  //       sa: e.sa,
-  //       orals: e.orals,
-  //       total: totalMarks,
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
-  // };
-  
+  const deleteData = async () => {
+   
+    await axios
+      .put(`https://scorejson.herokuapp.com/firstpart/${data.id}`, {
+        subject: data.subject,
+        fa:"" ,
+        oralf: "",
+        sa: "",
+        orals:"",
+       
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
   function updateData() {
     postData();
   }
@@ -283,6 +283,20 @@ function ScholasticArea({
               >
                 {edit && data.fa ? "Update Marks" : "Add Marks"}
               </Button>
+            </Col>
+            <Col sm={{ span: 5, offset: 0 }}>
+              {edit && data.fa ? (
+                <Button
+                  type="submit"
+                  className="px-4"
+                  variant="btn btn-outline-danger"
+                  onClick={deleteData}
+                >
+                  Remove Marks
+                </Button>
+              ) : (
+                <p></p>
+              )}
             </Col>
           </Form.Group>
         </Form>

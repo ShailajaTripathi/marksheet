@@ -67,7 +67,7 @@ function SecondPart(props) {
         </div>
         <div className="p-1 flex-grow-1 ">
           <h3
-            className="text-primary second-btn"
+            className="text-primary second-btn text-center"
           >
             Part- II : CoScholastic Area
           </h3>
