@@ -11,7 +11,7 @@ import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
 import CoscholasticArea from "../../scoreinputform/attendendce/CoscholasticArea";
 import { saveAs } from "file-saver";
 
-function SecondPart() {
+function SecondPart(props) {
   const [data, setData] = useState({
     skill: "",
     grade: "",
@@ -54,7 +54,7 @@ function SecondPart() {
   return (
     <div className="tables secondTable">
       <div className="d-flex justify-content-center">
-        <div className="mr-3 p-1">
+        <div className="mr-3 p-1" style={{display: props.showing ? "none":"inline-block"}}>
           <Button
             onClick={() => {
               setStatus(true);
@@ -84,7 +84,7 @@ function SecondPart() {
           <tr>
             <th className="col-sm-7">Skills</th>
             <th className="col-sm-1">Grade</th>
-            <th className="col-sm-1">Edit</th>
+            <th className="col-sm-1"style={{display: props.showing ? "none":"table-cell"}}>Edit</th>
           </tr>
         </thead>
         <tbody className="tableBody tables">
@@ -92,7 +92,7 @@ function SecondPart() {
             <tr className="tableHeight">
               <td>{item.subject}</td>
               <td className="text-center">{item.grade}</td>
-              <td>
+              <td style={{display: props.showing ? "none":"table-cell"}}>
                 <div class="btn-group">
                   <Button
                     className="me-2"

@@ -8,7 +8,7 @@ import Attendence from "../../scoreinputform/attendendce/Attendence";
 import Button from "react-bootstrap/Button";
 // import { saveAs } from "file-saver";
 
-function ThirdPart() {
+function ThirdPart(props) {
   const [data, setData] = useState({
     workingDays: 0,
     presentDays: 0,
@@ -61,7 +61,10 @@ function ThirdPart() {
   return (
     <div className="tables">
       <div className="d-flex justify-content-center mt-4">
-        <div className="mr-5 p-1">
+        <div
+          className="mr-5 p-1"
+          style={{ display: props.showing ? "none" : "inline-block" }}
+        >
           <Button
             onClick={() => {
               setStatus(true);
@@ -88,9 +91,10 @@ function ThirdPart() {
             <th>No. of Working Days</th>
             <th>No. of Days Present</th>
             <th>Percentage</th>
-
-            {/* <th style={remove ?  }>Edit</th> */}
-            <th>Edit</th>
+            <th style={{ display: props.showing ? "none" : "table-cell" }}>
+              Edit
+            </th>
+            {/* <th>Edit</th> */}
           </tr>
         </thead>
         <tbody>
@@ -100,7 +104,7 @@ function ThirdPart() {
               <td>{e.workingDays}</td>
               <td>{e.presentDays}</td>
               <td>{Math.floor((e.presentDays / e.workingDays) * 100)}</td>
-              <td>
+              <td style={{ display: props.showing ? "none" : "table-cell" }}>
                 <Button
                   className="me-2"
                   variant="btn btn-outline-primary"
@@ -125,6 +129,8 @@ function ThirdPart() {
         disable={disable}
         setDisable={setDisable}
         setEdit={setEdit}
+        remove={remove}
+        setRemove={false}
       />
     </div>
   );

@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-function Academic() {
+function Academic(props) {
   return (
     <div className="topPart">
       <h2 className="text-uppercase title border-bottom border-dark">
@@ -21,17 +21,17 @@ function Academic() {
             sm={7}
             className="first_column table-responsive border border-dark"
           >
-            <FirstPart />
+            <FirstPart showing={props.shown}/>
           </Col>
           <Col
             sm={5}
             className="second_column table-responsive border border-dark"
           >
-            <SecondPart />
+            <SecondPart showing={props.shown} />
           </Col>
         </Row>
         <Row>
-          <ThirdPart />
+          <ThirdPart showing={props.shown} />
         </Row>
         <div>
           <BottomPart />

@@ -9,9 +9,11 @@ import html2pdf from "html2pdf.js";
 import { useContext } from "react";
 import { DataContext } from "./components/contexts/DataContext";
 
-function App() {
+function App(remove, setRemove) {
   // const [editbtn,setEditbtn] =useState(false);
   // const { handleEditButton, editFlag } = useContext(DataContext);
+  //console.log("removeeeeeeeeeeeeeee", remove);
+  const [showbtn, setShowbtn] = useState(false);
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -30,14 +32,24 @@ function App() {
   return (
     <div className="App">
       {/* editbtn={editbtn} setEditbtn={setEditbtn} */}
-      <Sheet ref={componentRef} />
+      <Sheet ref={componentRef} showbtn={showbtn} />
       <div className="save_download_btn_div">
-        <ReactToPrint
-          trigger={() => <Button>Print</Button>}
-          content={() => componentRef.current}
-        />
-        <Button onClick={generatePDF}>Download</Button>
-     
+        <Button
+          onClick={() => {
+            setShowbtn(!showbtn); setRemove(!remove);
+          }}
+        >
+          Save Page
+        </Button>
+
+        <span style={{ display: showbtn ? "block" : "none" }}>
+          <ReactToPrint
+            trigger={() => <Button>Print</Button>}
+            content={() => componentRef.current}
+          />
+
+          <Button onClick={generatePDF}>Download</Button>
+        </span>
 
         {/* <div className="save_btn">
           {editFlag ? (

@@ -58,16 +58,16 @@ export const Sheet = React.forwardRef((props, ref) => {
     link.download = "scorecard.json";
     link.click();
   };
-
+  // style={{display: props.showing ? "none":"inline-block"}}
   return (
     <div id="sheet" className="sheetContainer" ref={ref}>
       <div className="position-absolute top-0 end-0">
-        <Button onClick={saveFile}>Download json</Button>
+        <Button onClick={saveFile} style={{display: props.showbtn ? "none":"inline-block"}}>Download json</Button>
       </div>
       <h2 className="text-danger text-center border-bottom border-dark">
         First Terminal Examination 2018-2019
       </h2>
-      <Academic />
+      <Academic shown={props.showbtn}/>
       <Grading />
     </div>
   );

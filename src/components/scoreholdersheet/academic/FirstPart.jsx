@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import ScholasticArea from "../../scoreinputform/attendendce/ScholasticArea";
 import { saveAs } from "file-saver";
 
-function FirstPart() {
+function FirstPart(props) {
   const [data, setData] = useState({
     subject: "",
     fa: "",
@@ -73,7 +73,7 @@ function FirstPart() {
   return (
     <div className="tables firstPart">
       <div className="d-flex justify-content-center">
-        <div className="mr-5 p-1">
+        <div className="mr-5 p-1" style={{display: props.showing ? "none":"inline-block"}}>
           <Button
             onClick={() => {
               setStatus(true);
@@ -113,7 +113,7 @@ function FirstPart() {
             <th className="col-sm-1">SA</th>
             <th className="col-sm-1">Oral</th>
             <th className="col-sm-1">Overall Marks</th>
-            <th className="col-sm-1" rowspan={2}>
+            <th className="col-sm-1" rowspan={2} style={{display: props.showing ? "none":"table-cell"}}>
               Edit
             </th>
           </tr>
@@ -137,7 +137,7 @@ function FirstPart() {
               <td className="text-center">{e.orals}</td>
               <td className="text-center">{e.total}</td>
 
-              <td>
+              <td style={{display: props.showing ? "none":"table-cell"}}>
                 <Button
                   className="me-2"
                   variant="btn btn-outline-primary"

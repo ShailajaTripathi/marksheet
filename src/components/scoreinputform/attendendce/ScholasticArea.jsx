@@ -98,6 +98,22 @@ function ScholasticArea({
     res();
   }, []);
 
+  // const deleteData = async () => {
+  //   console.log("json", data.skill, data.id);
+  //   await axios
+  //     .put(`https://scorejson.herokuapp.com/firstpart/${data.id}`, {
+  //       subject: data.subject,
+  //       fa: ,
+  //       oralf: e.oralf,
+  //       sa: e.sa,
+  //       orals: e.orals,
+  //       total: totalMarks,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     });
+  // };
+  
   function updateData() {
     postData();
   }
