@@ -43,7 +43,7 @@ function ScholasticArea({
   setDisable,
   setEdit,
 }) {
-  console.log("data", data);
+  // console.log("data", data);
   const initialValues = {
     subject: edit ? data.id || "" : "",
     fa: edit ? data.fa || "" : "",
@@ -67,11 +67,11 @@ function ScholasticArea({
     });
 
   const postData = async (e) => {
-    console.log("db", db);
-    console.log("e", e);
+    // console.log("db", db);
+    // console.log("e", e);
     const id = edit ? e.id : e.subject;
     const sub = db.filter((a) => a.id == e.subject);
-    console.log("sub", sub);
+    // console.log("sub", sub);
 
     let totalMarks = values.fa + values.oralf + values.sa + values.orals;
 

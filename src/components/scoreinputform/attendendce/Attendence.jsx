@@ -24,8 +24,6 @@ let attendenceSchema = yup.object({
         return value <= parseInt(this.parent.workingDays);
       },
     }),
-
-  percentage: yup.number().min(0).max(100).required("Give Percentage"),
 });
 
 function Attendence({
@@ -37,11 +35,10 @@ function Attendence({
   setDisable,
   setEdit,
 }) {
-  console.log("daat", data);
+  // console.log("daat", data);
   const initialValues = {
     workingDays: edit ? data.workingDays || "" : "",
     presentDays: edit ? data.presentDays || "" : "",
-    percentage: edit ? data.percentage || "" : "",
     term: edit ? data.id : "",
   };
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -56,25 +53,33 @@ function Attendence({
     });
   const [db, setDb] = useState(null);
 
+
   const postData = async (e) => {
-    
     const te = db.filter((a) => a.id == e.term);
-    console.log("essss", te);
+    // console.log("essss", te);
     const response = await axios.put(
       `https://scorejson.herokuapp.com/thirdpart/${e.term}`,
       {
         term: te[0].term,
         workingDays: e.workingDays,
         presentDays: e.presentDays,
-        percentage: e.percentage,
       }
     );
+
     if (response.status === 200) {
       res();
       setStatus(false);
       setDisable(false);
       setEdit(false);
     }
+  };
+
+  const deleteData = async () => {
+    await axios.put(`https://scorejson.herokuapp.com/thirdpart/${data.id}`, {
+      term: data.term,
+      workingDays: "",
+      presentDays: "",
+    });
   };
 
   useEffect(() => {
@@ -91,13 +96,9 @@ function Attendence({
     setEdit(false);
   };
   function updateData() {
-    console.log("Updated");
-    console.log(values);
+    // console.log("Updated");
+    // console.log(values);
   }
-  const reloadPage = () => {
-    window.location.reload();
-  };
-
   const res = async () => {
     let resp = await axios.get("https://scorejson.herokuapp.com/thirdpart");
     setDb(resp.data);
@@ -118,7 +119,7 @@ function Attendence({
             </Form.Label>
             <Col sm={5}>
               <Form.Select
-                defaultValue="Choose..."
+                defaultValue="Choose.."
                 name="term"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -193,26 +194,6 @@ function Attendence({
               ) : null}
             </Col>
           </Form.Group>
-
-          <Form.Group as={Row} className="mb-3" controlId="number">
-            <Form.Label column sm={3}>
-              Percentage
-            </Form.Label>
-            <Col sm={5}>
-              <Form.Control
-                type="number"
-                placeholder="Enter Percentage"
-                name="percentage"
-                value={values.percentage}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors.percentage && touched.percentage ? (
-                <p className="text-danger">{errors.percentage}</p>
-              ) : null}
-            </Col>
-          </Form.Group>
-
           <Form.Group as={Row} className="mb-3">
             <Col sm={{ span: 5, offset: 0 }}>
               <Button
@@ -223,6 +204,20 @@ function Attendence({
               >
                 {edit && data.workingDays ? "Update Marks" : "Add Marks"}
               </Button>
+            </Col>
+            <Col sm={{ span: 5, offset: 0 }}>
+              {edit && data.workingDays ? (
+                <Button
+                  type="submit"
+                  className="px-4"
+                  variant="btn btn-outline-danger"
+                  onClick={deleteData}
+                >
+                  Remove Marks
+                </Button>
+              ) : (
+                <p></p>
+              )}
             </Col>
           </Form.Group>
         </Form>

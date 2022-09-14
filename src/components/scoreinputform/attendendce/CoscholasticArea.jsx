@@ -33,14 +33,14 @@ function CoscholasticArea({
       validationSchema: cosholasticSchema,
       onSubmit: (values) => {
         postData(values);
-        // reloadPage();   
+        // reloadPage();
       },
     });
 
   const postData = async (e) => {
-    console.log("eeee", e);
+    // console.log("eeee", e);
     const sub = db.filter((a) => a.id == e.skill);
-    console.log("aa", sub);
+    // console.log("aa", sub);
     const response = await axios.put(
       `https://scorejson.herokuapp.com/secondpart/${e.skill}`,
       {
@@ -54,13 +54,13 @@ function CoscholasticArea({
       setDisable(false);
       setEdit(false);
     }
-    console.log(values);
+    // console.log(values);
   };
   function updateData() {
     // console.log("Updated");
     // console.log(values);
   }
- 
+
   useEffect(() => {
     res();
   }, []);
@@ -81,9 +81,19 @@ function CoscholasticArea({
     setDisable(false);
     setEdit(false);
   };
-  const reloadPage = () => {
-    window.location.reload();
+
+  const deleteData = async () => {
+    console.log("json", data.skill, data.id);
+    await axios
+      .put(`https://scorejson.herokuapp.com/secondpart/${data.id}`, {
+        subject: data.skill,
+        grade: null,
+      })
+      .then((res) => {
+        console.log(res);
+      });
   };
+
   return (
     <div>
       <Modal
@@ -169,6 +179,20 @@ function CoscholasticArea({
               >
                 {edit && data.grade ? "Update Marks" : "Add Marks"}
               </Button>
+            </Col>
+            <Col sm={{ span: 5, offset: 0 }}>
+              {edit && data.grade ? (
+                <Button
+                  type="submit"
+                  className="px-4"
+                  variant="btn btn-outline-danger"
+                  onClick={deleteData}
+                >
+                  Remove Marks
+                </Button>
+              ) : (
+                <p></p>
+              )}
             </Col>
           </Form.Group>
         </Form>

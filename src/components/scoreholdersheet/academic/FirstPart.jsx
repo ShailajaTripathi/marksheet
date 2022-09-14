@@ -36,7 +36,7 @@ function FirstPart() {
     setPercentage(percent);
     setFirstdata(response.data);
   };
-  console.log("percentage", percentage);
+  // console.log("percentage", percentage);
   localStorage.setItem("per", percentage); 
   
   const getResult = async () => {
@@ -49,7 +49,7 @@ function FirstPart() {
   };
 
   const editData = (item) => {
-    console.log("aaaa", item);
+    // console.log("aaaa", item);
     setData({
       subject: item.subject,
       fa: item.fa,
@@ -59,7 +59,7 @@ function FirstPart() {
       id: item.id,
     });
 
-    console.log(item);
+    // console.log(item);
     setEdit(true);
   };
 
@@ -74,20 +74,19 @@ function FirstPart() {
     <div className="tables firstPart">
       <div className="d-flex justify-content-center">
         <div className="mr-5 p-1">
-          {/* <Button
-            onClick={saveFile}
+          <Button
+            onClick={() => {
+              setStatus(true);
+            }}
             variant="btn btn-outline-primary"
             className="ml-5"
           >
-            Download json
-          </Button> */}
+          Add Marks
+          </Button>
         </div>
         <div className="p-1 flex-grow-1 ">
           <h3
             className="text-primary "
-            onClick={() => {
-              setStatus(true);
-            }}
           >
             Part - I : Scholastic Areas
           </h3>

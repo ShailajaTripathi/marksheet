@@ -19,8 +19,7 @@ function ThirdPart() {
   const [status, setStatus] = useState(false);
   const [edit, setEdit] = useState(false);
   const [disable, setDisable] = useState(false);
-const [percent1,setPercent1]=useState("")
-const [percent2,setPercent2]=useState("")
+  const [remove, setRemove] = useState(false);
 
   const showModal = () => {
     setStatus(true);
@@ -35,32 +34,22 @@ const [percent2,setPercent2]=useState("")
   };
 
   const editData = (item) => {
-    console.log("aaaa", item);
+    // console.log("aaaa", item);
     setData({
       workingDays: item.workingDays,
       presentDays: item.presentDays,
       percentage: item.percentage,
       id: item.id,
     });
-    console.log(item);
+
     setEdit(true);
   };
   const [thirdData, setThirddata] = useState([]);
   const getThirddata = async () => {
     const response = await axios("https://scorejson.herokuapp.com/thirdpart");
     setThirddata(response.data);
-console.log("hii",response.data)
-    // for (let i = 0; i <= response.data.length; i++) {
-    //   console.log("daaaa",response.data[i])
-    //   var percent = Math.floor(
-    //     (response.data[i].presentDays / response.data[i].workingDays) * 100
-    //   );
-    //   setPercent`${i}`(percent)
-    //   // setPercentage(percent);
-    //   // console.log("percent", percent);
-    // }
   };
-  console.log("ppppp",thirdData)
+
   useEffect(() => {
     getThirddata();
   }, [status]);
@@ -73,23 +62,18 @@ console.log("hii",response.data)
     <div className="tables">
       <div className="d-flex justify-content-center mt-4">
         <div className="mr-5 p-1">
-          {/* <Button
-            onClick={saveFile}
-            variant="btn btn-outline-primary"
-            className="ml-5"
-          >
-            Download json
-          </Button> */}
-        </div>
-        <div className="p-1 flex-grow-1 ">
-          <h3
-            className="text-primary "
+          <Button
             onClick={() => {
               setStatus(true);
             }}
+            variant="btn btn-outline-primary"
+            className="ml-5"
           >
-            Part - III : Attendence
-          </h3>
+            Add Term
+          </Button>
+        </div>
+        <div className="p-1 flex-grow-1 ">
+          <h3 className="text-primary ">Part - III : Attendence</h3>
         </div>
       </div>
       <Table
@@ -104,6 +88,8 @@ console.log("hii",response.data)
             <th>No. of Working Days</th>
             <th>No. of Days Present</th>
             <th>Percentage</th>
+
+            {/* <th style={remove ?  }>Edit</th> */}
             <th>Edit</th>
           </tr>
         </thead>
@@ -113,7 +99,7 @@ console.log("hii",response.data)
               <td className="text-uppercase"> {e.term}</td>
               <td>{e.workingDays}</td>
               <td>{e.presentDays}</td>
-              <td>{Math.floor(e.presentDays/e.workingDays*100)}</td>
+              <td>{Math.floor((e.presentDays / e.workingDays) * 100)}</td>
               <td>
                 <Button
                   className="me-2"
@@ -140,10 +126,6 @@ console.log("hii",response.data)
         setDisable={setDisable}
         setEdit={setEdit}
       />
-
-
-
-      
     </div>
   );
 }

@@ -6,7 +6,7 @@ function BottomPart() {
   const [percentage, setPercent] = useState(null);
   setTimeout(() => {
     setPercent(localStorage.getItem("per"));
-    console.log("asdasd", localStorage.getItem("per"));
+    // console.log("asdasd", localStorage.getItem("per"));
   }, [1000]);
 
   return (

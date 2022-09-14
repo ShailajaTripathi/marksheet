@@ -29,9 +29,9 @@ function SecondPart() {
   };
 
   const editData = (item) => {
-    console.log("aaaa", item);
+    // console.log("aaaa", item);
     setData({ skill: item.subject, grade: item.grade, id: item.id }); // setData(item);
-    console.log(item);
+    // console.log(item);
     setEdit(true);
   };
 
@@ -41,6 +41,7 @@ function SecondPart() {
   const [secondData, setSeconddata] = useState([]);
   const getSeconddata = async () => {
     const response = await axios("https://scorejson.herokuapp.com/secondpart");
+    // console.log("seeeeee",response.data)
     setSeconddata(response.data);
   };
   useEffect(() => {
@@ -49,24 +50,24 @@ function SecondPart() {
   // const saveFile = () => {
   //   saveAs("https://scorejson.herokuapp.com/secondpart", "secondpart.json");
   // };
+  // console.log("daaatatata===",secondData)
   return (
     <div className="tables secondTable">
       <div className="d-flex justify-content-center">
         <div className="mr-3 p-1">
-          {/* <Button
-            onClick={saveFile}
+          <Button
+            onClick={() => {
+              setStatus(true);
+            }}
             variant="btn btn-outline-primary"
-            className="second-btn"
+            className="ml-5"
           >
-            Download json
-          </Button> */}
+            Add Marks
+          </Button>
         </div>
         <div className="p-1 flex-grow-1 ">
           <h3
             className="text-primary second-btn"
-            onClick={() => {
-              setStatus(true);
-            }}
           >
             Part- II : CoScholastic Area
           </h3>
