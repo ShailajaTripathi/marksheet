@@ -57,8 +57,7 @@ function CoscholasticArea({
     // console.log(values);
   };
   function updateData() {
-    // console.log("Updated");
-    // console.log(values);
+    postData();
   }
 
   useEffect(() => {

@@ -88,7 +88,7 @@ function FirstPart(props) {
           </Button>
         </div>
         <div className="p-1 flex-grow-1 ">
-          <h3 className="text-primary text-center">Part - I : Scholastic Areas</h3>
+          <h3 className="text-primary text-centery">Part - I : Scholastic Areas</h3>
         </div>
       </div>
 

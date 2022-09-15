@@ -39,7 +39,9 @@ function Grading() {
           ))}
         </tbody>
       </Table>
-      <p className=".mt-5 fst-italic text-center">Our Parents are seen God on the earth</p>
+      <p className=".mt-5 fst-italic text-center">
+        Our Parents are seen God on the earth
+      </p>
     </div>
   );
 }

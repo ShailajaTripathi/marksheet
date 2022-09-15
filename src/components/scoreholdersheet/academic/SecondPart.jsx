@@ -1,7 +1,6 @@
 import React, { useEffect, useState, Fragment, Form } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-
 import "./styles/secondPart.css";
 import "../../../assets/css/table.css";
 import Button from "react-bootstrap/Button";
@@ -54,7 +53,10 @@ function SecondPart(props) {
   return (
     <div className="tables secondTable">
       <div className="d-flex justify-content-center">
-        <div className="mr-3 p-1" style={{display: props.showing ? "none":"inline-block"}}>
+        <div
+          className="mr-3 p-1"
+          style={{ display: props.showing ? "none" : "inline-block" }}
+        >
           <Button
             onClick={() => {
               setStatus(true);
@@ -66,9 +68,7 @@ function SecondPart(props) {
           </Button>
         </div>
         <div className="p-1 flex-grow-1 ">
-          <h3
-            className="text-primary second-btn text-center"
-          >
+          <h3 className="text-primary second-btn text-center">
             Part- II : CoScholastic Area
           </h3>
         </div>
@@ -84,7 +84,12 @@ function SecondPart(props) {
           <tr>
             <th className="col-sm-7">Skills</th>
             <th className="col-sm-1">Grade</th>
-            <th className="col-sm-1"style={{display: props.showing ? "none":"table-cell"}}>Edit</th>
+            <th
+              className="col-sm-1"
+              style={{ display: props.showing ? "none" : "table-cell" }}
+            >
+              Edit
+            </th>
           </tr>
         </thead>
         <tbody className="tableBody tables">
@@ -92,7 +97,7 @@ function SecondPart(props) {
             <tr className="tableHeight">
               <td>{item.subject}</td>
               <td className="text-center">{item.grade}</td>
-              <td style={{display: props.showing ? "none":"table-cell"}}>
+              <td style={{ display: props.showing ? "none" : "table-cell" }}>
                 <div class="btn-group">
                   <Button
                     className="me-2"
@@ -123,5 +128,4 @@ function SecondPart(props) {
     </div>
   );
 }
-
 export default SecondPart;

@@ -99,15 +99,13 @@ function ScholasticArea({
   }, []);
 
   const deleteData = async () => {
-   
     await axios
       .put(`https://scorejson.herokuapp.com/firstpart/${data.id}`, {
         subject: data.subject,
-        fa:"" ,
+        fa: "",
         oralf: "",
         sa: "",
-        orals:"",
-       
+        orals: "",
       })
       .then((res) => {
         console.log(res);
@@ -304,5 +302,4 @@ function ScholasticArea({
     </div>
   );
 }
-
 export default ScholasticArea;

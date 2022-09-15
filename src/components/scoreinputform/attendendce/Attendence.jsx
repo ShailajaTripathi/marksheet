@@ -96,8 +96,7 @@ function Attendence({
     setEdit(false);
   };
   function updateData() {
-    // console.log("Updated");
-    // console.log(values);
+    postData();
   }
   const res = async () => {
     let resp = await axios.get("https://scorejson.herokuapp.com/thirdpart");
