@@ -8,11 +8,13 @@ import ReactToPrint from "react-to-print";
 import html2pdf from "html2pdf.js";
 import { useContext } from "react";
 import { DataContext } from "./components/contexts/DataContext";
+import Login from "./components/login/Login";
 
 function App(remove, setRemove) {
   // const [editbtn,setEditbtn] =useState(false);
   // const { handleEditButton, editFlag } = useContext(DataContext);
   //console.log("removeeeeeeeeeeeeeee", remove);
+
   const [showbtn, setShowbtn] = useState(false);
 
   const componentRef = useRef();
@@ -32,14 +34,16 @@ function App(remove, setRemove) {
   return (
     <div className="App">
       {/* editbtn={editbtn} setEditbtn={setEditbtn} */}
-      <Sheet ref={componentRef} showbtn={showbtn} />
+      {/* <Sheet ref={componentRef} showbtn={showbtn} />
       <div className="save_download_btn_div">
-        <Button variant ="success"
+        <Button
+          variant="success"
           onClick={() => {
-            setShowbtn(!showbtn); setRemove(!remove);
+            setShowbtn(!showbtn);
+            setRemove(!remove);
           }}
         >
-         {!showbtn ?"Save Page":"Edit Page"} 
+          {!showbtn ? "Save Page" : "Edit Page"}
         </Button>
 
         <span style={{ display: showbtn ? "block" : "none" }}>
@@ -48,7 +52,9 @@ function App(remove, setRemove) {
             content={() => componentRef.current}
           />
 
-          <Button onClick={generatePDF} style={{marginLeft:"5px"}}>Download</Button>
+          <Button onClick={generatePDF} style={{ marginLeft: "5px" }}>
+            Download
+          </Button>
         </span>
 
         {/* <div className="save_btn">
@@ -106,8 +112,21 @@ function App(remove, setRemove) {
               </div>
             </div>
           )}
-        </div> */}
-      </div>
+        </div>
+
+        UPDATE
+        SET
+        DELETE
+        INSERT INTO
+        ORDER BY
+        UNION
+
+
+        */}
+      {/* </div> */}
+     
+      
+<Login/>
     </div>
   );
 }
